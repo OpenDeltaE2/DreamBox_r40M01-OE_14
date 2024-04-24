@@ -28,11 +28,11 @@ DISTUTILS_INSTALL_ARGS = "--root=${D} --install-lib=${libdir}/enigma2/python/Plu
 GIT_SITE = "${@ 'git://gitlab.com/jack2015' if d.getVar('CODEWEBSITE') else 'git://gitee.com/jackgee2021'}"
 
 #ver 1.5.2
-SRCREV = "750dee9e557cc8ef053eabb7da5ff827b3f609a4"
+SRCREV = "37b1b24b109ad15dd7c3d3d9f6f72adb0220a888"
 
 PV = "git${SRCPV}"
 PKGV = "${GITPKGVTAG}"
-PR = "r1"
+PR = "r2"
 SRC_URI = "${GIT_SITE}/e2openplugin-OpenWebif.git;protocol=https;branch=master \
 	file://dm800sev2.png"
 

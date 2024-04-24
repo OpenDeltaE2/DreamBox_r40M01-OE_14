@@ -18,3 +18,7 @@ PACKAGECONFIG = " \
 PACKAGECONFIG[gio] = "-Dgio=enabled,-Dgio=disabled,glib-2.0"
 
 PACKAGE_NO_LOCALE = "1"
+
+PV = "1.22.9"
+SRC_URI[md5sum] = "09f78621379f7cc8e8a27532238587e3"
+SRC_URI[sha256sum] = "fac3e0dd2d8e9370388b34bf8c21b89d5f63bc3cfc12cd7fdc8fc6c1cba03334"

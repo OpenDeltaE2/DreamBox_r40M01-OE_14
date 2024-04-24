@@ -22,3 +22,7 @@ PACKAGECONFIG = " \
 "
 
 PACKAGE_NO_LOCALE = "1"
+
+PV = "1.22.9"
+SRC_URI[md5sum] = "46da4d6a2184d4e6af63e7594a80be0a"
+SRC_URI[sha256sum] = "1bc65d0fd5f53a3636564efd3fcf318c3edcdec39c4109a503c1fc8203840a1d"
