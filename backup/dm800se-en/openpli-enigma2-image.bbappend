@@ -28,7 +28,6 @@ ENIGMA2_PLUGINS = " \
 	enigma2-plugin-extensions-audiosync \
 	enigma2-plugin-extensions-autobackup \
 	enigma2-plugin-extensions-cutlisteditor \
-	enigma2-plugin-extensions-cacheflush \
 	enigma2-plugin-extensions-epgimport \
 	enigma2-plugin-extensions-graphmultiepg \
 	enigma2-plugin-extensions-mediaplayer \
