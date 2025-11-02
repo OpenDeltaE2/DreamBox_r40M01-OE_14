@@ -1,6 +1,5 @@
 SUMMARY = "Oscam Softcam for ${MACHINE}"
 require conf/license/openpli-gplv2.inc
-require oscam-version.inc
 PACKAGE_ARCH = "${MACHINE_ARCH}"
 PACKAGES = "${PN}"
 CAMNAME = "oscam"
@@ -11,11 +10,15 @@ RDEPENDS:${PN}:arm += "libusb1 pcsc-lite pcsc-lite-lib ccid"
 
 inherit cmake gitpkgv
 
+PV = "git${SRCPV}"
+PKGV = "git${GITPKGV}"
+
 SRCREV = "${AUTOREV}"
-SRC_URI = "git://gitee.com/jackgee2021/oscam-nx111.git;protocol=https;branch=master"
+SRC_URI = "git://gitee.com/jackgee2021/oscam-emu.git;protocol=https;branch=master"
 
 S = "${WORKDIR}/git"
 B = "${S}"
+PR = "r0"
 
 SRC_URI += " \
     file://oscam.conf \

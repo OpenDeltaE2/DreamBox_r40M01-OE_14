@@ -162,6 +162,7 @@ ENIGMA2_OPTIONAL = " \
 	enigma2-plugin-extensions-openwebif \
 	enigma2-plugin-extensions-oscamstatus \
 	enigma2-plugin-softcams-oscam \
+	enigma2-plugin-softcams-oscam-emu \
 	${@bb.utils.contains("TARGET_ARCH", "arm", "enigma2-plugin-softcams-wicardd", "", d)} \
 	enigma2-plugin-skins-pli-hd \
 	enigma2-plugin-skins-pli-hd1 \
