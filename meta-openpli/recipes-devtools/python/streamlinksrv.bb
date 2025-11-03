@@ -15,7 +15,7 @@ SRC_URI = "${GIT_SITE}/livestreamersrv.git;protocol=https;branch=master"
 S = "${WORKDIR}/git"
 
 inherit gittag
-SRCREV = "${AUTOREV}"
+SRCREV = "ac9dffe3c99cc5260c8f13d1925de50aa61a1cff"
 PV = "git${SRCPV}"
 PKGV = "${GITPKGVTAG}"
 

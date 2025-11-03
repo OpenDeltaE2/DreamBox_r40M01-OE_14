@@ -13,11 +13,12 @@ RDEPENDS:${PN} = "python-core \
     python-ctypes \
     python-futures \
     python-isodate \
+    python-iso3166 \
+    python-iso639 \
     python-lxml \
     python-misc \
     python-pkgutil \
     python-pycryptodome \
-    python-pycountry \
     python-pysocks \
     python-requests \
     python-shell \
@@ -25,11 +26,13 @@ RDEPENDS:${PN} = "python-core \
     python-subprocess \
     python-typing \
     python-websocket-client \
+    python-youtube-dl \
     "
 
-inherit gittag setuptools python-dir
+inherit gittag setuptools
 
-SRCREV = "39f3855b59c2ef01f3d6513a1cc972968494a35c"
+#SRCREV = "${AUTOREV}"
+SRCREV = "aaab3ccd2b3b0ff63c1ea821eadc92c1c81ad37f"
 PV = "git${SRCPV}"
 PKGV = "${GITPKGVTAG}"
 
@@ -37,11 +40,6 @@ GIT_SITE = "${@ 'git://gitlab.com/jack2015' if d.getVar('CODEWEBSITE') else 'git
 
 SRC_URI = "${GIT_SITE}/streamlink-27.git;protocol=https;branch=master"
 
-FILESEXTRAPATHS:prepend := "${THISDIR}/streamlink-27:"
-
-SRC_URI += " \
-    file://0001-added-files.patch \
-    "
 S = "${WORKDIR}/git"
 
 do_install:append() {
@@ -57,7 +55,7 @@ FILES:${PN} = " \
     ${libdir}/${PYTHON_DIR}/site-packages/streamlink/*/*/*.pyo \
     "
 
-FILES:${PN}-src += " \
+FILES:${PN}-src = " \
     ${libdir}/${PYTHON_DIR}/site-packages/streamlink-*.egg-info/* \
     ${libdir}/${PYTHON_DIR}/site-packages/streamlink/plugins/.removed \
     ${libdir}/${PYTHON_DIR}/site-packages/streamlink/*.py \
