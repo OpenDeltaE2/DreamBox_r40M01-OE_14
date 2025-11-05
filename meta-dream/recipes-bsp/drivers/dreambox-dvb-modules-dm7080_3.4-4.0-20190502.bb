@@ -17,7 +17,7 @@ MD5SUM = "${@d.getVarFlag('SRC_URI', 'dm7080.md5sum', True)}"
 
 BCMNUMBER = "bcm7435"
 
-DREAMBOX_DVB_MODULES_MIRROR ?= "http://dreamboxupdate.com/download/opendreambox/2.5.0/dreambox-dvb-modules/${KV}-${MACHINE}-${DRIVERDATE}/${MACHINE}/${MD5SUM}"
+DREAMBOX_DVB_MODULES_MIRROR ?= "https://source.mynonpublic.com/dreambox"
 
 SRC_URI = "${DREAMBOX_DVB_MODULES_MIRROR}/dreambox-dvb-modules_${KV}-${MACHINE}-${DRIVERDATE}_${MACHINE}.tar.xz;name=${MACHINE}"
 
@@ -54,7 +54,7 @@ do_install:append() {
 
 PACKAGES =+ "${PN}-lcd ${PN}-stb-core"
 
-RDEPENDS:${PN} = "dreambox-secondstage-${MACHINE} kernel-${DM_LOCALVERSION} ${PN}-stb-core"
+RDEPENDS:${PN} = "dreambox-secondstage-${MACHINE} ${PN}-stb-core"
 RDEPENDS:${PN}-lcd = "${PN}-stb-core"
 RRECOMMENDS:${PN} = "${PN}-lcd"
 

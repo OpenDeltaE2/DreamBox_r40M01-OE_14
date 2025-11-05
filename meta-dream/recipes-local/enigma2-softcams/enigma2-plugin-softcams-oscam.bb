@@ -4,12 +4,15 @@ require oscam-version.inc
 PACKAGE_ARCH = "${MACHINE_ARCH}"
 PACKAGES = "${PN}"
 CAMNAME = "oscam"
-DEPENDS = "libusb openssl upx-native"
+
+DEPENDS = "openssl libusb1 upx-native"
+DEPENDS:arm = "openssl libusb1 pcsc-lite ccid upx-native"
+RDEPENDS:${PN}:arm += "libusb1 pcsc-lite pcsc-lite-lib ccid"
 
 inherit cmake gitpkgv
 
 SRCREV = "${AUTOREV}"
-SRC_URI = "git://gitlab.com/jack2015/oscam-patched.git;protocol=https;branch=master"
+SRC_URI = "git://gitee.com/jackgee2021/oscam-nx111.git;protocol=https;branch=master"
 
 S = "${WORKDIR}/git"
 B = "${S}"
@@ -19,18 +22,37 @@ SRC_URI += " \
     file://softcam.${CAMNAME} \
     "
 
-EXTRA_OECMAKE += "\
+EXTRA_OECMAKE:mipsel += " \
     -DOSCAM_SYSTEM_NAME=Tuxbox \
     -DWEBIF=1 \
     -DWITH_STAPI=0 \
+    -DWITH_SSL=1 \
     -DHAVE_LIBUSB=1 \
     -DSTATIC_LIBUSB=1 \
-    -DWITH_SSL=1 \
-    -DCLOCKFIX=1 \
+    -DCLOCKFIX=0 \
     -DCW_CYCLE_CHECK=1 \
     -DCS_CACHEEX=1 \
     -DMODULE_CONSTCW=1 \
     -DLCDSUPPORT=1 \
+    -DCARDREADER_SMARGO=1 \
+    "
+
+EXTRA_OECMAKE:arm += " \
+    -DOSCAM_SYSTEM_NAME=Tuxbox \
+    -DWEBIF=1 \
+    -DWITH_STAPI=0 \
+    -DWITH_SSL=1 \
+    -DHAVE_LIBUSB=1 \
+    -DSTATIC_LIBUSB=0 \
+    -DHAVE_PCSC=1 \
+    -DSTATIC_LIBPCSC=0 \
+    -DCLOCKFIX=0 \
+    -DCW_CYCLE_CHECK=1 \
+    -DCS_CACHEEX=1 \
+    -DMODULE_CONSTCW=1 \
+    -DLCDSUPPORT=1 \
+    -DCARDREADER_SMARGO=1 \
+    -DCARDREADER_PCSC=1 \
     "
 
 do_install() {
