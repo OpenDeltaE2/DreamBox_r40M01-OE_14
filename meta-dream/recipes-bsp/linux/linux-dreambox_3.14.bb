@@ -1,6 +1,6 @@
 inherit kernel machine_kernel_pr
 
-PACKAGE_ARCH = "${MACHINE_ARCH}"
+MACHINE_KERNEL_PR:append = ".27"
 
 COMPATIBLE_MACHINE = "^(dm900|dm920)$"
 
@@ -8,29 +8,32 @@ PATCHREV = "6fa88d2001194cbff63ad94cb713b6cd5ea02739"
 PATCHLEVEL = "79"
 
 SRC_URI = " \
-	${KERNELORG_MIRROR}/linux/kernel/v3.x/linux-${PV}.tar.xz;name=kernel \
-	${KERNELORG_MIRROR}/linux/kernel/v3.x/patch-${PV}.${PATCHLEVEL}.xz;apply=yes;name=stable-patch \
-	http://dreamboxupdate.com/download/kernel-patches/linux-dreambox-${PV}-${PATCHREV}.patch.xz;apply=yes;name=dream-patch \
-	file://0001-Support-TBS-USB-drivers.patch \
-	file://0002-STV-Add-PLS-support.patch \
-	file://0003-STV-Add-SNR-Signal-report-parameters.patch \
-	file://0004-stv090x-optimized-TS-sync-control.patch \
-	file://0005-genksyms_fix_typeof_handling.patch \
-	file://0006-blindscan2.patch \
-	file://0007-overlayfs.patch \
-	file://0008-tuners-tda18273-silicon-tuner-driver.patch \
-	file://0009-si2157-Silicon-Labs-Si2157-silicon-tuner-driver.patch \
-	file://0010-si2168-Silicon-Labs-Si2168-DVB-T-T2-C-demod-driver.patch \
-	file://0011-cxusb-Geniatech-T230-support.patch \
-	file://0012-CONFIG_DVB_SP2.patch \
-	file://0013-dvbsky.patch \
-	file://0014-rtl2832u-2.patch \
-	file://0015-log2-give-up-on-gcc-constant-optimizations.patch \
-	file://0016-uaccess-dont-mark-register-as-const.patch \
-	file://0017-makefile-silence-packed-not-aligned-warn.patch \
-	file://0018-make-yyloc-global-declaration-extern.patch \
-	file://0019-kernel-add-support-for-gcc11.patch \
-	file://defconfig \
+    ${KERNELORG_MIRROR}/linux/kernel/v3.x/linux-${PV}.tar.xz;name=kernel \
+    ${KERNELORG_MIRROR}/linux/kernel/v3.x/patch-${PV}.${PATCHLEVEL}.xz;apply=yes;name=stable-patch \
+    https://source.mynonpublic.com/dreambox/linux-dreambox-${PV}-${PATCHREV}.patch.xz;apply=yes;name=dream-patch \
+    file://defconfig \
+    file://0001-Support-TBS-USB-drivers.patch \
+    file://0001-STV-Add-PLS-support.patch \
+    file://0001-STV-Add-SNR-Signal-report-parameters.patch \
+    file://0001-stv090x-optimized-TS-sync-control.patch \
+    file://genksyms_fix_typeof_handling.patch \
+    file://blindscan2.patch \
+    file://0001-tuners-tda18273-silicon-tuner-driver.patch \
+    file://01-10-si2157-Silicon-Labs-Si2157-silicon-tuner-driver.patch \
+    file://02-10-si2168-Silicon-Labs-Si2168-DVB-T-T2-C-demod-driver.patch \
+    file://0003-cxusb-Geniatech-T230-support.patch \
+    file://CONFIG_DVB_SP2.patch \
+    file://dvbsky.patch \
+    file://rtl2832u-2.patch \
+    file://0004-log2-give-up-on-gcc-constant-optimizations.patch \
+    file://0005-uaccess-dont-mark-register-as-const.patch \
+    file://0006-makefile-silence-packed-not-aligned-warn.patch \
+    file://0007-overlayfs.patch \
+    file://move-default-dialect-to-SMB3.patch \
+    file://fix-multiple-defs-yyloc.patch \
+    file://fix-build-with-binutils-2.41.patch \
+    file://0019-kernel-add-support-for-gcc11.patch \
+    file://chkroot-multiboot.cpio.xz;unpack=0 \
 "
 
 SRC_URI[kernel.md5sum] = "b621207b3f6ecbb67db18b13258f8ea8"
@@ -49,6 +52,11 @@ CMDLINE = "bmem=640M@384M bmem=384M@2048M console=ttyS0,1000000 root=/dev/mmcblk
 
 DEFCONFIG = "${MACHINE}"
 
+kernel_do_configure:prepend() {
+	install -d ${B}/usr
+	install -m 0644 ${WORKDIR}/chkroot-multiboot.cpio.xz ${B}/
+}
+
 BRCM_PATCHLEVEL = "1.17"
 
 LINUX_VERSION = "${PV}-${BRCM_PATCHLEVEL}-${MACHINE}"
@@ -56,8 +64,6 @@ KERNEL_IMAGETYPE = "zImage"
 KERNEL_DEVICETREE = "dreambox-dm900.dtb"
 
 KERNEL_EXTRA_ARGS = "EXTRA_CFLAGS=-Wno-attribute-alias"
-
-INSANE_SKIP:${PN}:append = " installed-vs-shipped"
 
 do_rm_work() {
 }

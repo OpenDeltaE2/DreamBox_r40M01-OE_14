@@ -1,6 +1,8 @@
 inherit kernel machine_kernel_pr
 
-MACHINE_KERNEL_PR:append = "r15"
+MACHINE_KERNEL_PR:append = ".15"
+
+COMPATIBLE_MACHINE = "^(dm520|dm820|dm7080)$"
 
 PATCHREV = "30070c78a23d461935d9db0b6ce03afc70a10c51"
 PATCHLEVEL = "113"
@@ -8,20 +10,20 @@ PATCHLEVEL = "113"
 SRC_URI = " \
     ${KERNELORG_MIRROR}/linux/kernel/v3.x/linux-${PV}.tar.xz;name=kernel \
     ${KERNELORG_MIRROR}/linux/kernel/v3.x/patch-${PV}.${PATCHLEVEL}.xz;apply=yes;name=stable-patch \
-    http://dreamboxupdate.com/download/kernel-patches/linux-dreambox-${PV}-${PATCHREV}.patch.xz;apply=yes;name=dream-patch \
+    https://source.mynonpublic.com/dreambox/linux-dreambox-${PV}-${PATCHREV}.patch.xz;apply=yes;name=dream-patch \
     file://dvb_frontend-Multistream-support-3.4.patch \
-    file://kernel-add-support-for-gcc6.patch \
-    file://kernel-add-support-for-gcc7.patch \
-    file://kernel-add-support-for-gcc8.patch \
-    file://kernel-add-support-for-gcc9.patch \
-    file://kernel-add-support-for-gcc10.patch \
     file://kernel-add-support-for-gcc11.patch \
+    file://build-with-gcc12-fixes.patch \
     file://genksyms_fix_typeof_handling.patch \
     file://defconfig \
     file://0001-log2-give-up-on-gcc-constant-optimizations.patch \
     file://0002-cp1emu-do-not-use-bools-for-arithmetic.patch \
     file://0003-makefile-silence-packed-not-aligned-warn.patch \
     file://0004-fcrypt-fix-bitoperation-for-gcc.patch \
+    file://fix-build-with-binutils-2.41.patch \
+    file://vtbl-ubi.patch \
+    file://chkroot-multiboot.cpio.xz;unpack=0 \
+    file://initramfs-mipsel.cpio.xz;unpack=0 \
 "
 
 SRC_URI[kernel.md5sum] = "967f72983655e2479f951195953e8480"
@@ -47,6 +49,12 @@ CMDLINE = "${@bb.utils.contains('MACHINE', 'dm520', \
     'bmem=192M@64M console=ttyS0,1000000 ubi.mtd=rootfs root=ubi0:dreambox-rootfs rootfstype=ubifs rw', \
     'bmem=512M@512M memc1=768M console=ttyS0,1000000 root=/dev/mmcblk0p1 rootwait rootfstype=ext4', d)} \
 "
+
+kernel_do_configure:prepend() {
+	install -d ${B}/usr
+	install -m 0644 ${WORKDIR}/chkroot-multiboot.cpio.xz ${B}/
+	install -m 0644 ${WORKDIR}/initramfs-mipsel.cpio.xz ${B}/
+}
 
 BRCM_PATCHLEVEL = "4.0"
 

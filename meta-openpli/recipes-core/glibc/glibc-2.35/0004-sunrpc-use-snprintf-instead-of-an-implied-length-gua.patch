@@ -1,36 +1,21 @@
-From 879bec4351e40981f68ba3b86ea6bad16e90fad1 Mon Sep 17 00:00:00 2001
-From: Philipp Tomsich <philipp.tomsich@vrull.eu>
-Date: Thu, 3 Dec 2020 13:22:32 +0100
-Subject: [PATCH] sunrpc: use snprintf instead of an implied length-guarantee
- on a format argument
-
-GCC11 has improved detection of buffer overflows detectable through the analysis
-of format strings and parameters, which identifies the following issue:
-   netname.c:52:28: error: '%s' directive writing up to 255 bytes into a region
-                           of size between 239 and 249 [-Werror=format-overflow=]
-
-While an if-check prior to the format-directive implies a guarantee on the length
-of the respective format argument, the compiler does not derive a range from that
-implied guarantuee and does not consider the range in performing the checking.
-
-This rewrites user2netname() to use snprintf to guard against overflows.
-In doing so, it removes the if-check and related macros.
-
 diff --git a/sunrpc/netname.c b/sunrpc/netname.c
-index ceed23b1a72..7b1b0dcffaf 100644
+index bf7f0b81c4..2ee06f2b8d 100644
 --- a/sunrpc/netname.c
 +++ b/sunrpc/netname.c
-@@ -24,8 +24,7 @@
+@@ -20,11 +20,11 @@
+ #include <string.h>
+ #include <rpc/rpc.h>
+ #include <shlib-compat.h>
++#include <libc-diag.h>
  
  #include "nsswitch.h"
  
--#define	OPSYS_LEN 4
+ #define	OPSYS_LEN 4
 -#define	MAXIPRINT (11)		/* max length of printed integer */
-+#define OPSYS_LEN 4
  static const char OPSYS[] = "unix";
  
  int
-@@ -33,7 +32,7 @@ user2netname (char netname[MAXNETNAMELEN + 1], const uid_t uid,
+@@ -32,7 +32,7 @@ user2netname (char netname[MAXNETNAMELEN + 1], const uid_t uid,
  	      const char *domain)
  {
    char dfltdom[MAXNETNAMELEN + 1];
@@ -39,7 +24,7 @@ index ceed23b1a72..7b1b0dcffaf 100644
  
    if (domain == NULL)
      {
-@@ -46,11 +45,10 @@ user2netname (char netname[MAXNETNAMELEN + 1], const uid_t uid,
+@@ -45,11 +45,15 @@ user2netname (char netname[MAXNETNAMELEN + 1], const uid_t uid,
        dfltdom[MAXNETNAMELEN] = '\0';
      }
  
@@ -50,9 +35,11 @@ index ceed23b1a72..7b1b0dcffaf 100644
  
 -  sprintf (netname, "%s.%d@%s", OPSYS, uid, dfltdom);
 -  i = strlen (netname);
++  /* GCC with -Os warns that sprint might overflow while handling dfltdom,
++     however the above test does check if an overflow would happen.  */
++  DIAG_PUSH_NEEDS_COMMENT;
++  DIAG_IGNORE_Os_NEEDS_COMMENT (8, "-Wformat-overflow");
++  DIAG_POP_NEEDS_COMMENT;
    if (netname[i - 1] == '.')
      netname[i - 1] = '\0';
    return 1;
--- 
-2.25.1
-

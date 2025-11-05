@@ -1,6 +1,6 @@
 FILESEXTRAPATHS:prepend := "${THISDIR}/${PN}-2.35:"
 
-SRC_URI:remove = "file://0001-CVE-2021-38604.patch file://0002-CVE-2021-38604.patch"
+SRC_URI:remove = "file://0001-CVE-2021-38604.patch file://0002-CVE-2021-38604.patch file://0003-sunrpc-suppress-gcc-os-warning-on-user2netname.patch"
 
 SRC_URI += " file://0001-ptrace-protect-ptrace_peeksiginfo_args-from-redefint.patch \
              file://0002-fix-build-for-old-libcheader.patch \
@@ -14,3 +14,4 @@ SRC_URI:append:arm = " file://stdlib-canonicalize-realpath_stk-dest-maybe-uninit
 "
 
 SSTATE_ALLOW_OVERLAP_FILES += "${STAGING_INCDIR}/netatalk/at.h ${STAGING_INCDIR}/scsi/scsi_ioctl.h ${STAGING_INCDIR}/scsi/sg.h"
+OLDEST_KERNEL = "3.2"
