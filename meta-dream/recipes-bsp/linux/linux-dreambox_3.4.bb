@@ -66,11 +66,8 @@ KERNEL_ENABLE_CGROUPS = "1"
 
 RDEPENDS:${KERNEL_PACKAGE_NAME}-image = "flash-scripts"
 
-pkg_postinst:kernel-image () {
-#!/bin/sh
-if [ -z "$D" ]; then
-    flash-kernel /${KERNEL_IMAGEDEST}/${KERNEL_IMAGETYPE}-${LINUX_VERSION}
-fi
+pkg_postinst_ontarget:kernel-image () {
+flash-kernel /${KERNEL_IMAGEDEST}/${KERNEL_IMAGETYPE}-${LINUX_VERSION}
 }
 
 COMPATIBLE_MACHINE = "^(dm520|dm820|dm7080)$"
