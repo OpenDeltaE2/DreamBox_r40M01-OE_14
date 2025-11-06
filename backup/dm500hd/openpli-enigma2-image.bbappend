@@ -39,7 +39,7 @@ ENIGMA2_PLUGINS = " \
 	enigma2-plugin-extensions-pictureplayer \
 	enigma2-plugin-extensions-openmultiboot \
 	openmultiboot \
-	enigma2-plugin-softcams-oscam \
+	enigma2-plugin-softcams-oscam-emu \
 	enigma2-plugin-systemplugins-cablescan \
 	enigma2-plugin-systemplugins-fastscan \
 	enigma2-plugin-systemplugins-mphelp \
@@ -98,6 +98,11 @@ upxall() {
 	upx --best --ultra-brute ${IMAGE_ROOTFS}/sbin/tune2fs.e2fsprogs || true
 	upx --best --ultra-brute ${IMAGE_ROOTFS}/usr/bin/blindscan || true
 	upx --best --ultra-brute ${IMAGE_ROOTFS}/usr/bin/bsdcat || true
+	upx --best --ultra-brute ${IMAGE_ROOTFS}/usr/bin/bsdunzip || true
+	upx --best --ultra-brute ${IMAGE_ROOTFS}/usr/bin/newgidmap || true
+	upx --best --ultra-brute ${IMAGE_ROOTFS}/usr/bin/newuidmap || true
+	upx --best --ultra-brute ${IMAGE_ROOTFS}/usr/bin/ntfs-3g || true
+	upx --best --ultra-brute ${IMAGE_ROOTFS}/usr/bin/passwd.shadow || true
 	upx --best --ultra-brute ${IMAGE_ROOTFS}/usr/bin/dbus-daemon || true
 	upx --best --ultra-brute ${IMAGE_ROOTFS}/usr/bin/chage || true
 	upx --best --ultra-brute ${IMAGE_ROOTFS}/usr/bin/enigma2 || true
@@ -105,12 +110,11 @@ upxall() {
 	upx --best --ultra-brute ${IMAGE_ROOTFS}/usr/bin/mpg123 || true
 	upx --best --ultra-brute ${IMAGE_ROOTFS}/usr/bin/openssl || true
 	upx --best --ultra-brute ${IMAGE_ROOTFS}/usr/bin/out123 || true
-	upx --best --ultra-brute ${IMAGE_ROOTFS}/usr/bin/pzstd || true
 	upx --best --ultra-brute ${IMAGE_ROOTFS}/usr/bin/sdparm || true
-	upx --best --ultra-brute ${IMAGE_ROOTFS}/usr/bin/zstd || true
 	upx --best --ultra-brute ${IMAGE_ROOTFS}/usr/sbin/alsactl || true
 	upx --best --ultra-brute ${IMAGE_ROOTFS}/usr/sbin/avahi-daemon || true
 	upx --best --ultra-brute ${IMAGE_ROOTFS}/usr/sbin/chgpasswd || true
+	upx --best --ultra-brute ${IMAGE_ROOTFS}/usr/sbin/chpasswd.shadow || true
 	upx --best --ultra-brute ${IMAGE_ROOTFS}/usr/sbin/dropbearmulti || true
 	upx --best --ultra-brute ${IMAGE_ROOTFS}/usr/sbin/ethtool || true
 	upx --best --ultra-brute ${IMAGE_ROOTFS}/usr/sbin/exportfs || true
@@ -119,6 +123,7 @@ upxall() {
 	upx --best --ultra-brute ${IMAGE_ROOTFS}/usr/sbin/groupmod || true
 	upx --best --ultra-brute ${IMAGE_ROOTFS}/usr/sbin/grpck || true
 	upx --best --ultra-brute ${IMAGE_ROOTFS}/usr/sbin/newusers || true
+	upx --best --ultra-brute ${IMAGE_ROOTFS}/usr/sbin/ntpd.ntp || true
 	upx --best --ultra-brute ${IMAGE_ROOTFS}/usr/sbin/parted || true
 	upx --best --ultra-brute ${IMAGE_ROOTFS}/usr/sbin/rpc.mountd || true
 	upx --best --ultra-brute ${IMAGE_ROOTFS}/usr/sbin/rpc.statd || true
@@ -128,6 +133,7 @@ upxall() {
 	upx --best --ultra-brute ${IMAGE_ROOTFS}/usr/sbin/usermod || true
 	upx --best --ultra-brute ${IMAGE_ROOTFS}/usr/sbin/vsftpd || true
 	upx --best --ultra-brute ${IMAGE_ROOTFS}/usr/sbin/wpa_cli || true
+	upx --best --ultra-brute ${IMAGE_ROOTFS}/usr/sbin/wpa_passphrase || true
 	upx --best --ultra-brute ${IMAGE_ROOTFS}/usr/sbin/wpa_supplicant || true
 }
 

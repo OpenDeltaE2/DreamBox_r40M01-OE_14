@@ -1,6 +1,6 @@
 FILESEXTRAPATHS:prepend := "${THISDIR}/${PN}:"
 
-PACKAGECONFIG ??= ""
+# PACKAGECONFIG ??= ""
 
 SRC_URI += " \
 	file://opkg.conf \

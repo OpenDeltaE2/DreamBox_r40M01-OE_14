@@ -9,7 +9,9 @@ DEPENDS = "glib-2.0 glib-2.0-native libxml2 sqlite3 intltool-native"
 
 SHRT_VER = "${@d.getVar('PV').split('.')[0]}.${@d.getVar('PV').split('.')[1]}"
 
-SRC_URI = "${GNOME_MIRROR}/libsoup/${SHRT_VER}/libsoup-${PV}.tar.xz"
+SRC_URI = "${GNOME_MIRROR}/libsoup/${SHRT_VER}/libsoup-${PV}.tar.xz \
+	file://declaration-after-statement.patch \
+	"
 SRC_URI[md5sum] = "dfbf30af5fb6190bfafc5aa6abcc9dce"
 SRC_URI[sha256sum] = "d312ade547495c2093ff8bda61f9b9727a98cfdae339f3263277dd39c0451172"
 

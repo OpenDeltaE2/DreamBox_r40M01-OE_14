@@ -7,12 +7,15 @@ DEPENDS = "jpeg libpng zlib"
 
 inherit gitpkgv autotools pkgconfig
 
-PV = "1.0+git${SRCPV}"
-PKGV = "1.0+git${GITPKGV}"
+TARGET_CC_ARCH:remove = "-D_FILE_OFFSET_BITS=64 -D_TIME_BITS=64"
+INSANE_SKIP = "32bit-time"
 
-SRC_URI = "git://gitlab.com/jack2015/aio-grab.git;protocol=https;branch=master"
+PV = "1.1+git${SRCPV}"
+PKGV = "1.1+git${GITPKGV}"
+
+SRC_URI = "git://gitee.com/jackgee2021/aio-grab.git;protocol=https;branch=master"
 SRC_URI:dm800se = "git://gitlab.com/jack2015/openpli-aio-grab.git;protocol=https;branch=master"
 
 S = "${WORKDIR}/git"
 
-EXTRA_OECONF = "ac_cv_prog_c_openmp=-fopenmp"
+EXTRA_OECONF:dm800se = "ac_cv_prog_c_openmp=-fopenmp"

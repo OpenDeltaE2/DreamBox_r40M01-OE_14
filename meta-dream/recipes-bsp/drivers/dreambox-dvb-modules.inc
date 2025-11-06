@@ -32,7 +32,7 @@ do_install() {
 
 PACKAGES = "${PN}"
 
-RDEPENDS:${PN} += "dreambox-secondstage-${MACHINE} kernel-${DM_LOCALVERSION} kernel-vmlinux"
+RDEPENDS:${PN} += "dreambox-secondstage-${MACHINE} kernel-vmlinux"
 
 # We don't use KERNEL_VERSION in this recipe, because the
 # precompiled modules depend on a specific version.

@@ -4,7 +4,7 @@ require conf/license/openpli-gplv2.inc
 PACKAGE_ARCH = "${MACHINE_ARCH}"
 
 PROVIDES += "virtual/blindscan-dvbs virtual/blindscan-dvbc"
-RPROVIDES:${PN} += "virtual/blindscan-dvbs virtual/blindscan-dvbc"
+RPROVIDES:${PN} += "virtual-blindscan-dvbs virtual-blindscan-dvbc"
 
 DEPENDS = "ncurses"
 

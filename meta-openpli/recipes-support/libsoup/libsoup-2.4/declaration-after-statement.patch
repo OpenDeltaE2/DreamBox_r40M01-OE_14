@@ -1,0 +1,11 @@
+--- a/configure.ac	2025-11-04 08:23:23.666913820 +0800
++++ b/configure.ac	2025-11-04 08:19:42.765383000 +0800
+@@ -357,7 +357,7 @@
+ 		-Werror=pointer-arith -Werror=init-self -Werror=format=2 \
+ 		-Wno-format-zero-length \
+ 		-Werror=missing-include-dirs -Werror=aggregate-return \
+-		-Werror=declaration-after-statement"
++		-Wno-error=declaration-after-statement"
+ fi
+ 
+ ##################################################

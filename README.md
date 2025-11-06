@@ -6,12 +6,12 @@ https://github.com/Hains
 Thanks to OpenPLi & Hains.
 
 In comparison to OpenPLi this repository has:<br>
--Submodules bitbake, openembedded-core and meta-openembedded from mickledore branch,<br>
--GCC 12.3.0<br>
--Glibc 2.37<br>
+-Submodules bitbake, openembedded-core and meta-openembedded from scarthgap branch,<br>
+-GCC 13.4.0<br>
+-Glibc 2.39<br>
 -GStreamer 1.22.12<br>
 -Python 2.7.18<br>
--OpenSSL 3.1.4<br>
+-OpenSSL 3.2.6<br>
 -Busybox 1.36.1<br>
 -Linux OS 3.2/3.4/3.14
 
@@ -64,7 +64,7 @@ sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-11 100 --slave 
 git clone https://github.com/jack2015/openpli-dreambox-oe-core.git
 cd openpli-dreambox-oe-core
 make update
-git checkout mickledore
+git checkout scarthgap
 make update
 ./image.sh
 ```
