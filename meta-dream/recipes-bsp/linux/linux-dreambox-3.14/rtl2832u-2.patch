@@ -5,10 +5,10 @@ Date:   Sat Aug 16 00:49:56 2014 +0300
     Refrence RTL2832U driver.
 
 diff --git a/drivers/media/usb/Kconfig b/drivers/media/usb/Kconfig
-index 39d824e2..a6e2b3b3 100644
+index 94d51e0..57ee616 100644
 --- a/drivers/media/usb/Kconfig
 +++ b/drivers/media/usb/Kconfig
-@@ -45,6 +45,7 @@ source "drivers/media/usb/ttusb-budget/Kconfig"
+@@ -46,6 +46,7 @@ source "drivers/media/usb/ttusb-budget/Kconfig"
  source "drivers/media/usb/ttusb-dec/Kconfig"
  source "drivers/media/usb/siano/Kconfig"
  source "drivers/media/usb/b2c2/Kconfig"
@@ -17,7 +17,7 @@ index 39d824e2..a6e2b3b3 100644
  
  if (MEDIA_CAMERA_SUPPORT || MEDIA_ANALOG_TV_SUPPORT || MEDIA_DIGITAL_TV_SUPPORT)
 diff --git a/drivers/media/usb/Makefile b/drivers/media/usb/Makefile
-index 7ac4b143..183f9035 100644
+index f438eff..44af0bb 100644
 --- a/drivers/media/usb/Makefile
 +++ b/drivers/media/usb/Makefile
 @@ -4,7 +4,7 @@
@@ -29,12 +29,10 @@ index 7ac4b143..183f9035 100644
  
  obj-$(CONFIG_USB_VIDEO_CLASS)	+= uvc/
  obj-$(CONFIG_USB_GSPCA)         += gspca/
-diff --git a/drivers/media/usb/dvb-usb-v2/rtl28xxu.c b/drivers/media/usb/dvb-usb-v2/rtl28xxu.c
-index fd1312d0..8c0a0f77 100644
 --- a/drivers/media/usb/dvb-usb-v2/rtl28xxu.c
 +++ b/drivers/media/usb/dvb-usb-v2/rtl28xxu.c
-@@ -1445,6 +1445,8 @@ static const struct usb_device_id rtl28xxu_id_table[] = {
- 	/* RTL2832P devices: */
+@@ -1430,6 +1430,8 @@
+ 
  	{ DVB_USB_DEVICE(USB_VID_HANFTEK, 0x0131,
  		&rtl2832u_props, "Astrometa DVB-T2", NULL) },
 +	{ DVB_USB_DEVICE(USB_PID_GOTVIEW_CA42, 0x5654,
@@ -44,7 +42,7 @@ index fd1312d0..8c0a0f77 100644
  MODULE_DEVICE_TABLE(usb, rtl28xxu_id_table);
 diff --git a/drivers/media/usb/rtl2832u/Kconfig b/drivers/media/usb/rtl2832u/Kconfig
 new file mode 100644
-index 00000000..b86cf018
+index 0000000..b86cf01
 --- /dev/null
 +++ b/drivers/media/usb/rtl2832u/Kconfig
 @@ -0,0 +1,5 @@
@@ -55,7 +53,7 @@ index 00000000..b86cf018
 +	  Realtek RTL2832U DVB-T driver.
 diff --git a/drivers/media/usb/rtl2832u/Makefile b/drivers/media/usb/rtl2832u/Makefile
 new file mode 100644
-index 00000000..5125883d
+index 0000000..997082a
 --- /dev/null
 +++ b/drivers/media/usb/rtl2832u/Makefile
 @@ -0,0 +1,8 @@
@@ -69,7 +67,7 @@ index 00000000..5125883d
 +ccflags-y += -I$(srctree)/drivers/media/usb/rtl2832u
 diff --git a/drivers/media/usb/rtl2832u/demod_rtl2832.c b/drivers/media/usb/rtl2832u/demod_rtl2832.c
 new file mode 100644
-index 00000000..68b18053
+index 0000000..5c0f92a
 --- /dev/null
 +++ b/drivers/media/usb/rtl2832u/demod_rtl2832.c
 @@ -0,0 +1,2872 @@
@@ -2947,7 +2945,7 @@ index 00000000..68b18053
 +
 diff --git a/drivers/media/usb/rtl2832u/demod_rtl2832.h b/drivers/media/usb/rtl2832u/demod_rtl2832.h
 new file mode 100644
-index 00000000..d9fd4f1f
+index 0000000..740e53e
 --- /dev/null
 +++ b/drivers/media/usb/rtl2832u/demod_rtl2832.h
 @@ -0,0 +1,466 @@
@@ -3419,7 +3417,7 @@ index 00000000..d9fd4f1f
 +#endif
 diff --git a/drivers/media/usb/rtl2832u/demod_rtl2836.c b/drivers/media/usb/rtl2832u/demod_rtl2836.c
 new file mode 100644
-index 00000000..90fae89d
+index 0000000..3be0766
 --- /dev/null
 +++ b/drivers/media/usb/rtl2832u/demod_rtl2836.c
 @@ -0,0 +1,2049 @@
@@ -5474,7 +5472,7 @@ index 00000000..90fae89d
 +
 diff --git a/drivers/media/usb/rtl2832u/demod_rtl2836.h b/drivers/media/usb/rtl2832u/demod_rtl2836.h
 new file mode 100644
-index 00000000..af3c79ee
+index 0000000..778a5d8
 --- /dev/null
 +++ b/drivers/media/usb/rtl2832u/demod_rtl2836.h
 @@ -0,0 +1,376 @@
@@ -5856,7 +5854,7 @@ index 00000000..af3c79ee
 +#endif
 diff --git a/drivers/media/usb/rtl2832u/demod_rtl2840.c b/drivers/media/usb/rtl2832u/demod_rtl2840.c
 new file mode 100644
-index 00000000..226caf90
+index 0000000..cb4c0db
 --- /dev/null
 +++ b/drivers/media/usb/rtl2832u/demod_rtl2840.c
 @@ -0,0 +1,2437 @@
@@ -8299,7 +8297,7 @@ index 00000000..226caf90
 +
 diff --git a/drivers/media/usb/rtl2832u/demod_rtl2840.h b/drivers/media/usb/rtl2832u/demod_rtl2840.h
 new file mode 100644
-index 00000000..16f4723a
+index 0000000..98c98d8
 --- /dev/null
 +++ b/drivers/media/usb/rtl2832u/demod_rtl2840.h
 @@ -0,0 +1,386 @@
@@ -8691,7 +8689,7 @@ index 00000000..16f4723a
 +#endif
 diff --git a/drivers/media/usb/rtl2832u/dtmb_demod_base.c b/drivers/media/usb/rtl2832u/dtmb_demod_base.c
 new file mode 100644
-index 00000000..b0de54a8
+index 0000000..7bdc2d2
 --- /dev/null
 +++ b/drivers/media/usb/rtl2832u/dtmb_demod_base.c
 @@ -0,0 +1,1566 @@
@@ -10263,7 +10261,7 @@ index 00000000..b0de54a8
 +
 diff --git a/drivers/media/usb/rtl2832u/dtmb_demod_base.h b/drivers/media/usb/rtl2832u/dtmb_demod_base.h
 new file mode 100644
-index 00000000..38e8ed95
+index 0000000..2dc6a3b
 --- /dev/null
 +++ b/drivers/media/usb/rtl2832u/dtmb_demod_base.h
 @@ -0,0 +1,2501 @@
@@ -12770,7 +12768,7 @@ index 00000000..38e8ed95
 +#endif
 diff --git a/drivers/media/usb/rtl2832u/dtmb_nim_base.c b/drivers/media/usb/rtl2832u/dtmb_nim_base.c
 new file mode 100644
-index 00000000..541bd486
+index 0000000..45d02dd
 --- /dev/null
 +++ b/drivers/media/usb/rtl2832u/dtmb_nim_base.c
 @@ -0,0 +1,545 @@
@@ -13321,7 +13319,7 @@ index 00000000..541bd486
 +
 diff --git a/drivers/media/usb/rtl2832u/dtmb_nim_base.h b/drivers/media/usb/rtl2832u/dtmb_nim_base.h
 new file mode 100644
-index 00000000..fcbe3c14
+index 0000000..d7e97cd
 --- /dev/null
 +++ b/drivers/media/usb/rtl2832u/dtmb_nim_base.h
 @@ -0,0 +1,951 @@
@@ -14276,498 +14274,9 @@ index 00000000..fcbe3c14
 +
 +
 +#endif
-diff --git a/drivers/media/usb/rtl2832u/dvb-usb.h b/drivers/media/usb/rtl2832u/dvb-usb.h
-new file mode 100644
-index 00000000..ce4c4e3b
---- /dev/null
-+++ b/drivers/media/usb/rtl2832u/dvb-usb.h
-@@ -0,0 +1,483 @@
-+/* dvb-usb.h is part of the DVB USB library.
-+ *
-+ * Copyright (C) 2004-6 Patrick Boettcher (patrick.boettcher@desy.de)
-+ * see dvb-usb-init.c for copyright information.
-+ *
-+ * the headerfile, all dvb-usb-drivers have to include.
-+ *
-+ * TODO: clean-up the structures for unused fields and update the comments
-+ */
-+#ifndef __DVB_USB_H__
-+#define __DVB_USB_H__
-+
-+#include <linux/input.h>
-+#include <linux/usb.h>
-+#include <linux/firmware.h>
-+#include <linux/mutex.h>
-+#include <media/rc-core.h>
-+
-+#include "dvb_frontend.h"
-+#include "dvb_demux.h"
-+#include "dvb_net.h"
-+#include "dmxdev.h"
-+
-+#include "dvb-pll.h"
-+
-+#include "dvb-usb-ids.h"
-+
-+/* debug */
-+#ifdef CONFIG_DVB_USB_DEBUG
-+#define dprintk(var,level,args...) \
-+	    do { if ((var & level)) { printk(args); } } while (0)
-+
-+#define debug_dump(b,l,func) {\
-+	int loop_; \
-+	for (loop_ = 0; loop_ < l; loop_++) func("%02x ", b[loop_]); \
-+	func("\n");\
-+}
-+#define DVB_USB_DEBUG_STATUS
-+#else
-+#define dprintk(args...)
-+#define debug_dump(b,l,func)
-+
-+#define DVB_USB_DEBUG_STATUS " (debugging is not enabled)"
-+
-+#endif
-+
-+/* generic log methods - taken from usb.h */
-+#ifndef DVB_USB_LOG_PREFIX
-+ #define DVB_USB_LOG_PREFIX "dvb-usb (please define a log prefix)"
-+#endif
-+
-+#undef err
-+#define err(format, arg...)  printk(KERN_ERR     DVB_USB_LOG_PREFIX ": " format "\n" , ## arg)
-+#undef info
-+#define info(format, arg...) printk(KERN_INFO    DVB_USB_LOG_PREFIX ": " format "\n" , ## arg)
-+#undef warn
-+#define warn(format, arg...) printk(KERN_WARNING DVB_USB_LOG_PREFIX ": " format "\n" , ## arg)
-+
-+/**
-+ * struct dvb_usb_device_description - name and its according USB IDs
-+ * @name: real name of the box, regardless which DVB USB device class is in use
-+ * @cold_ids: array of struct usb_device_id which describe the device in
-+ *  pre-firmware state
-+ * @warm_ids: array of struct usb_device_id which describe the device in
-+ *  post-firmware state
-+ *
-+ * Each DVB USB device class can have one or more actual devices, this struct
-+ * assigns a name to it.
-+ */
-+struct dvb_usb_device_description {
-+	const char *name;
-+
-+#define DVB_USB_ID_MAX_NUM 15
-+	struct usb_device_id *cold_ids[DVB_USB_ID_MAX_NUM];
-+	struct usb_device_id *warm_ids[DVB_USB_ID_MAX_NUM];
-+};
-+
-+static inline u8 rc5_custom(struct rc_map_table *key)
-+{
-+	return (key->scancode >> 8) & 0xff;
-+}
-+
-+static inline u8 rc5_data(struct rc_map_table *key)
-+{
-+	return key->scancode & 0xff;
-+}
-+
-+static inline u16 rc5_scan(struct rc_map_table *key)
-+{
-+	return key->scancode & 0xffff;
-+}
-+
-+struct dvb_usb_device;
-+struct dvb_usb_adapter;
-+struct usb_data_stream;
-+
-+/**
-+ * Properties of USB streaming - TODO this structure should be somewhere else
-+ * describes the kind of USB transfer used for data-streaming.
-+ *  (BULK or ISOC)
-+ */
-+struct usb_data_stream_properties {
-+#define USB_BULK  1
-+#define USB_ISOC  2
-+	int type;
-+	int count;
-+	int endpoint;
-+
-+	union {
-+		struct {
-+			int buffersize; /* per URB */
-+		} bulk;
-+		struct {
-+			int framesperurb;
-+			int framesize;
-+			int interval;
-+		} isoc;
-+	} u;
-+};
-+
-+/**
-+ * struct dvb_usb_adapter_properties - properties of a dvb-usb-adapter.
-+ *    A DVB-USB-Adapter is basically a dvb_adapter which is present on a USB-device.
-+ * @caps: capabilities of the DVB USB device.
-+ * @pid_filter_count: number of PID filter position in the optional hardware
-+ *  PID-filter.
-+ * @num_frontends: number of frontends of the DVB USB adapter.
-+ * @frontend_ctrl: called to power on/off active frontend.
-+ * @streaming_ctrl: called to start and stop the MPEG2-TS streaming of the
-+ *  device (not URB submitting/killing).
-+ * @pid_filter_ctrl: called to en/disable the PID filter, if any.
-+ * @pid_filter: called to set/unset a PID for filtering.
-+ * @frontend_attach: called to attach the possible frontends (fill fe-field
-+ *  of struct dvb_usb_device).
-+ * @tuner_attach: called to attach the correct tuner and to fill pll_addr,
-+ *  pll_desc and pll_init_buf of struct dvb_usb_device).
-+ * @stream: configuration of the USB streaming
-+ */
-+struct dvb_usb_adapter_fe_properties {
-+#define DVB_USB_ADAP_HAS_PID_FILTER               0x01
-+#define DVB_USB_ADAP_PID_FILTER_CAN_BE_TURNED_OFF 0x02
-+#define DVB_USB_ADAP_NEED_PID_FILTERING           0x04
-+#define DVB_USB_ADAP_RECEIVES_204_BYTE_TS         0x08
-+#define DVB_USB_ADAP_RECEIVES_RAW_PAYLOAD         0x10
-+	int caps;
-+	int pid_filter_count;
-+
-+	int (*streaming_ctrl)  (struct dvb_usb_adapter *, int);
-+	int (*pid_filter_ctrl) (struct dvb_usb_adapter *, int);
-+	int (*pid_filter)      (struct dvb_usb_adapter *, int, u16, int);
-+
-+	int (*frontend_attach) (struct dvb_usb_adapter *);
-+	int (*tuner_attach)    (struct dvb_usb_adapter *);
-+
-+	struct usb_data_stream_properties stream;
-+
-+	int size_of_priv;
-+};
-+
-+#define MAX_NO_OF_FE_PER_ADAP 3
-+struct dvb_usb_adapter_properties {
-+	int size_of_priv;
-+
-+	int (*frontend_ctrl)   (struct dvb_frontend *, int);
-+
-+	int num_frontends;
-+	struct dvb_usb_adapter_fe_properties fe[MAX_NO_OF_FE_PER_ADAP];
-+};
-+
-+/**
-+ * struct dvb_rc_legacy - old properties of remote controller
-+ * @rc_map_table: a hard-wired array of struct rc_map_table (NULL to disable
-+ *  remote control handling).
-+ * @rc_map_size: number of items in @rc_map_table.
-+ * @rc_query: called to query an event event.
-+ * @rc_interval: time in ms between two queries.
-+ */
-+struct dvb_rc_legacy {
-+/* remote control properties */
-+#define REMOTE_NO_KEY_PRESSED      0x00
-+#define REMOTE_KEY_PRESSED         0x01
-+#define REMOTE_KEY_REPEAT          0x02
-+	struct rc_map_table  *rc_map_table;
-+	int rc_map_size;
-+	int (*rc_query) (struct dvb_usb_device *, u32 *, int *);
-+	int rc_interval;
-+};
-+
-+/**
-+ * struct dvb_rc properties of remote controller, using rc-core
-+ * @rc_codes: name of rc codes table
-+ * @protocol: type of protocol(s) currently used by the driver
-+ * @allowed_protos: protocol(s) supported by the driver
-+ * @driver_type: Used to point if a device supports raw mode
-+ * @change_protocol: callback to change protocol
-+ * @rc_query: called to query an event event.
-+ * @rc_interval: time in ms between two queries.
-+ * @bulk_mode: device supports bulk mode for RC (disable polling mode)
-+ */
-+struct dvb_rc {
-+	char *rc_codes;
-+	u64 protocol;
-+	u64 allowed_protos;
-+	enum rc_driver_type driver_type;
-+	int (*change_protocol)(struct rc_dev *dev, u64 *rc_type);
-+	char *module_name;
-+	int (*rc_query) (struct dvb_usb_device *d);
-+	int rc_interval;
-+	bool bulk_mode;				/* uses bulk mode */
-+};
-+
-+/**
-+ * enum dvb_usb_mode - Specifies if it is using a legacy driver or a new one
-+ *		       based on rc-core
-+ * This is initialized/used only inside dvb-usb-remote.c.
-+ * It shouldn't be set by the drivers.
-+ */
-+enum dvb_usb_mode {
-+	DVB_RC_LEGACY,
-+	DVB_RC_CORE,
-+};
-+
-+/**
-+ * struct dvb_usb_device_properties - properties of a dvb-usb-device
-+ * @usb_ctrl: which USB device-side controller is in use. Needed for firmware
-+ *  download.
-+ * @firmware: name of the firmware file.
-+ * @download_firmware: called to download the firmware when the usb_ctrl is
-+ *  DEVICE_SPECIFIC.
-+ * @no_reconnect: device doesn't do a reconnect after downloading the firmware,
-+ *  so do the warm initialization right after it
-+ *
-+ * @size_of_priv: how many bytes shall be allocated for the private field
-+ *  of struct dvb_usb_device.
-+ *
-+ * @power_ctrl: called to enable/disable power of the device.
-+ * @read_mac_address: called to read the MAC address of the device.
-+ * @identify_state: called to determine the state (cold or warm), when it
-+ *  is not distinguishable by the USB IDs.
-+ *
-+ * @rc: remote controller properties
-+ *
-+ * @i2c_algo: i2c_algorithm if the device has I2CoverUSB.
-+ *
-+ * @generic_bulk_ctrl_endpoint: most of the DVB USB devices have a generic
-+ *  endpoint which received control messages with bulk transfers. When this
-+ *  is non-zero, one can use dvb_usb_generic_rw and dvb_usb_generic_write-
-+ *  helper functions.
-+ *
-+ * @generic_bulk_ctrl_endpoint_response: some DVB USB devices use a separate
-+ *  endpoint for responses to control messages sent with bulk transfers via
-+ *  the generic_bulk_ctrl_endpoint. When this is non-zero, this will be used
-+ *  instead of the generic_bulk_ctrl_endpoint when reading usb responses in
-+ *  the dvb_usb_generic_rw helper function.
-+ *
-+ * @num_device_descs: number of struct dvb_usb_device_description in @devices
-+ * @devices: array of struct dvb_usb_device_description compatibles with these
-+ *  properties.
-+ */
-+#define MAX_NO_OF_ADAPTER_PER_DEVICE 2
-+struct dvb_usb_device_properties {
-+
-+#define DVB_USB_IS_AN_I2C_ADAPTER            0x01
-+	int caps;
-+
-+#define DEVICE_SPECIFIC 0
-+#define CYPRESS_AN2135  1
-+#define CYPRESS_AN2235  2
-+#define CYPRESS_FX2     3
-+	int        usb_ctrl;
-+	int        (*download_firmware) (struct usb_device *, const struct firmware *);
-+	const char *firmware;
-+	int        no_reconnect;
-+
-+	int size_of_priv;
-+
-+	int num_adapters;
-+	struct dvb_usb_adapter_properties adapter[MAX_NO_OF_ADAPTER_PER_DEVICE];
-+
-+	int (*power_ctrl)       (struct dvb_usb_device *, int);
-+	int (*read_mac_address) (struct dvb_usb_device *, u8 []);
-+	int (*identify_state)   (struct usb_device *, struct dvb_usb_device_properties *,
-+			struct dvb_usb_device_description **, int *);
-+
-+	struct {
-+		enum dvb_usb_mode mode;	/* Drivers shouldn't touch on it */
-+		struct dvb_rc_legacy legacy;
-+		struct dvb_rc core;
-+	} rc;
-+
-+	struct i2c_algorithm *i2c_algo;
-+
-+	int generic_bulk_ctrl_endpoint;
-+	int generic_bulk_ctrl_endpoint_response;
-+
-+	int num_device_descs;
-+	struct dvb_usb_device_description devices[12];
-+};
-+
-+/**
-+ * struct usb_data_stream - generic object of an USB stream
-+ * @buf_num: number of buffer allocated.
-+ * @buf_size: size of each buffer in buf_list.
-+ * @buf_list: array containing all allocate buffers for streaming.
-+ * @dma_addr: list of dma_addr_t for each buffer in buf_list.
-+ *
-+ * @urbs_initialized: number of URBs initialized.
-+ * @urbs_submitted: number of URBs submitted.
-+ */
-+#define MAX_NO_URBS_FOR_DATA_STREAM 10
-+struct usb_data_stream {
-+	struct usb_device                 *udev;
-+	struct usb_data_stream_properties  props;
-+
-+#define USB_STATE_INIT    0x00
-+#define USB_STATE_URB_BUF 0x01
-+	int state;
-+
-+	void (*complete) (struct usb_data_stream *, u8 *, size_t);
-+
-+	struct urb    *urb_list[MAX_NO_URBS_FOR_DATA_STREAM];
-+	int            buf_num;
-+	unsigned long  buf_size;
-+	u8            *buf_list[MAX_NO_URBS_FOR_DATA_STREAM];
-+	dma_addr_t     dma_addr[MAX_NO_URBS_FOR_DATA_STREAM];
-+
-+	int urbs_initialized;
-+	int urbs_submitted;
-+
-+	void *user_priv;
-+};
-+
-+/**
-+ * struct dvb_usb_adapter - a DVB adapter on a USB device
-+ * @id: index of this adapter (starting with 0).
-+ *
-+ * @feedcount: number of reqested feeds (used for streaming-activation)
-+ * @pid_filtering: is hardware pid_filtering used or not.
-+ *
-+ * @pll_addr: I2C address of the tuner for programming
-+ * @pll_init: array containing the initialization buffer
-+ * @pll_desc: pointer to the appropriate struct dvb_pll_desc
-+ * @tuner_pass_ctrl: called to (de)activate tuner passthru of the demod or the board
-+ *
-+ * @dvb_adap: device's dvb_adapter.
-+ * @dmxdev: device's dmxdev.
-+ * @demux: device's software demuxer.
-+ * @dvb_net: device's dvb_net interfaces.
-+ * @dvb_frontend: device's frontend.
-+ * @max_feed_count: how many feeds can be handled simultaneously by this
-+ *  device
-+ *
-+ * @fe_init:  rerouted frontend-init (wakeup) function.
-+ * @fe_sleep: rerouted frontend-sleep function.
-+ *
-+ * @stream: the usb data stream.
-+ */
-+struct dvb_usb_fe_adapter {
-+	struct dvb_frontend *fe;
-+
-+	int (*fe_init)  (struct dvb_frontend *);
-+	int (*fe_sleep) (struct dvb_frontend *);
-+
-+	struct usb_data_stream stream;
-+
-+	int pid_filtering;
-+	int max_feed_count;
-+
-+	void *priv;
-+};
-+
-+struct dvb_usb_adapter {
-+	struct dvb_usb_device *dev;
-+	struct dvb_usb_adapter_properties props;
-+
-+#define DVB_USB_ADAP_STATE_INIT 0x000
-+#define DVB_USB_ADAP_STATE_DVB  0x001
-+	int state;
-+
-+	u8  id;
-+
-+	int feedcount;
-+
-+	/* dvb */
-+	struct dvb_adapter   dvb_adap;
-+	struct dmxdev        dmxdev;
-+	struct dvb_demux     demux;
-+	struct dvb_net       dvb_net;
-+
-+	struct dvb_usb_fe_adapter fe_adap[MAX_NO_OF_FE_PER_ADAP];
-+	int active_fe;
-+	int num_frontends_initialized;
-+
-+	void *priv;
-+};
-+
-+/**
-+ * struct dvb_usb_device - object of a DVB USB device
-+ * @props: copy of the struct dvb_usb_properties this device belongs to.
-+ * @desc: pointer to the device's struct dvb_usb_device_description.
-+ * @state: initialization and runtime state of the device.
-+ *
-+ * @powered: indicated whether the device is power or not.
-+ *  Powered is in/decremented for each call to modify the state.
-+ * @udev: pointer to the device's struct usb_device.
-+ *
-+ * @usb_mutex: semaphore of USB control messages (reading needs two messages)
-+ * @i2c_mutex: semaphore for i2c-transfers
-+ *
-+ * @i2c_adap: device's i2c_adapter if it uses I2CoverUSB
-+ *
-+ * @rc_dev: rc device for the remote control (rc-core mode)
-+ * @input_dev: input device for the remote control (legacy mode)
-+ * @rc_query_work: struct work_struct frequent rc queries
-+ * @last_event: last triggered event
-+ * @last_state: last state (no, pressed, repeat)
-+ * @owner: owner of the dvb_adapter
-+ * @priv: private data of the actual driver (allocate by dvb-usb, size defined
-+ *  in size_of_priv of dvb_usb_properties).
-+ */
-+struct dvb_usb_device {
-+	struct dvb_usb_device_properties props;
-+	struct dvb_usb_device_description *desc;
-+
-+	struct usb_device *udev;
-+
-+#define DVB_USB_STATE_INIT        0x000
-+#define DVB_USB_STATE_I2C         0x001
-+#define DVB_USB_STATE_DVB         0x002
-+#define DVB_USB_STATE_REMOTE      0x004
-+	int state;
-+
-+	int powered;
-+
-+	/* locking */
-+	struct mutex usb_mutex;
-+
-+	/* i2c */
-+	struct mutex i2c_mutex;
-+	struct i2c_adapter i2c_adap;
-+
-+	int                    num_adapters_initialized;
-+	struct dvb_usb_adapter adapter[MAX_NO_OF_ADAPTER_PER_DEVICE];
-+
-+	/* remote control */
-+	struct rc_dev *rc_dev;
-+	struct input_dev *input_dev;
-+	char rc_phys[64];
-+	struct delayed_work rc_query_work;
-+	u32 last_event;
-+	int last_state;
-+
-+	struct module *owner;
-+
-+	void *priv;
-+};
-+
-+extern int dvb_usb_device_init(struct usb_interface *,
-+			       struct dvb_usb_device_properties *,
-+			       struct module *, struct dvb_usb_device **,
-+			       short *adapter_nums);
-+extern void dvb_usb_device_exit(struct usb_interface *);
-+
-+/* the generic read/write method for device control */
-+extern int dvb_usb_generic_rw(struct dvb_usb_device *, u8 *, u16, u8 *, u16,int);
-+extern int dvb_usb_generic_write(struct dvb_usb_device *, u8 *, u16);
-+
-+/* commonly used remote control parsing */
-+extern int dvb_usb_nec_rc_key_to_event(struct dvb_usb_device *, u8[], u32 *, int *);
-+
-+/* commonly used firmware download types and function */
-+struct hexline {
-+	u8 len;
-+	u32 addr;
-+	u8 type;
-+	u8 data[255];
-+	u8 chk;
-+};
-+extern int usb_cypress_load_firmware(struct usb_device *udev, const struct firmware *fw, int type);
-+extern int dvb_usb_get_hexline(const struct firmware *fw, struct hexline *hx, int *pos);
-+
-+
-+#endif
 diff --git a/drivers/media/usb/rtl2832u/dvbt_demod_base.c b/drivers/media/usb/rtl2832u/dvbt_demod_base.c
 new file mode 100644
-index 00000000..d1bd1f65
+index 0000000..9eed711
 --- /dev/null
 +++ b/drivers/media/usb/rtl2832u/dvbt_demod_base.c
 @@ -0,0 +1,816 @@
@@ -15589,7 +15098,7 @@ index 00000000..d1bd1f65
 +
 diff --git a/drivers/media/usb/rtl2832u/dvbt_demod_base.h b/drivers/media/usb/rtl2832u/dvbt_demod_base.h
 new file mode 100644
-index 00000000..edf7f192
+index 0000000..c3c36fc
 --- /dev/null
 +++ b/drivers/media/usb/rtl2832u/dvbt_demod_base.h
 @@ -0,0 +1,2722 @@
@@ -18317,7 +17826,7 @@ index 00000000..edf7f192
 +#endif
 diff --git a/drivers/media/usb/rtl2832u/dvbt_nim_base.c b/drivers/media/usb/rtl2832u/dvbt_nim_base.c
 new file mode 100644
-index 00000000..76a5e94c
+index 0000000..4f94bf8
 --- /dev/null
 +++ b/drivers/media/usb/rtl2832u/dvbt_nim_base.c
 @@ -0,0 +1,531 @@
@@ -18854,7 +18363,7 @@ index 00000000..76a5e94c
 +
 diff --git a/drivers/media/usb/rtl2832u/dvbt_nim_base.h b/drivers/media/usb/rtl2832u/dvbt_nim_base.h
 new file mode 100644
-index 00000000..08422540
+index 0000000..bf1f931
 --- /dev/null
 +++ b/drivers/media/usb/rtl2832u/dvbt_nim_base.h
 @@ -0,0 +1,934 @@
@@ -19794,7 +19303,7 @@ index 00000000..08422540
 +#endif
 diff --git a/drivers/media/usb/rtl2832u/foundation.c b/drivers/media/usb/rtl2832u/foundation.c
 new file mode 100644
-index 00000000..c5e8e524
+index 0000000..d758396
 --- /dev/null
 +++ b/drivers/media/usb/rtl2832u/foundation.c
 @@ -0,0 +1,352 @@
@@ -20152,7 +19661,7 @@ index 00000000..c5e8e524
 +
 diff --git a/drivers/media/usb/rtl2832u/foundation.h b/drivers/media/usb/rtl2832u/foundation.h
 new file mode 100644
-index 00000000..a24d78e1
+index 0000000..c5739d5
 --- /dev/null
 +++ b/drivers/media/usb/rtl2832u/foundation.h
 @@ -0,0 +1,1001 @@
@@ -21159,7 +20668,7 @@ index 00000000..a24d78e1
 +#endif
 diff --git a/drivers/media/usb/rtl2832u/i2c_bridge.h b/drivers/media/usb/rtl2832u/i2c_bridge.h
 new file mode 100644
-index 00000000..ce67e8b9
+index 0000000..747442f
 --- /dev/null
 +++ b/drivers/media/usb/rtl2832u/i2c_bridge.h
 @@ -0,0 +1,122 @@
@@ -21287,7 +20796,7 @@ index 00000000..ce67e8b9
 +#endif
 diff --git a/drivers/media/usb/rtl2832u/math_mpi.c b/drivers/media/usb/rtl2832u/math_mpi.c
 new file mode 100644
-index 00000000..d3a2c7c9
+index 0000000..3ad3427
 --- /dev/null
 +++ b/drivers/media/usb/rtl2832u/math_mpi.c
 @@ -0,0 +1,1054 @@
@@ -22347,7 +21856,7 @@ index 00000000..d3a2c7c9
 +
 diff --git a/drivers/media/usb/rtl2832u/math_mpi.h b/drivers/media/usb/rtl2832u/math_mpi.h
 new file mode 100644
-index 00000000..73a7d1d0
+index 0000000..02ff9ce
 --- /dev/null
 +++ b/drivers/media/usb/rtl2832u/math_mpi.h
 @@ -0,0 +1,201 @@
@@ -22554,7 +22063,7 @@ index 00000000..73a7d1d0
 +#endif
 diff --git a/drivers/media/usb/rtl2832u/nim_rtl2832_e4000.c b/drivers/media/usb/rtl2832u/nim_rtl2832_e4000.c
 new file mode 100644
-index 00000000..c2e9df8e
+index 0000000..d4f5e45
 --- /dev/null
 +++ b/drivers/media/usb/rtl2832u/nim_rtl2832_e4000.c
 @@ -0,0 +1,1001 @@
@@ -23561,7 +23070,7 @@ index 00000000..c2e9df8e
 +
 diff --git a/drivers/media/usb/rtl2832u/nim_rtl2832_e4000.h b/drivers/media/usb/rtl2832u/nim_rtl2832_e4000.h
 new file mode 100644
-index 00000000..e23c2771
+index 0000000..537d7c4
 --- /dev/null
 +++ b/drivers/media/usb/rtl2832u/nim_rtl2832_e4000.h
 @@ -0,0 +1,226 @@
@@ -23793,7 +23302,7 @@ index 00000000..e23c2771
 +
 diff --git a/drivers/media/usb/rtl2832u/nim_rtl2832_fc0012.c b/drivers/media/usb/rtl2832u/nim_rtl2832_fc0012.c
 new file mode 100644
-index 00000000..0db94c75
+index 0000000..d8e37bc
 --- /dev/null
 +++ b/drivers/media/usb/rtl2832u/nim_rtl2832_fc0012.c
 @@ -0,0 +1,840 @@
@@ -24639,7 +24148,7 @@ index 00000000..0db94c75
 +
 diff --git a/drivers/media/usb/rtl2832u/nim_rtl2832_fc0012.h b/drivers/media/usb/rtl2832u/nim_rtl2832_fc0012.h
 new file mode 100644
-index 00000000..befa45ad
+index 0000000..8fbf7a5
 --- /dev/null
 +++ b/drivers/media/usb/rtl2832u/nim_rtl2832_fc0012.h
 @@ -0,0 +1,168 @@
@@ -24813,7 +24322,7 @@ index 00000000..befa45ad
 +
 diff --git a/drivers/media/usb/rtl2832u/nim_rtl2832_fc0013.c b/drivers/media/usb/rtl2832u/nim_rtl2832_fc0013.c
 new file mode 100644
-index 00000000..16740f34
+index 0000000..87a20f6
 --- /dev/null
 +++ b/drivers/media/usb/rtl2832u/nim_rtl2832_fc0013.c
 @@ -0,0 +1,1053 @@
@@ -25872,7 +25381,7 @@ index 00000000..16740f34
 +
 diff --git a/drivers/media/usb/rtl2832u/nim_rtl2832_fc0013.h b/drivers/media/usb/rtl2832u/nim_rtl2832_fc0013.h
 new file mode 100644
-index 00000000..0888d6e2
+index 0000000..d66738c
 --- /dev/null
 +++ b/drivers/media/usb/rtl2832u/nim_rtl2832_fc0013.h
 @@ -0,0 +1,170 @@
@@ -26048,7 +25557,7 @@ index 00000000..0888d6e2
 +
 diff --git a/drivers/media/usb/rtl2832u/nim_rtl2832_fc2580.c b/drivers/media/usb/rtl2832u/nim_rtl2832_fc2580.c
 new file mode 100644
-index 00000000..7d12c5f0
+index 0000000..8b6529f
 --- /dev/null
 +++ b/drivers/media/usb/rtl2832u/nim_rtl2832_fc2580.c
 @@ -0,0 +1,343 @@
@@ -26397,7 +25906,7 @@ index 00000000..7d12c5f0
 +
 diff --git a/drivers/media/usb/rtl2832u/nim_rtl2832_fc2580.h b/drivers/media/usb/rtl2832u/nim_rtl2832_fc2580.h
 new file mode 100644
-index 00000000..a5a7998d
+index 0000000..9fc7e82
 --- /dev/null
 +++ b/drivers/media/usb/rtl2832u/nim_rtl2832_fc2580.h
 @@ -0,0 +1,141 @@
@@ -26544,7 +26053,7 @@ index 00000000..a5a7998d
 +
 diff --git a/drivers/media/usb/rtl2832u/nim_rtl2832_max3543.c b/drivers/media/usb/rtl2832u/nim_rtl2832_max3543.c
 new file mode 100644
-index 00000000..6398437e
+index 0000000..9b34dc1
 --- /dev/null
 +++ b/drivers/media/usb/rtl2832u/nim_rtl2832_max3543.c
 @@ -0,0 +1,346 @@
@@ -26896,7 +26405,7 @@ index 00000000..6398437e
 +
 diff --git a/drivers/media/usb/rtl2832u/nim_rtl2832_max3543.h b/drivers/media/usb/rtl2832u/nim_rtl2832_max3543.h
 new file mode 100644
-index 00000000..b2b61fc8
+index 0000000..6735883
 --- /dev/null
 +++ b/drivers/media/usb/rtl2832u/nim_rtl2832_max3543.h
 @@ -0,0 +1,145 @@
@@ -27047,7 +26556,7 @@ index 00000000..b2b61fc8
 +
 diff --git a/drivers/media/usb/rtl2832u/nim_rtl2832_mt2063.c b/drivers/media/usb/rtl2832u/nim_rtl2832_mt2063.c
 new file mode 100644
-index 00000000..3c475f9a
+index 0000000..d2f675c
 --- /dev/null
 +++ b/drivers/media/usb/rtl2832u/nim_rtl2832_mt2063.c
 @@ -0,0 +1,360 @@
@@ -27413,7 +26922,7 @@ index 00000000..3c475f9a
 +
 diff --git a/drivers/media/usb/rtl2832u/nim_rtl2832_mt2063.h b/drivers/media/usb/rtl2832u/nim_rtl2832_mt2063.h
 new file mode 100644
-index 00000000..464d0c61
+index 0000000..9eafe0c
 --- /dev/null
 +++ b/drivers/media/usb/rtl2832u/nim_rtl2832_mt2063.h
 @@ -0,0 +1,160 @@
@@ -27579,7 +27088,7 @@ index 00000000..464d0c61
 +
 diff --git a/drivers/media/usb/rtl2832u/nim_rtl2832_mt2266.c b/drivers/media/usb/rtl2832u/nim_rtl2832_mt2266.c
 new file mode 100644
-index 00000000..cac01e31
+index 0000000..26a0382
 --- /dev/null
 +++ b/drivers/media/usb/rtl2832u/nim_rtl2832_mt2266.c
 @@ -0,0 +1,1082 @@
@@ -28667,7 +28176,7 @@ index 00000000..cac01e31
 +
 diff --git a/drivers/media/usb/rtl2832u/nim_rtl2832_mt2266.h b/drivers/media/usb/rtl2832u/nim_rtl2832_mt2266.h
 new file mode 100644
-index 00000000..2047220f
+index 0000000..5c281d7
 --- /dev/null
 +++ b/drivers/media/usb/rtl2832u/nim_rtl2832_mt2266.h
 @@ -0,0 +1,264 @@
@@ -28937,7 +28446,7 @@ index 00000000..2047220f
 +
 diff --git a/drivers/media/usb/rtl2832u/nim_rtl2832_mxl5007t.c b/drivers/media/usb/rtl2832u/nim_rtl2832_mxl5007t.c
 new file mode 100644
-index 00000000..ef06a954
+index 0000000..132eb73
 --- /dev/null
 +++ b/drivers/media/usb/rtl2832u/nim_rtl2832_mxl5007t.c
 @@ -0,0 +1,517 @@
@@ -29460,7 +28969,7 @@ index 00000000..ef06a954
 +
 diff --git a/drivers/media/usb/rtl2832u/nim_rtl2832_mxl5007t.h b/drivers/media/usb/rtl2832u/nim_rtl2832_mxl5007t.h
 new file mode 100644
-index 00000000..bdf43adb
+index 0000000..f8fb1cb
 --- /dev/null
 +++ b/drivers/media/usb/rtl2832u/nim_rtl2832_mxl5007t.h
 @@ -0,0 +1,165 @@
@@ -29631,7 +29140,7 @@ index 00000000..bdf43adb
 +
 diff --git a/drivers/media/usb/rtl2832u/nim_rtl2832_tda18272.c b/drivers/media/usb/rtl2832u/nim_rtl2832_tda18272.c
 new file mode 100644
-index 00000000..a8dee779
+index 0000000..23eb4ad
 --- /dev/null
 +++ b/drivers/media/usb/rtl2832u/nim_rtl2832_tda18272.c
 @@ -0,0 +1,408 @@
@@ -30045,7 +29554,7 @@ index 00000000..a8dee779
 +
 diff --git a/drivers/media/usb/rtl2832u/nim_rtl2832_tda18272.h b/drivers/media/usb/rtl2832u/nim_rtl2832_tda18272.h
 new file mode 100644
-index 00000000..25c8ef17
+index 0000000..426f9bf
 --- /dev/null
 +++ b/drivers/media/usb/rtl2832u/nim_rtl2832_tda18272.h
 @@ -0,0 +1,148 @@
@@ -30199,7 +29708,7 @@ index 00000000..25c8ef17
 +
 diff --git a/drivers/media/usb/rtl2832u/nim_rtl2832_tua9001.c b/drivers/media/usb/rtl2832u/nim_rtl2832_tua9001.c
 new file mode 100644
-index 00000000..92f2f5f3
+index 0000000..46324d1
 --- /dev/null
 +++ b/drivers/media/usb/rtl2832u/nim_rtl2832_tua9001.c
 @@ -0,0 +1,340 @@
@@ -30545,7 +30054,7 @@ index 00000000..92f2f5f3
 +
 diff --git a/drivers/media/usb/rtl2832u/nim_rtl2832_tua9001.h b/drivers/media/usb/rtl2832u/nim_rtl2832_tua9001.h
 new file mode 100644
-index 00000000..5eded7df
+index 0000000..c8fea24
 --- /dev/null
 +++ b/drivers/media/usb/rtl2832u/nim_rtl2832_tua9001.h
 @@ -0,0 +1,137 @@
@@ -30688,7 +30197,7 @@ index 00000000..5eded7df
 +
 diff --git a/drivers/media/usb/rtl2832u/nim_rtl2836_fc2580.c b/drivers/media/usb/rtl2832u/nim_rtl2836_fc2580.c
 new file mode 100644
-index 00000000..f501e6ea
+index 0000000..32c5a7c
 --- /dev/null
 +++ b/drivers/media/usb/rtl2832u/nim_rtl2836_fc2580.c
 @@ -0,0 +1,308 @@
@@ -31002,7 +30511,7 @@ index 00000000..f501e6ea
 +
 diff --git a/drivers/media/usb/rtl2832u/nim_rtl2836_fc2580.h b/drivers/media/usb/rtl2832u/nim_rtl2836_fc2580.h
 new file mode 100644
-index 00000000..cc827ec7
+index 0000000..630976a
 --- /dev/null
 +++ b/drivers/media/usb/rtl2832u/nim_rtl2836_fc2580.h
 @@ -0,0 +1,140 @@
@@ -31148,7 +30657,7 @@ index 00000000..cc827ec7
 +
 diff --git a/drivers/media/usb/rtl2832u/nim_rtl2836_mxl5007t.c b/drivers/media/usb/rtl2832u/nim_rtl2836_mxl5007t.c
 new file mode 100644
-index 00000000..8eaec8b7
+index 0000000..5ca46ae
 --- /dev/null
 +++ b/drivers/media/usb/rtl2832u/nim_rtl2836_mxl5007t.c
 @@ -0,0 +1,319 @@
@@ -31473,7 +30982,7 @@ index 00000000..8eaec8b7
 +
 diff --git a/drivers/media/usb/rtl2832u/nim_rtl2836_mxl5007t.h b/drivers/media/usb/rtl2832u/nim_rtl2836_mxl5007t.h
 new file mode 100644
-index 00000000..41e874f8
+index 0000000..fb99270
 --- /dev/null
 +++ b/drivers/media/usb/rtl2832u/nim_rtl2836_mxl5007t.h
 @@ -0,0 +1,150 @@
@@ -31629,7 +31138,7 @@ index 00000000..41e874f8
 +
 diff --git a/drivers/media/usb/rtl2832u/nim_rtl2840_max3543.c b/drivers/media/usb/rtl2832u/nim_rtl2840_max3543.c
 new file mode 100644
-index 00000000..25daa3f5
+index 0000000..02051a9
 --- /dev/null
 +++ b/drivers/media/usb/rtl2832u/nim_rtl2840_max3543.c
 @@ -0,0 +1,341 @@
@@ -31976,7 +31485,7 @@ index 00000000..25daa3f5
 +
 diff --git a/drivers/media/usb/rtl2832u/nim_rtl2840_max3543.h b/drivers/media/usb/rtl2832u/nim_rtl2840_max3543.h
 new file mode 100644
-index 00000000..ff4ec2f6
+index 0000000..46d9fb0
 --- /dev/null
 +++ b/drivers/media/usb/rtl2832u/nim_rtl2840_max3543.h
 @@ -0,0 +1,146 @@
@@ -32128,7 +31637,7 @@ index 00000000..ff4ec2f6
 +#endif
 diff --git a/drivers/media/usb/rtl2832u/nim_rtl2840_mt2063.c b/drivers/media/usb/rtl2832u/nim_rtl2840_mt2063.c
 new file mode 100644
-index 00000000..3df31e62
+index 0000000..b7eb4eb
 --- /dev/null
 +++ b/drivers/media/usb/rtl2832u/nim_rtl2840_mt2063.c
 @@ -0,0 +1,307 @@
@@ -32441,7 +31950,7 @@ index 00000000..3df31e62
 +
 diff --git a/drivers/media/usb/rtl2832u/nim_rtl2840_mt2063.h b/drivers/media/usb/rtl2832u/nim_rtl2840_mt2063.h
 new file mode 100644
-index 00000000..0e4e6731
+index 0000000..99b05bb
 --- /dev/null
 +++ b/drivers/media/usb/rtl2832u/nim_rtl2840_mt2063.h
 @@ -0,0 +1,163 @@
@@ -32610,7 +32119,7 @@ index 00000000..0e4e6731
 +#endif
 diff --git a/drivers/media/usb/rtl2832u/qam_demod_base.c b/drivers/media/usb/rtl2832u/qam_demod_base.c
 new file mode 100644
-index 00000000..8843ab52
+index 0000000..73479f3
 --- /dev/null
 +++ b/drivers/media/usb/rtl2832u/qam_demod_base.c
 @@ -0,0 +1,1289 @@
@@ -33905,7 +33414,7 @@ index 00000000..8843ab52
 +
 diff --git a/drivers/media/usb/rtl2832u/qam_demod_base.h b/drivers/media/usb/rtl2832u/qam_demod_base.h
 new file mode 100644
-index 00000000..0eba9363
+index 0000000..f01ed737
 --- /dev/null
 +++ b/drivers/media/usb/rtl2832u/qam_demod_base.h
 @@ -0,0 +1,2827 @@
@@ -36738,7 +36247,7 @@ index 00000000..0eba9363
 +#endif
 diff --git a/drivers/media/usb/rtl2832u/qam_nim_base.c b/drivers/media/usb/rtl2832u/qam_nim_base.c
 new file mode 100644
-index 00000000..726eab40
+index 0000000..d69d503
 --- /dev/null
 +++ b/drivers/media/usb/rtl2832u/qam_nim_base.c
 @@ -0,0 +1,496 @@
@@ -37240,7 +36749,7 @@ index 00000000..726eab40
 +
 diff --git a/drivers/media/usb/rtl2832u/qam_nim_base.h b/drivers/media/usb/rtl2832u/qam_nim_base.h
 new file mode 100644
-index 00000000..abeea776
+index 0000000..ed07e04
 --- /dev/null
 +++ b/drivers/media/usb/rtl2832u/qam_nim_base.h
 @@ -0,0 +1,864 @@
@@ -38110,7 +37619,7 @@ index 00000000..abeea776
 +#endif
 diff --git a/drivers/media/usb/rtl2832u/rtl2832u.c b/drivers/media/usb/rtl2832u/rtl2832u.c
 new file mode 100644
-index 00000000..f34e8958
+index 0000000..f83a5d2
 --- /dev/null
 +++ b/drivers/media/usb/rtl2832u/rtl2832u.c
 @@ -0,0 +1,1622 @@
@@ -39738,7 +39247,7 @@ index 00000000..f34e8958
 +
 diff --git a/drivers/media/usb/rtl2832u/rtl2832u.h b/drivers/media/usb/rtl2832u/rtl2832u.h
 new file mode 100644
-index 00000000..b99ab603
+index 0000000..5bc0f8f
 --- /dev/null
 +++ b/drivers/media/usb/rtl2832u/rtl2832u.h
 @@ -0,0 +1,270 @@
@@ -40014,7 +39523,7 @@ index 00000000..b99ab603
 +
 diff --git a/drivers/media/usb/rtl2832u/rtl2832u_audio.c b/drivers/media/usb/rtl2832u/rtl2832u_audio.c
 new file mode 100644
-index 00000000..9b8e4364
+index 0000000..6183c88
 --- /dev/null
 +++ b/drivers/media/usb/rtl2832u/rtl2832u_audio.c
 @@ -0,0 +1,905 @@
@@ -40925,7 +40434,7 @@ index 00000000..9b8e4364
 +
 diff --git a/drivers/media/usb/rtl2832u/rtl2832u_audio.h b/drivers/media/usb/rtl2832u/rtl2832u_audio.h
 new file mode 100644
-index 00000000..fcb70195
+index 0000000..0c2bba4
 --- /dev/null
 +++ b/drivers/media/usb/rtl2832u/rtl2832u_audio.h
 @@ -0,0 +1,58 @@
@@ -40989,7 +40498,7 @@ index 00000000..fcb70195
 +#endif
 diff --git a/drivers/media/usb/rtl2832u/rtl2832u_fe.c b/drivers/media/usb/rtl2832u/rtl2832u_fe.c
 new file mode 100644
-index 00000000..b82d0ff8
+index 0000000..6beaf9f
 --- /dev/null
 +++ b/drivers/media/usb/rtl2832u/rtl2832u_fe.c
 @@ -0,0 +1,4184 @@
@@ -45179,7 +44688,7 @@ index 00000000..b82d0ff8
 +
 diff --git a/drivers/media/usb/rtl2832u/rtl2832u_fe.h b/drivers/media/usb/rtl2832u/rtl2832u_fe.h
 new file mode 100644
-index 00000000..ccee038e
+index 0000000..afc10f9
 --- /dev/null
 +++ b/drivers/media/usb/rtl2832u/rtl2832u_fe.h
 @@ -0,0 +1,333 @@
@@ -45518,7 +45027,7 @@ index 00000000..ccee038e
 +
 diff --git a/drivers/media/usb/rtl2832u/rtl2832u_io.c b/drivers/media/usb/rtl2832u/rtl2832u_io.c
 new file mode 100644
-index 00000000..c242c496
+index 0000000..6d30504
 --- /dev/null
 +++ b/drivers/media/usb/rtl2832u/rtl2832u_io.c
 @@ -0,0 +1,912 @@
@@ -46436,7 +45945,7 @@ index 00000000..c242c496
 +
 diff --git a/drivers/media/usb/rtl2832u/rtl2832u_io.h b/drivers/media/usb/rtl2832u/rtl2832u_io.h
 new file mode 100644
-index 00000000..0b48acb6
+index 0000000..99ffe3b
 --- /dev/null
 +++ b/drivers/media/usb/rtl2832u/rtl2832u_io.h
 @@ -0,0 +1,276 @@
@@ -46718,7 +46227,7 @@ index 00000000..0b48acb6
 +
 diff --git a/drivers/media/usb/rtl2832u/si2168rtl.c b/drivers/media/usb/rtl2832u/si2168rtl.c
 new file mode 100644
-index 00000000..8ed0026f
+index 0000000..c4faa4f
 --- /dev/null
 +++ b/drivers/media/usb/rtl2832u/si2168rtl.c
 @@ -0,0 +1,9473 @@
@@ -56197,7 +55706,7 @@ index 00000000..8ed0026f
 +}
 diff --git a/drivers/media/usb/rtl2832u/si2168rtl.h b/drivers/media/usb/rtl2832u/si2168rtl.h
 new file mode 100644
-index 00000000..c3e89705
+index 0000000..3f67f27
 --- /dev/null
 +++ b/drivers/media/usb/rtl2832u/si2168rtl.h
 @@ -0,0 +1,6166 @@
@@ -62369,7 +61878,7 @@ index 00000000..c3e89705
 +#endif //__Si2168RTL_H__
 diff --git a/drivers/media/usb/rtl2832u/tuner_base.h b/drivers/media/usb/rtl2832u/tuner_base.h
 new file mode 100644
-index 00000000..17eb68b5
+index 0000000..42e0b54
 --- /dev/null
 +++ b/drivers/media/usb/rtl2832u/tuner_base.h
 @@ -0,0 +1,1723 @@
@@ -64098,7 +63607,7 @@ index 00000000..17eb68b5
 +#endif
 diff --git a/drivers/media/usb/rtl2832u/tuner_e4000.c b/drivers/media/usb/rtl2832u/tuner_e4000.c
 new file mode 100644
-index 00000000..d7501504
+index 0000000..ab001fc
 --- /dev/null
 +++ b/drivers/media/usb/rtl2832u/tuner_e4000.c
 @@ -0,0 +1,2482 @@
@@ -66586,7 +66095,7 @@ index 00000000..d7501504
 +
 diff --git a/drivers/media/usb/rtl2832u/tuner_e4000.h b/drivers/media/usb/rtl2832u/tuner_e4000.h
 new file mode 100644
-index 00000000..3d6c29c9
+index 0000000..7b6ab82
 --- /dev/null
 +++ b/drivers/media/usb/rtl2832u/tuner_e4000.h
 @@ -0,0 +1,295 @@
@@ -66887,7 +66396,7 @@ index 00000000..3d6c29c9
 +#endif
 diff --git a/drivers/media/usb/rtl2832u/tuner_fc0012.c b/drivers/media/usb/rtl2832u/tuner_fc0012.c
 new file mode 100644
-index 00000000..9c81e20f
+index 0000000..9cb14ba
 --- /dev/null
 +++ b/drivers/media/usb/rtl2832u/tuner_fc0012.c
 @@ -0,0 +1,1056 @@
@@ -67949,7 +67458,7 @@ index 00000000..9c81e20f
 +
 diff --git a/drivers/media/usb/rtl2832u/tuner_fc0012.h b/drivers/media/usb/rtl2832u/tuner_fc0012.h
 new file mode 100644
-index 00000000..82e6bb2d
+index 0000000..1d01d1b
 --- /dev/null
 +++ b/drivers/media/usb/rtl2832u/tuner_fc0012.h
 @@ -0,0 +1,292 @@
@@ -68247,7 +67756,7 @@ index 00000000..82e6bb2d
 +#endif
 diff --git a/drivers/media/usb/rtl2832u/tuner_fc0013.c b/drivers/media/usb/rtl2832u/tuner_fc0013.c
 new file mode 100644
-index 00000000..63a68502
+index 0000000..3a9643c
 --- /dev/null
 +++ b/drivers/media/usb/rtl2832u/tuner_fc0013.c
 @@ -0,0 +1,1261 @@
@@ -69514,7 +69023,7 @@ index 00000000..63a68502
 +
 diff --git a/drivers/media/usb/rtl2832u/tuner_fc0013.h b/drivers/media/usb/rtl2832u/tuner_fc0013.h
 new file mode 100644
-index 00000000..f9f08019
+index 0000000..0da3aba
 --- /dev/null
 +++ b/drivers/media/usb/rtl2832u/tuner_fc0013.h
 @@ -0,0 +1,307 @@
@@ -69827,7 +69336,7 @@ index 00000000..f9f08019
 +#endif
 diff --git a/drivers/media/usb/rtl2832u/tuner_fc2580.c b/drivers/media/usb/rtl2832u/tuner_fc2580.c
 new file mode 100644
-index 00000000..2d4ccc9d
+index 0000000..e833fe4
 --- /dev/null
 +++ b/drivers/media/usb/rtl2832u/tuner_fc2580.c
 @@ -0,0 +1,932 @@
@@ -70765,7 +70274,7 @@ index 00000000..2d4ccc9d
 +
 diff --git a/drivers/media/usb/rtl2832u/tuner_fc2580.h b/drivers/media/usb/rtl2832u/tuner_fc2580.h
 new file mode 100644
-index 00000000..906357d4
+index 0000000..80dc1f6
 --- /dev/null
 +++ b/drivers/media/usb/rtl2832u/tuner_fc2580.h
 @@ -0,0 +1,461 @@
@@ -71232,7 +70741,7 @@ index 00000000..906357d4
 +#endif
 diff --git a/drivers/media/usb/rtl2832u/tuner_max3543.c b/drivers/media/usb/rtl2832u/tuner_max3543.c
 new file mode 100644
-index 00000000..33ec6858
+index 0000000..0481780
 --- /dev/null
 +++ b/drivers/media/usb/rtl2832u/tuner_max3543.c
 @@ -0,0 +1,1441 @@
@@ -72679,7 +72188,7 @@ index 00000000..33ec6858
 +
 diff --git a/drivers/media/usb/rtl2832u/tuner_max3543.h b/drivers/media/usb/rtl2832u/tuner_max3543.h
 new file mode 100644
-index 00000000..a65d8bac
+index 0000000..3066a29
 --- /dev/null
 +++ b/drivers/media/usb/rtl2832u/tuner_max3543.h
 @@ -0,0 +1,572 @@
@@ -73257,7 +72766,7 @@ index 00000000..a65d8bac
 +#endif
 diff --git a/drivers/media/usb/rtl2832u/tuner_mt2063.c b/drivers/media/usb/rtl2832u/tuner_mt2063.c
 new file mode 100644
-index 00000000..2ca161e8
+index 0000000..d1d0c20
 --- /dev/null
 +++ b/drivers/media/usb/rtl2832u/tuner_mt2063.c
 @@ -0,0 +1,5264 @@
@@ -78527,7 +78036,7 @@ index 00000000..2ca161e8
 +
 diff --git a/drivers/media/usb/rtl2832u/tuner_mt2063.h b/drivers/media/usb/rtl2832u/tuner_mt2063.h
 new file mode 100644
-index 00000000..b35a285b
+index 0000000..af633d3
 --- /dev/null
 +++ b/drivers/media/usb/rtl2832u/tuner_mt2063.h
 @@ -0,0 +1,2206 @@
@@ -80739,7 +80248,7 @@ index 00000000..b35a285b
 +#endif
 diff --git a/drivers/media/usb/rtl2832u/tuner_mt2266.c b/drivers/media/usb/rtl2832u/tuner_mt2266.c
 new file mode 100644
-index 00000000..b7359249
+index 0000000..2bfc2f8
 --- /dev/null
 +++ b/drivers/media/usb/rtl2832u/tuner_mt2266.c
 @@ -0,0 +1,3278 @@
@@ -84023,7 +83532,7 @@ index 00000000..b7359249
 +
 diff --git a/drivers/media/usb/rtl2832u/tuner_mt2266.h b/drivers/media/usb/rtl2832u/tuner_mt2266.h
 new file mode 100644
-index 00000000..84730763
+index 0000000..830d2a7
 --- /dev/null
 +++ b/drivers/media/usb/rtl2832u/tuner_mt2266.h
 @@ -0,0 +1,1534 @@
@@ -85563,7 +85072,7 @@ index 00000000..84730763
 +#endif
 diff --git a/drivers/media/usb/rtl2832u/tuner_mxl5007t.c b/drivers/media/usb/rtl2832u/tuner_mxl5007t.c
 new file mode 100644
-index 00000000..9a238b27
+index 0000000..9ed34cd
 --- /dev/null
 +++ b/drivers/media/usb/rtl2832u/tuner_mxl5007t.c
 @@ -0,0 +1,1267 @@
@@ -86836,7 +86345,7 @@ index 00000000..9a238b27
 +
 diff --git a/drivers/media/usb/rtl2832u/tuner_mxl5007t.h b/drivers/media/usb/rtl2832u/tuner_mxl5007t.h
 new file mode 100644
-index 00000000..18eac8a4
+index 0000000..dec69ea
 --- /dev/null
 +++ b/drivers/media/usb/rtl2832u/tuner_mxl5007t.h
 @@ -0,0 +1,784 @@
@@ -87626,7 +87135,7 @@ index 00000000..18eac8a4
 +#endif
 diff --git a/drivers/media/usb/rtl2832u/tuner_tda18272.c b/drivers/media/usb/rtl2832u/tuner_tda18272.c
 new file mode 100644
-index 00000000..0f71f35e
+index 0000000..76e5e32
 --- /dev/null
 +++ b/drivers/media/usb/rtl2832u/tuner_tda18272.c
 @@ -0,0 +1,21631 @@
@@ -109263,7 +108772,7 @@ index 00000000..0f71f35e
 +
 diff --git a/drivers/media/usb/rtl2832u/tuner_tda18272.h b/drivers/media/usb/rtl2832u/tuner_tda18272.h
 new file mode 100644
-index 00000000..b36c1650
+index 0000000..2f00d86
 --- /dev/null
 +++ b/drivers/media/usb/rtl2832u/tuner_tda18272.h
 @@ -0,0 +1,7358 @@
@@ -116627,7 +116136,7 @@ index 00000000..b36c1650
 +#endif
 diff --git a/drivers/media/usb/rtl2832u/tuner_tua9001.c b/drivers/media/usb/rtl2832u/tuner_tua9001.c
 new file mode 100644
-index 00000000..404ea959
+index 0000000..7c53f29
 --- /dev/null
 +++ b/drivers/media/usb/rtl2832u/tuner_tua9001.c
 @@ -0,0 +1,1245 @@
@@ -117878,7 +117387,7 @@ index 00000000..404ea959
 +
 diff --git a/drivers/media/usb/rtl2832u/tuner_tua9001.h b/drivers/media/usb/rtl2832u/tuner_tua9001.h
 new file mode 100644
-index 00000000..dbfbce6a
+index 0000000..a9d42bc
 --- /dev/null
 +++ b/drivers/media/usb/rtl2832u/tuner_tua9001.h
 @@ -0,0 +1,493 @@
@@ -118372,6 +117881,492 @@ index 00000000..dbfbce6a
 +
 +
 +
++
++
++#endif
+--- /dev/null
++++ b/drivers/media/usb/rtl2832u/dvb-usb.h
+@@ -0,0 +1,483 @@
++/* dvb-usb.h is part of the DVB USB library.
++ *
++ * Copyright (C) 2004-6 Patrick Boettcher (patrick.boettcher@desy.de)
++ * see dvb-usb-init.c for copyright information.
++ *
++ * the headerfile, all dvb-usb-drivers have to include.
++ *
++ * TODO: clean-up the structures for unused fields and update the comments
++ */
++#ifndef __DVB_USB_H__
++#define __DVB_USB_H__
++
++#include <linux/input.h>
++#include <linux/usb.h>
++#include <linux/firmware.h>
++#include <linux/mutex.h>
++#include <media/rc-core.h>
++
++#include "dvb_frontend.h"
++#include "dvb_demux.h"
++#include "dvb_net.h"
++#include "dmxdev.h"
++
++#include "dvb-pll.h"
++
++#include "dvb-usb-ids.h"
++
++/* debug */
++#ifdef CONFIG_DVB_USB_DEBUG
++#define dprintk(var,level,args...) \
++	    do { if ((var & level)) { printk(args); } } while (0)
++
++#define debug_dump(b,l,func) {\
++	int loop_; \
++	for (loop_ = 0; loop_ < l; loop_++) func("%02x ", b[loop_]); \
++	func("\n");\
++}
++#define DVB_USB_DEBUG_STATUS
++#else
++#define dprintk(args...)
++#define debug_dump(b,l,func)
++
++#define DVB_USB_DEBUG_STATUS " (debugging is not enabled)"
++
++#endif
++
++/* generic log methods - taken from usb.h */
++#ifndef DVB_USB_LOG_PREFIX
++ #define DVB_USB_LOG_PREFIX "dvb-usb (please define a log prefix)"
++#endif
++
++#undef err
++#define err(format, arg...)  printk(KERN_ERR     DVB_USB_LOG_PREFIX ": " format "\n" , ## arg)
++#undef info
++#define info(format, arg...) printk(KERN_INFO    DVB_USB_LOG_PREFIX ": " format "\n" , ## arg)
++#undef warn
++#define warn(format, arg...) printk(KERN_WARNING DVB_USB_LOG_PREFIX ": " format "\n" , ## arg)
++
++/**
++ * struct dvb_usb_device_description - name and its according USB IDs
++ * @name: real name of the box, regardless which DVB USB device class is in use
++ * @cold_ids: array of struct usb_device_id which describe the device in
++ *  pre-firmware state
++ * @warm_ids: array of struct usb_device_id which describe the device in
++ *  post-firmware state
++ *
++ * Each DVB USB device class can have one or more actual devices, this struct
++ * assigns a name to it.
++ */
++struct dvb_usb_device_description {
++	const char *name;
++
++#define DVB_USB_ID_MAX_NUM 15
++	struct usb_device_id *cold_ids[DVB_USB_ID_MAX_NUM];
++	struct usb_device_id *warm_ids[DVB_USB_ID_MAX_NUM];
++};
++
++static inline u8 rc5_custom(struct rc_map_table *key)
++{
++	return (key->scancode >> 8) & 0xff;
++}
++
++static inline u8 rc5_data(struct rc_map_table *key)
++{
++	return key->scancode & 0xff;
++}
++
++static inline u16 rc5_scan(struct rc_map_table *key)
++{
++	return key->scancode & 0xffff;
++}
++
++struct dvb_usb_device;
++struct dvb_usb_adapter;
++struct usb_data_stream;
++
++/**
++ * Properties of USB streaming - TODO this structure should be somewhere else
++ * describes the kind of USB transfer used for data-streaming.
++ *  (BULK or ISOC)
++ */
++struct usb_data_stream_properties {
++#define USB_BULK  1
++#define USB_ISOC  2
++	int type;
++	int count;
++	int endpoint;
++
++	union {
++		struct {
++			int buffersize; /* per URB */
++		} bulk;
++		struct {
++			int framesperurb;
++			int framesize;
++			int interval;
++		} isoc;
++	} u;
++};
++
++/**
++ * struct dvb_usb_adapter_properties - properties of a dvb-usb-adapter.
++ *    A DVB-USB-Adapter is basically a dvb_adapter which is present on a USB-device.
++ * @caps: capabilities of the DVB USB device.
++ * @pid_filter_count: number of PID filter position in the optional hardware
++ *  PID-filter.
++ * @num_frontends: number of frontends of the DVB USB adapter.
++ * @frontend_ctrl: called to power on/off active frontend.
++ * @streaming_ctrl: called to start and stop the MPEG2-TS streaming of the
++ *  device (not URB submitting/killing).
++ * @pid_filter_ctrl: called to en/disable the PID filter, if any.
++ * @pid_filter: called to set/unset a PID for filtering.
++ * @frontend_attach: called to attach the possible frontends (fill fe-field
++ *  of struct dvb_usb_device).
++ * @tuner_attach: called to attach the correct tuner and to fill pll_addr,
++ *  pll_desc and pll_init_buf of struct dvb_usb_device).
++ * @stream: configuration of the USB streaming
++ */
++struct dvb_usb_adapter_fe_properties {
++#define DVB_USB_ADAP_HAS_PID_FILTER               0x01
++#define DVB_USB_ADAP_PID_FILTER_CAN_BE_TURNED_OFF 0x02
++#define DVB_USB_ADAP_NEED_PID_FILTERING           0x04
++#define DVB_USB_ADAP_RECEIVES_204_BYTE_TS         0x08
++#define DVB_USB_ADAP_RECEIVES_RAW_PAYLOAD         0x10
++	int caps;
++	int pid_filter_count;
++
++	int (*streaming_ctrl)  (struct dvb_usb_adapter *, int);
++	int (*pid_filter_ctrl) (struct dvb_usb_adapter *, int);
++	int (*pid_filter)      (struct dvb_usb_adapter *, int, u16, int);
++
++	int (*frontend_attach) (struct dvb_usb_adapter *);
++	int (*tuner_attach)    (struct dvb_usb_adapter *);
++
++	struct usb_data_stream_properties stream;
++
++	int size_of_priv;
++};
++
++#define MAX_NO_OF_FE_PER_ADAP 3
++struct dvb_usb_adapter_properties {
++	int size_of_priv;
++
++	int (*frontend_ctrl)   (struct dvb_frontend *, int);
++
++	int num_frontends;
++	struct dvb_usb_adapter_fe_properties fe[MAX_NO_OF_FE_PER_ADAP];
++};
++
++/**
++ * struct dvb_rc_legacy - old properties of remote controller
++ * @rc_map_table: a hard-wired array of struct rc_map_table (NULL to disable
++ *  remote control handling).
++ * @rc_map_size: number of items in @rc_map_table.
++ * @rc_query: called to query an event event.
++ * @rc_interval: time in ms between two queries.
++ */
++struct dvb_rc_legacy {
++/* remote control properties */
++#define REMOTE_NO_KEY_PRESSED      0x00
++#define REMOTE_KEY_PRESSED         0x01
++#define REMOTE_KEY_REPEAT          0x02
++	struct rc_map_table  *rc_map_table;
++	int rc_map_size;
++	int (*rc_query) (struct dvb_usb_device *, u32 *, int *);
++	int rc_interval;
++};
++
++/**
++ * struct dvb_rc properties of remote controller, using rc-core
++ * @rc_codes: name of rc codes table
++ * @protocol: type of protocol(s) currently used by the driver
++ * @allowed_protos: protocol(s) supported by the driver
++ * @driver_type: Used to point if a device supports raw mode
++ * @change_protocol: callback to change protocol
++ * @rc_query: called to query an event event.
++ * @rc_interval: time in ms between two queries.
++ * @bulk_mode: device supports bulk mode for RC (disable polling mode)
++ */
++struct dvb_rc {
++	char *rc_codes;
++	u64 protocol;
++	u64 allowed_protos;
++	enum rc_driver_type driver_type;
++	int (*change_protocol)(struct rc_dev *dev, u64 *rc_type);
++	char *module_name;
++	int (*rc_query) (struct dvb_usb_device *d);
++	int rc_interval;
++	bool bulk_mode;				/* uses bulk mode */
++};
++
++/**
++ * enum dvb_usb_mode - Specifies if it is using a legacy driver or a new one
++ *		       based on rc-core
++ * This is initialized/used only inside dvb-usb-remote.c.
++ * It shouldn't be set by the drivers.
++ */
++enum dvb_usb_mode {
++	DVB_RC_LEGACY,
++	DVB_RC_CORE,
++};
++
++/**
++ * struct dvb_usb_device_properties - properties of a dvb-usb-device
++ * @usb_ctrl: which USB device-side controller is in use. Needed for firmware
++ *  download.
++ * @firmware: name of the firmware file.
++ * @download_firmware: called to download the firmware when the usb_ctrl is
++ *  DEVICE_SPECIFIC.
++ * @no_reconnect: device doesn't do a reconnect after downloading the firmware,
++ *  so do the warm initialization right after it
++ *
++ * @size_of_priv: how many bytes shall be allocated for the private field
++ *  of struct dvb_usb_device.
++ *
++ * @power_ctrl: called to enable/disable power of the device.
++ * @read_mac_address: called to read the MAC address of the device.
++ * @identify_state: called to determine the state (cold or warm), when it
++ *  is not distinguishable by the USB IDs.
++ *
++ * @rc: remote controller properties
++ *
++ * @i2c_algo: i2c_algorithm if the device has I2CoverUSB.
++ *
++ * @generic_bulk_ctrl_endpoint: most of the DVB USB devices have a generic
++ *  endpoint which received control messages with bulk transfers. When this
++ *  is non-zero, one can use dvb_usb_generic_rw and dvb_usb_generic_write-
++ *  helper functions.
++ *
++ * @generic_bulk_ctrl_endpoint_response: some DVB USB devices use a separate
++ *  endpoint for responses to control messages sent with bulk transfers via
++ *  the generic_bulk_ctrl_endpoint. When this is non-zero, this will be used
++ *  instead of the generic_bulk_ctrl_endpoint when reading usb responses in
++ *  the dvb_usb_generic_rw helper function.
++ *
++ * @num_device_descs: number of struct dvb_usb_device_description in @devices
++ * @devices: array of struct dvb_usb_device_description compatibles with these
++ *  properties.
++ */
++#define MAX_NO_OF_ADAPTER_PER_DEVICE 2
++struct dvb_usb_device_properties {
++
++#define DVB_USB_IS_AN_I2C_ADAPTER            0x01
++	int caps;
++
++#define DEVICE_SPECIFIC 0
++#define CYPRESS_AN2135  1
++#define CYPRESS_AN2235  2
++#define CYPRESS_FX2     3
++	int        usb_ctrl;
++	int        (*download_firmware) (struct usb_device *, const struct firmware *);
++	const char *firmware;
++	int        no_reconnect;
++
++	int size_of_priv;
++
++	int num_adapters;
++	struct dvb_usb_adapter_properties adapter[MAX_NO_OF_ADAPTER_PER_DEVICE];
++
++	int (*power_ctrl)       (struct dvb_usb_device *, int);
++	int (*read_mac_address) (struct dvb_usb_device *, u8 []);
++	int (*identify_state)   (struct usb_device *, struct dvb_usb_device_properties *,
++			struct dvb_usb_device_description **, int *);
++
++	struct {
++		enum dvb_usb_mode mode;	/* Drivers shouldn't touch on it */
++		struct dvb_rc_legacy legacy;
++		struct dvb_rc core;
++	} rc;
++
++	struct i2c_algorithm *i2c_algo;
++
++	int generic_bulk_ctrl_endpoint;
++	int generic_bulk_ctrl_endpoint_response;
++
++	int num_device_descs;
++	struct dvb_usb_device_description devices[12];
++};
++
++/**
++ * struct usb_data_stream - generic object of an USB stream
++ * @buf_num: number of buffer allocated.
++ * @buf_size: size of each buffer in buf_list.
++ * @buf_list: array containing all allocate buffers for streaming.
++ * @dma_addr: list of dma_addr_t for each buffer in buf_list.
++ *
++ * @urbs_initialized: number of URBs initialized.
++ * @urbs_submitted: number of URBs submitted.
++ */
++#define MAX_NO_URBS_FOR_DATA_STREAM 10
++struct usb_data_stream {
++	struct usb_device                 *udev;
++	struct usb_data_stream_properties  props;
++
++#define USB_STATE_INIT    0x00
++#define USB_STATE_URB_BUF 0x01
++	int state;
++
++	void (*complete) (struct usb_data_stream *, u8 *, size_t);
++
++	struct urb    *urb_list[MAX_NO_URBS_FOR_DATA_STREAM];
++	int            buf_num;
++	unsigned long  buf_size;
++	u8            *buf_list[MAX_NO_URBS_FOR_DATA_STREAM];
++	dma_addr_t     dma_addr[MAX_NO_URBS_FOR_DATA_STREAM];
++
++	int urbs_initialized;
++	int urbs_submitted;
++
++	void *user_priv;
++};
++
++/**
++ * struct dvb_usb_adapter - a DVB adapter on a USB device
++ * @id: index of this adapter (starting with 0).
++ *
++ * @feedcount: number of reqested feeds (used for streaming-activation)
++ * @pid_filtering: is hardware pid_filtering used or not.
++ *
++ * @pll_addr: I2C address of the tuner for programming
++ * @pll_init: array containing the initialization buffer
++ * @pll_desc: pointer to the appropriate struct dvb_pll_desc
++ * @tuner_pass_ctrl: called to (de)activate tuner passthru of the demod or the board
++ *
++ * @dvb_adap: device's dvb_adapter.
++ * @dmxdev: device's dmxdev.
++ * @demux: device's software demuxer.
++ * @dvb_net: device's dvb_net interfaces.
++ * @dvb_frontend: device's frontend.
++ * @max_feed_count: how many feeds can be handled simultaneously by this
++ *  device
++ *
++ * @fe_init:  rerouted frontend-init (wakeup) function.
++ * @fe_sleep: rerouted frontend-sleep function.
++ *
++ * @stream: the usb data stream.
++ */
++struct dvb_usb_fe_adapter {
++	struct dvb_frontend *fe;
++
++	int (*fe_init)  (struct dvb_frontend *);
++	int (*fe_sleep) (struct dvb_frontend *);
++
++	struct usb_data_stream stream;
++
++	int pid_filtering;
++	int max_feed_count;
++
++	void *priv;
++};
++
++struct dvb_usb_adapter {
++	struct dvb_usb_device *dev;
++	struct dvb_usb_adapter_properties props;
++
++#define DVB_USB_ADAP_STATE_INIT 0x000
++#define DVB_USB_ADAP_STATE_DVB  0x001
++	int state;
++
++	u8  id;
++
++	int feedcount;
++
++	/* dvb */
++	struct dvb_adapter   dvb_adap;
++	struct dmxdev        dmxdev;
++	struct dvb_demux     demux;
++	struct dvb_net       dvb_net;
++
++	struct dvb_usb_fe_adapter fe_adap[MAX_NO_OF_FE_PER_ADAP];
++	int active_fe;
++	int num_frontends_initialized;
++
++	void *priv;
++};
++
++/**
++ * struct dvb_usb_device - object of a DVB USB device
++ * @props: copy of the struct dvb_usb_properties this device belongs to.
++ * @desc: pointer to the device's struct dvb_usb_device_description.
++ * @state: initialization and runtime state of the device.
++ *
++ * @powered: indicated whether the device is power or not.
++ *  Powered is in/decremented for each call to modify the state.
++ * @udev: pointer to the device's struct usb_device.
++ *
++ * @usb_mutex: semaphore of USB control messages (reading needs two messages)
++ * @i2c_mutex: semaphore for i2c-transfers
++ *
++ * @i2c_adap: device's i2c_adapter if it uses I2CoverUSB
++ *
++ * @rc_dev: rc device for the remote control (rc-core mode)
++ * @input_dev: input device for the remote control (legacy mode)
++ * @rc_query_work: struct work_struct frequent rc queries
++ * @last_event: last triggered event
++ * @last_state: last state (no, pressed, repeat)
++ * @owner: owner of the dvb_adapter
++ * @priv: private data of the actual driver (allocate by dvb-usb, size defined
++ *  in size_of_priv of dvb_usb_properties).
++ */
++struct dvb_usb_device {
++	struct dvb_usb_device_properties props;
++	struct dvb_usb_device_description *desc;
++
++	struct usb_device *udev;
++
++#define DVB_USB_STATE_INIT        0x000
++#define DVB_USB_STATE_I2C         0x001
++#define DVB_USB_STATE_DVB         0x002
++#define DVB_USB_STATE_REMOTE      0x004
++	int state;
++
++	int powered;
++
++	/* locking */
++	struct mutex usb_mutex;
++
++	/* i2c */
++	struct mutex i2c_mutex;
++	struct i2c_adapter i2c_adap;
++
++	int                    num_adapters_initialized;
++	struct dvb_usb_adapter adapter[MAX_NO_OF_ADAPTER_PER_DEVICE];
++
++	/* remote control */
++	struct rc_dev *rc_dev;
++	struct input_dev *input_dev;
++	char rc_phys[64];
++	struct delayed_work rc_query_work;
++	u32 last_event;
++	int last_state;
++
++	struct module *owner;
++
++	void *priv;
++};
++
++extern int dvb_usb_device_init(struct usb_interface *,
++			       struct dvb_usb_device_properties *,
++			       struct module *, struct dvb_usb_device **,
++			       short *adapter_nums);
++extern void dvb_usb_device_exit(struct usb_interface *);
++
++/* the generic read/write method for device control */
++extern int dvb_usb_generic_rw(struct dvb_usb_device *, u8 *, u16, u8 *, u16,int);
++extern int dvb_usb_generic_write(struct dvb_usb_device *, u8 *, u16);
++
++/* commonly used remote control parsing */
++extern int dvb_usb_nec_rc_key_to_event(struct dvb_usb_device *, u8[], u32 *, int *);
++
++/* commonly used firmware download types and function */
++struct hexline {
++	u8 len;
++	u32 addr;
++	u8 type;
++	u8 data[255];
++	u8 chk;
++};
++extern int usb_cypress_load_firmware(struct usb_device *udev, const struct firmware *fw, int type);
++extern int dvb_usb_get_hexline(const struct firmware *fw, struct hexline *hx, int *pos);
 +
 +
 +#endif
