@@ -23,12 +23,12 @@ IMAGE_CMD:jffs2 = " \
 		--root=${IMAGE_ROOTFS} \
 		--disable-compressor=lzo \
 		--compression-mode=size \
-		--output=${IMGDEPLOYDIR}/${IMAGE_NAME}${IMAGE_NAME_SUFFIX}.jffs2 \
+		--output=${IMGDEPLOYDIR}/${IMAGE_NAME}.rootfs.jffs2 \
 		${EXTRA_IMAGECMD}; \
 	${DREAMBOX_BUILDIMAGE} \
 		--boot-partition ${DREAMBOX_PART0_SIZE}:${DEPLOY_DIR_IMAGE}/secondstage-${MACHINE}.bin \
 		--data-partition ${DREAMBOX_PART1_SIZE}:${DEPLOY_DIR_IMAGE}/${IMAGE_NAME}.boot.jffs2 \
-		--data-partition ${DREAMBOX_PART2_SIZE}:${IMGDEPLOYDIR}/${IMAGE_NAME}${IMAGE_NAME_SUFFIX}.jffs2 \
+		--data-partition ${DREAMBOX_PART2_SIZE}:${IMGDEPLOYDIR}/${IMAGE_NAME}.rootfs.jffs2 \
 		> ${DEPLOY_DIR_IMAGE}/${IMAGE_NAME}.nfi; \
 	rm -f ${DEPLOY_DIR_IMAGE}/*.zip; \
 	zip -j ${DEPLOY_DIR_IMAGE}/openpli-${DISTRO_VERSION}-${MACHINE}-${MACHINESIMS}-${PDATE}.zip ${DEPLOY_DIR_IMAGE}/${IMAGE_NAME}.nfi; \
@@ -50,7 +50,7 @@ IMAGE_CMD:ubifs = " \
 	rm -rf ${IMAGE_ROOTFS}/boot/*; \
 	echo \[root\] > ubinize.cfg; \
 	echo mode=ubi >> ubinize.cfg; \
-	echo image=${IMGDEPLOYDIR}/${IMAGE_NAME}${IMAGE_NAME_SUFFIX}.ubifs >> ubinize.cfg; \
+	echo image=${IMGDEPLOYDIR}/${IMAGE_NAME}.rootfs.ubifs >> ubinize.cfg; \
 	echo vol_id=0 >> ubinize.cfg; \
 	echo vol_name=${UBI_VOLNAME} >> ubinize.cfg; \
 	echo vol_type=dynamic >> ubinize.cfg; \
@@ -72,13 +72,13 @@ IMAGE_CMD:ubifs = " \
 	fi; \
 	mkfs.ubifs \
 		-r ${IMAGE_ROOTFS} \
-		-o ${IMGDEPLOYDIR}/${IMAGE_NAME}${IMAGE_NAME_SUFFIX}.ubifs \
+		-o ${IMGDEPLOYDIR}/${IMAGE_NAME}.rootfs.ubifs \
 		${MKUBIFS_ARGS}; \
-	ubinize -o ${DEPLOY_DIR_IMAGE}/${IMAGE_NAME}${IMAGE_NAME_SUFFIX}.ubi ${UBINIZE_ARGS} ubinize.cfg; \
+	ubinize -o ${DEPLOY_DIR_IMAGE}/${IMAGE_NAME}.rootfs.ubi ${UBINIZE_ARGS} ubinize.cfg; \
 	${DREAMBOX_BUILDIMAGE} \
 		--boot-partition ${DREAMBOX_PART0_SIZE}:${DEPLOY_DIR_IMAGE}/secondstage-${MACHINE}.bin \
 		--data-partition ${DREAMBOX_PART1_SIZE}:${DEPLOY_DIR_IMAGE}/${IMAGE_NAME}.boot.jffs2 \
-		--data-partition ${DREAMBOX_PART2_SIZE}:${DEPLOY_DIR_IMAGE}/${IMAGE_NAME}${IMAGE_NAME_SUFFIX}.ubi \
+		--data-partition ${DREAMBOX_PART2_SIZE}:${DEPLOY_DIR_IMAGE}/${IMAGE_NAME}.rootfs.ubi \
 		> ${DEPLOY_DIR_IMAGE}/${IMAGE_NAME}${DMTYPE}.nfi; \
 	rm -f ${DEPLOY_DIR_IMAGE}/*.zip; \
 	zip -j ${DEPLOY_DIR_IMAGE}/openpli-${DISTRO_VERSION}_${MACHINE}${DMTYPE}_${MACHINESIMS}_${PDATE}.zip ${DEPLOY_DIR_IMAGE}/${IMAGE_NAME}${DMTYPE}.nfi; \
