@@ -10,6 +10,8 @@ inherit gitpkgv
 PKGV = "4.x+git${GITPKGV}"
 PV = "4.x+git${SRCPV}"
 
+DEPENDS = "openssl"
+
 GIT_SITE = "${@ 'git://gitlab.com/jack2015' if d.getVar('CODEWEBSITE') else 'git://gitee.com/jackgee2021'}"
 
 SRC_URI = "${GIT_SITE}/ofgwrite.git;protocol=https;branch=master"
@@ -18,11 +20,11 @@ inherit autotools-brokensep pkgconfig
 
 S = "${WORKDIR}/git"
 
-EXTRA_OEMAKE = "'CC=${CC}' 'RANLIB=${RANLIB}' 'AR=${AR}' 'CFLAGS=${CFLAGS} -I${S}/include -I${S}/ubi-utils/include -I${S}/busybox/include -I=${includedir}/glib-2.0 -I=/usr/lib/glib-2.0/include -I=${includedir}/c++ -I=${includedir}/c++/mipsel-oe-linux -DWITHOUT_XATTR -D_FILE_OFFSET_BITS=64 -D_GNU_SOURCE' 'BUILDDIR=${S}'"
+EXTRA_OEMAKE = "'CC=${CC}' 'RANLIB=${RANLIB}' 'AR=${AR}' 'CFLAGS=${CFLAGS} -I${S}/include -I${S}/ubi-utils/include -I${S}/busybox/include -I=${includedir}/glib-2.0 -I=/usr/lib/glib-2.0/include -I=${includedir}/c++ -I=${includedir}/openssl -I=${includedir}/c++/mipsel-oe-linux -DWITHOUT_XATTR -D_FILE_OFFSET_BITS=64 -D_GNU_SOURCE' 'BUILDDIR=${S}'"
 
 do_install() {
-    install -d ${D}${bindir}
-    install -m 755 ${S}/ofgwrite ${D}${bindir}
-    install -m 755 ${S}/ofgwrite_bin ${D}${bindir}
-    install -m 755 ${S}/ofgwrite_test ${D}${bindir}
+    install -d ${D}/usr/bin
+    install -m 755 ${S}/ofgwrite ${D}/usr/bin
+    install -m 755 ${S}/ofgwrite_bin ${D}/usr/bin
+    install -m 755 ${S}/ofgwrite_test ${D}/usr/bin
 }
