@@ -35,7 +35,6 @@ ENIGMA2_PLUGINS = " \
 	enigma2-plugin-extensions-audiosync \
 	enigma2-plugin-extensions-autobackup \
 	enigma2-plugin-extensions-cutlisteditor \
-	enigma2-plugin-extensions-cacheflush \
 	enigma2-plugin-extensions-epgimport \
 	enigma2-plugin-extensions-e2iplayer \
 	enigma2-plugin-extensions-filecommander \
@@ -46,7 +45,7 @@ ENIGMA2_PLUGINS = " \
 	enigma2-plugin-extensions-openwebif \
 	enigma2-plugin-extensions-oscamstatus \
 	enigma2-plugin-extensions-pictureplayer \
-	enigma2-plugin-softcams-oscam \
+	enigma2-plugin-softcams-oscam-emu \
 	enigma2-plugin-extensions-openmultiboot \
 	openmultiboot \
 	enigma2-plugin-systemplugins-cablescan \
