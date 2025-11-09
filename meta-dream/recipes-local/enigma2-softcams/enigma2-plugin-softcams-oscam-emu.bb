@@ -4,9 +4,13 @@ PACKAGE_ARCH = "${MACHINE_ARCH}"
 PACKAGES = "${PN}"
 CAMNAME = "oscam"
 
-DEPENDS = "openssl libusb1 upx-native"
-DEPENDS:arm = "openssl libusb1 pcsc-lite ccid upx-native"
-RDEPENDS:${PN}:arm += "libusb1 pcsc-lite pcsc-lite-lib ccid"
+DEPENDS:mipsel = "openssl libusb libdvbcsa openssl-native upx-native"
+RDEPENDS:${PN}:mipsel += "libdvbcsa"
+DEPENDS:arm = "openssl libdvbcsa libusb pcsc-lite ccid openssl-native upx-native"
+RDEPENDS:${PN}:arm += "libdvbcsa libusb1 pcsc-lite pcsc-lite-lib ccid"
+
+LDFLAGS:prepend = "-ldvbcsa "
+GLIBC_64BIT_TIME_FLAGS = ""
 
 inherit cmake gitpkgv
 
@@ -18,7 +22,7 @@ SRC_URI = "git://gitee.com/jackgee2021/oscam-emu.git;protocol=https;branch=maste
 
 S = "${WORKDIR}/git"
 B = "${S}"
-PR = "r0"
+PR = "r1"
 
 SRC_URI += " \
     file://oscam.conf \
@@ -38,6 +42,8 @@ EXTRA_OECMAKE:mipsel += " \
     -DMODULE_CONSTCW=1 \
     -DLCDSUPPORT=1 \
     -DCARDREADER_SMARGO=1 \
+    -DMODULE_STREAMRELAY=1 \
+    -DHAVE_LIBDVBCSA=1 \
     "
 
 EXTRA_OECMAKE:arm += " \
@@ -56,7 +62,14 @@ EXTRA_OECMAKE:arm += " \
     -DLCDSUPPORT=1 \
     -DCARDREADER_SMARGO=1 \
     -DCARDREADER_PCSC=1 \
+    -DMODULE_STREAMRELAY=1 \
+    -DHAVE_LIBDVBCSA=1 \
     "
+
+do_configure:prepend () {
+	rm -rf ${S}/certs
+	${S}/config.sh --create-cert ecdsa prime256v1 ca "OpenPLi OSCam Distribution"
+}
 
 do_install() {
     install -d ${D}${sysconfdir}/tuxbox/config
