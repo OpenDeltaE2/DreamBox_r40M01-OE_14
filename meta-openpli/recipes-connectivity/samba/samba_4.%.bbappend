@@ -7,62 +7,74 @@ FILESEXTRAPATHS:prepend := "${THISDIR}/${PN}:"
 PACKAGECONFIG:remove = "acl cups"
 
 EXTRA_OECONF += " \
-			--with-ads \
-			--with-sockets-dir=${localstatedir}/run \
-			--with-logfilebase=${localstatedir}/log/samba \
-			--without-dnsupdate \
-			--without-profiling-data \
-			--without-quotas \
-			--without-syslog \
-			--without-winbind \
-			--disable-iprint \
-			--nopyc \
-			"
+	--without-cluster-support \
+	--without-profiling-data \
+	--without-dnsupdate \
+	--with-lockdir=${@bb.utils.contains('IMAGE_FSTYPES','jffs2','${localstatedir}/run/samba','${localstatedir}/lib/samba',d)} \
+	--with-cachedir=${localstatedir}/lib/samba \
+	--with-sockets-dir=${localstatedir}/run \
+	--with-logfilebase=${localstatedir}/log/samba \
+	--with-pam \
+	--with-pam_smbpass \
+	--nopyc \
+	--disable-iprint \
+	--without-ad-dc \
+	--without-quotas \
+	--without-winbind \
+	--without-syslog \
+	--disable-python \
+	"
+
+EXTRA_OECONF:remove = " \
+	--with-cluster-support \
+	--with-profiling-data \
+	--with-sockets-dir=/run/samba \
+	"
 
 SRC_URI += " \
-			file://smb.conf \
-			file://smb-secure.conf \
-			file://smb-user.conf \
-			file://pam.config \
-			file://samba.sh \
-			file://users.map \
-			file://smbpasswd \
-			file://share.template \
-			file://0001-Revert-pam_smbpass-REMOVE-this-PAM-module.patch \
-			file://0002-Revert-source3-wscript-remove-pam_smbpass-option-as-it-was-removed.patch \
-			file://0003-dynamically-create-a-samba-account-if-needed.patch \
-			"
+	file://smb.conf \
+	file://smb-secure.conf \
+	file://smb-user.conf \
+	file://pam.config \
+	file://samba.sh \
+	file://users.map \
+	file://smbpasswd \
+	file://share.template \
+	file://0017-Revert-pam_smbpass-REMOVE-this-PAM-module.patch \
+	file://0018-Revert-source3-wscript-remove-pam_smbpass-option-as-it-was-removed.patch \
+	file://0019-dynamically-create-a-samba-account-if-needed.patch \
+	"
 
 FILES:${PN}-base += " \
-			${sysconfdir}/samba/smb.conf \
-			${sysconfdir}/samba/smb-secure.conf \
-			${sysconfdir}/samba/shares/share.template \
-			${sysconfdir}/init.d/samba.sh \
-			${bindir}/testparm \
-			${bindir}/smbpasswd \
-			${bindir}/smbstatus \
-			"
+	${sysconfdir}/samba/smb.conf \
+	${sysconfdir}/samba/smb-secure.conf \
+	${sysconfdir}/samba/shares/share.template \
+	${sysconfdir}/init.d/samba.sh \
+	${bindir}/testparm \
+	${bindir}/smbpasswd \
+	${bindir}/smbstatus \
+	"
 
 CONFFILES:${PN}-base += " \
-			${sysconfdir}/samba/smb.user.conf \
-			${sysconfdir}/samba/shares/share.template \
-			"
+	${sysconfdir}/samba/smb-user.conf \
+	${sysconfdir}/samba/shares/share.template \
+	"
 
 # move smbpass config files to samba-common
 FILES:${BPN}-common += " \
-			${sysconfdir}/pam.d/samba \
-			${sysconfdir}/samba/private/users.map \
-			${sysconfdir}/samba/private/smbpasswd \
-			"
+	${sysconfdir}/pam.d/samba \
+	${sysconfdir}/samba/private/users.map \
+	${sysconfdir}/samba/private/smbpasswd \
+	"
 
 CONFFILES:${BPN}-common += " \
-			${sysconfdir}/pam.d/samba \
-			${sysconfdir}/samba/private/users.map \
-			${sysconfdir}/samba/private/smbpasswd \
-			"
+	${sysconfdir}/pam.d/samba \
+	${sysconfdir}/samba/private/users.map \
+	${sysconfdir}/samba/private/smbpasswd \
+	"
 
-RPROVIDES:${PN} += "pam-pluginsmbpass"
-RRECOMMENDS:${PN}-base+= "wsdd pam-pluginsmbpass"
+PACKAGES_DYNAMIC += "pam-pluginsmbpass"
+RRECOMMENDS:${PN}-base += "wsdd pam-pluginsmbpass"
 
 do_install:prepend() {
 	install -d ${D}${sysconfdir}/sudoers.d
@@ -73,11 +85,14 @@ do_configure:prepend() {
 }
 
 do_install:append() {
-	rm -fR ${D}/var
+	rm -fR ${D}${localstatedir}
 	rm -fR ${D}/run
 	rm -fR ${D}${sysconfdir}/tmpfiles.d
 	rm -fR ${D}${sysconfdir}/sysconfig
 	rm -f ${D}${sysconfdir}/init.d/samba
+    if ${@bb.utils.contains('IMAGE_FSTYPES','jffs2','true','false',d)}; then
+		rm -rf ${D}${localstatedir}/run/samba
+    fi
 	install -d ${D}${sysconfdir}/pam.d
 	install -m 644 ${WORKDIR}/pam.config ${D}${sysconfdir}/pam.d/samba
 	install -d ${D}${sysconfdir}/samba
@@ -127,16 +142,19 @@ INITSCRIPT_PARAMS:${PN}-base = "defaults"
 # remove libnetapi package witch contains a lot of cross dependencies from libsamba-base
 PACKAGES:remove = "libnetapi"
 
+# remove python, we're builing without
+RDEPENDS:${PN}:remove = "${PN}-python3 python3"
+
 # move all libraries from samba to libsamba-base to fix circular dependencies
-FILES:lib${PN}-base += " \
-			${libdir}/*.so.* \
-			${libdir}/samba/*.so \
-			${libdir}/samba/*.so.* \
-			"
+FILES:lib${PN}-base += "\
+	${libdir}/*.so.* \
+	${libdir}/samba/*.so \
+	${libdir}/samba/*.so.* \
+	"
 
 # move some libraries from libsamba-base to libwbclient to fix circular dependencies
-FILES:libwbclient ="${libdir}/libwbclient.so.* \
-			${libdir}/samba/libwinbind-client.so \
-			${libdir}/samba/libwinbind-client-samba4.so \
-			${libdir}/samba/libreplace-samba4.so \
-			"
+FILES:libwbclient = "${libdir}/libwbclient.so.* \
+	${libdir}/samba/libwinbind-client.so \
+	${libdir}/samba/libwinbind-client-samba4.so \
+	${libdir}/samba/libreplace-samba4.so \
+	"
