@@ -16,6 +16,8 @@ KERNEL_WIFI_DRIVERS = ""
 EXTERNAL_WIFI_DRIVERS = ""
 
 ENIGMA2_PLUGINS = " \
+	packagegroup-base-smbfs-client \
+	packagegroup-base-smbfs-server \
 	enigma2-plugin-drivers-ntfs-3g \
 	enigma2-plugin-softcams-libcrypto-compat-1.0.2 \
 	enigma2-plugin-softcams-libcrypto-compat-1.1 \
@@ -84,6 +86,8 @@ ENIGMA2_PLUGINS = " \
 	enigma2-plugin-extensions-oscamstatus \
 	enigma2-plugin-extensions-pictureplayer \
 	enigma2-plugin-softcams-oscam-emu \
+	enigma2-plugin-extensions-openmultiboot \
+	openmultiboot \
 	enigma2-plugin-systemplugins-autobouquetsmaker \
 	enigma2-plugin-systemplugins-cablescan \
 	enigma2-plugin-systemplugins-fastscan \
