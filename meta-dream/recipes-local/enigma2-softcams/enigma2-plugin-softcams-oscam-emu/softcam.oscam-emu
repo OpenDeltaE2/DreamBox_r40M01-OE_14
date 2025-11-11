@@ -2,10 +2,10 @@
 
 case "$1" in
 start)
-	/usr/bin/oscam -b -c /etc/tuxbox/config/
+	/usr/bin/oscam-emu -b -c /etc/tuxbox/config/
 	;;
 stop)
-	killall -9 oscam 2> /dev/null
+	killall -9 oscam-emu 2> /dev/null
 	;;
 restart|reload)
 	$0 stop

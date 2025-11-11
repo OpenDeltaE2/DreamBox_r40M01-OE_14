@@ -85,6 +85,7 @@ ENIGMA2_PLUGINS = " \
 	enigma2-plugin-extensions-openwebif-themes \
 	enigma2-plugin-extensions-oscamstatus \
 	enigma2-plugin-extensions-pictureplayer \
+	enigma2-plugin-softcams-oscam \
 	enigma2-plugin-softcams-oscam-emu \
 	enigma2-plugin-extensions-openmultiboot \
 	openmultiboot \
