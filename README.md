@@ -9,7 +9,7 @@ In comparison to OpenPLi this repository has:<br>
 -Submodules bitbake, openembedded-core and meta-openembedded from scarthgap branch,<br>
 -GCC 13.4.0<br>
 -Glibc 2.39<br>
--GStreamer 1.22.12<br>
+-GStreamer 1.26.7<br>
 -Python 2.7.18<br>
 -OpenSSL 3.2.6<br>
 -Busybox 1.36.1<br>
