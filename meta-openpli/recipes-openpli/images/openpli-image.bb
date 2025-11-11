@@ -37,6 +37,12 @@ IMAGE_INSTALL = "\
 	vsftpd \
 	libsoup-2.4 \
 	astra-sm \
+	${@bb.utils.contains("TARGET_ARCH", "arm", "libdvbcsa", "", d)} \
+	${@bb.utils.contains("TARGET_ARCH", "arm", "libusb1", "", d)} \
+	${@bb.utils.contains("TARGET_ARCH", "arm", "pcsc-lite", "", d)} \
+	${@bb.utils.contains("TARGET_ARCH", "arm", "pcsc-lite-lib", "", d)} \
+	${@bb.utils.contains("TARGET_ARCH", "arm", "ccid", "", d)} \
+	${@bb.utils.contains("TARGET_ARCH", "mipsel", "libdvbcsa", "", d)} \
 "
 
 export IMAGE_BASENAME = "openpli"

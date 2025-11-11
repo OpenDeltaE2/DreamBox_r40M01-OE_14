@@ -210,5 +210,15 @@ if [[ -d /etc/cron/crontabs && ! -L /etc/cron ]]; then
 	/etc/init.d/busybox-cron restart
 fi
 
+# bluetooth installed? then restart the daemon after restoring the pairings
+if [ -x /etc/init.d/bluetooth ]; then
+	/etc/init.d/bluetooth restart
+fi
+
+# softcam installed? then restart the softcam after restoring the pairings
+if [ -x /etc/init.d/softcam ]; then
+	/etc/init.d/softcam restart
+fi
+
 # remove any temp files used
 rm -f /tmp/crontab /tmp/fstab

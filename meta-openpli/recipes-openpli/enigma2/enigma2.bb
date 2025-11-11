@@ -104,6 +104,7 @@ PV = "2.7+git${SRCPV}"
 PKGV = "2.7+git${GITPKGV}"
 
 LDFLAGS:prepend = " -lxml2 "
+TARGET_CFLAGS += "-DGLIBC_64BIT_TIME_FLAGS"
 
 S = "${WORKDIR}/git"
 

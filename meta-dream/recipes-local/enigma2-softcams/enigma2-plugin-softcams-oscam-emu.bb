@@ -2,13 +2,12 @@ SUMMARY = "Oscam Softcam for ${MACHINE}"
 require conf/license/openpli-gplv2.inc
 PACKAGE_ARCH = "${MACHINE_ARCH}"
 PACKAGES = "${PN}"
-CAMNAME = "oscam"
+CAMNAME = "oscam-emu"
 
 DEPENDS:mipsel = "openssl libusb libdvbcsa openssl-native upx-native"
 RDEPENDS:${PN}:mipsel += "libdvbcsa"
-DEPENDS:arm = "openssl libdvbcsa libusb pcsc-lite ccid openssl-native upx-native"
-RDEPENDS:${PN}:arm += "libdvbcsa libusb1 pcsc-lite pcsc-lite-lib ccid"
-
+DEPENDS:arm = "openssl libusb pcsc-lite ccid openssl-native upx-native libdvbcsa"
+RDEPENDS:${PN}:arm += "libusb1 pcsc-lite pcsc-lite-lib ccid libdvbcsa"
 LDFLAGS:prepend = "-ldvbcsa "
 GLIBC_64BIT_TIME_FLAGS = ""
 
@@ -22,7 +21,7 @@ SRC_URI = "git://gitee.com/jackgee2021/oscam-emu.git;protocol=https;branch=maste
 
 S = "${WORKDIR}/git"
 B = "${S}"
-PR = "r1"
+PR = "r2"
 
 SRC_URI += " \
     file://oscam.conf \
@@ -75,17 +74,17 @@ do_install() {
     install -d ${D}${sysconfdir}/tuxbox/config
     install -m 0644 ${WORKDIR}/oscam.conf ${D}${sysconfdir}/tuxbox/config
     install -d ${D}${bindir}
-    install -m 0755 ${B}/${CAMNAME} ${D}${bindir}
+    install -m 0755 ${B}/oscam ${D}${bindir}/${CAMNAME}
     install -d ${D}/etc/init.d
     install -m 0755 ${WORKDIR}/softcam.${CAMNAME} ${D}/etc/init.d
 }
 
 do_install:append:dm800se() {
-    upx --best --ultra-brute ${D}/usr/bin/oscam
+    upx --best --ultra-brute ${D}/usr/bin/${CAMNAME}
 }
 
 do_install:append:dm500hd() {
-    upx --best --ultra-brute ${D}/usr/bin/oscam
+    upx --best --ultra-brute ${D}/usr/bin/${CAMNAME}
 }
 
 CONFFILES = "/etc/tuxbox/config/oscam.conf"
