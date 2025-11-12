@@ -3,11 +3,14 @@ require conf/license/openpli-gplv2.inc
 require oscam-version.inc
 PACKAGE_ARCH = "${MACHINE_ARCH}"
 PACKAGES = "${PN}"
-CAMNAME = "oscam"
+CAMNAME = "oscam-nx111"
 
-DEPENDS = "openssl libusb1 upx-native"
-DEPENDS:arm = "openssl libusb1 pcsc-lite ccid upx-native"
-RDEPENDS:${PN}:arm += "libusb1 pcsc-lite pcsc-lite-lib ccid"
+DEPENDS:mipsel = "openssl libusb libdvbcsa openssl-native upx-native"
+RDEPENDS:${PN}:mipsel += "libdvbcsa"
+DEPENDS:arm = "openssl libusb pcsc-lite ccid openssl-native upx-native libdvbcsa"
+RDEPENDS:${PN}:arm += "libusb1 pcsc-lite pcsc-lite-lib ccid libdvbcsa"
+LDFLAGS:prepend = "-ldvbcsa "
+GLIBC_64BIT_TIME_FLAGS = ""
 
 inherit cmake gitpkgv
 
@@ -35,6 +38,8 @@ EXTRA_OECMAKE:mipsel += " \
     -DMODULE_CONSTCW=1 \
     -DLCDSUPPORT=1 \
     -DCARDREADER_SMARGO=1 \
+    -DMODULE_STREAMRELAY=1 \
+    -DHAVE_LIBDVBCSA=1 \
     "
 
 EXTRA_OECMAKE:arm += " \
@@ -53,23 +58,30 @@ EXTRA_OECMAKE:arm += " \
     -DLCDSUPPORT=1 \
     -DCARDREADER_SMARGO=1 \
     -DCARDREADER_PCSC=1 \
+    -DMODULE_STREAMRELAY=1 \
+    -DHAVE_LIBDVBCSA=1 \
     "
+
+do_configure:prepend () {
+	rm -rf ${S}/certs
+	${S}/config.sh --create-cert ecdsa prime256v1 ca "OpenPLi OSCam Distribution"
+}
 
 do_install() {
     install -d ${D}${sysconfdir}/tuxbox/config
     install -m 0644 ${WORKDIR}/oscam.conf ${D}${sysconfdir}/tuxbox/config
     install -d ${D}${bindir}
-    install -m 0755 ${B}/${CAMNAME} ${D}${bindir}
+    install -m 0755 ${B}/oscam ${D}${bindir}/${CAMNAME}
     install -d ${D}/etc/init.d
     install -m 0755 ${WORKDIR}/softcam.${CAMNAME} ${D}/etc/init.d
 }
 
 do_install:append:dm800se() {
-    upx --best --ultra-brute ${D}/usr/bin/oscam
+    upx --best --ultra-brute ${D}/usr/bin/${CAMNAME}
 }
 
 do_install:append:dm500hd() {
-    upx --best --ultra-brute ${D}/usr/bin/oscam
+    upx --best --ultra-brute ${D}/usr/bin/${CAMNAME}
 }
 
 CONFFILES = "/etc/tuxbox/config/oscam.conf"

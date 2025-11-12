@@ -76,75 +76,74 @@ rmpo() {
 }
 
 upxall() {
-	upx --best --ultra-brute ${IMAGE_ROOTFS}/sbin/ldconfig || true
-	upx --best --ultra-brute ${IMAGE_ROOTFS}/sbin/iwconfig || true
-	upx --best --ultra-brute ${IMAGE_ROOTFS}/sbin/tune2fs.e2fsprogs || true
-	upx --best --ultra-brute ${IMAGE_ROOTFS}/usr/bin/blindscan || true
-	upx --best --ultra-brute ${IMAGE_ROOTFS}/usr/bin/bsdcat || true
-	upx --best --ultra-brute ${IMAGE_ROOTFS}/usr/bin/dbus-daemon || true
-	upx --best --ultra-brute ${IMAGE_ROOTFS}/usr/bin/chage || true
-	upx --best --ultra-brute ${IMAGE_ROOTFS}/usr/bin/enigma2 || true
-	upx --best --ultra-brute ${IMAGE_ROOTFS}/usr/bin/gpasswd || true
-	upx --best --ultra-brute ${IMAGE_ROOTFS}/usr/bin/mpg123 || true
-	upx --best --ultra-brute ${IMAGE_ROOTFS}/usr/bin/openssl || true
-	upx --best --ultra-brute ${IMAGE_ROOTFS}/usr/bin/out123 || true
-	upx --best --ultra-brute ${IMAGE_ROOTFS}/usr/bin/pzstd || true
-	upx --best --ultra-brute ${IMAGE_ROOTFS}/usr/bin/sdparm || true
-	upx --best --ultra-brute ${IMAGE_ROOTFS}/usr/bin/zstd || true
-	upx --best --ultra-brute ${IMAGE_ROOTFS}/usr/sbin/alsactl || true
-	upx --best --ultra-brute ${IMAGE_ROOTFS}/usr/sbin/avahi-daemon || true
-	upx --best --ultra-brute ${IMAGE_ROOTFS}/usr/sbin/chgpasswd || true
-	upx --best --ultra-brute ${IMAGE_ROOTFS}/usr/sbin/dropbearmulti || true
-	upx --best --ultra-brute ${IMAGE_ROOTFS}/usr/sbin/ethtool || true
-	upx --best --ultra-brute ${IMAGE_ROOTFS}/usr/sbin/exportfs || true
-	upx --best --ultra-brute ${IMAGE_ROOTFS}/usr/sbin/groupadd || true
-	upx --best --ultra-brute ${IMAGE_ROOTFS}/usr/sbin/groupdel || true
-	upx --best --ultra-brute ${IMAGE_ROOTFS}/usr/sbin/groupmod || true
-	upx --best --ultra-brute ${IMAGE_ROOTFS}/usr/sbin/grpck || true
-	upx --best --ultra-brute ${IMAGE_ROOTFS}/usr/sbin/newusers || true
-	upx --best --ultra-brute ${IMAGE_ROOTFS}/usr/sbin/parted || true
-	upx --best --ultra-brute ${IMAGE_ROOTFS}/usr/sbin/rpc.mountd || true
-	upx --best --ultra-brute ${IMAGE_ROOTFS}/usr/sbin/rpc.statd || true
-	upx --best --ultra-brute ${IMAGE_ROOTFS}/usr/sbin/sm-notify || true
-	upx --best --ultra-brute ${IMAGE_ROOTFS}/usr/sbin/useradd || true
-	upx --best --ultra-brute ${IMAGE_ROOTFS}/usr/sbin/userdel || true
-	upx --best --ultra-brute ${IMAGE_ROOTFS}/usr/sbin/usermod || true
-	upx --best --ultra-brute ${IMAGE_ROOTFS}/usr/sbin/vsftpd || true
-	upx --best --ultra-brute ${IMAGE_ROOTFS}/usr/sbin/wpa_cli || true
-	upx --best --ultra-brute ${IMAGE_ROOTFS}/usr/sbin/wpa_supplicant || true
+	upx --best --ultra-brute ${IMAGE_ROOTFS}/sbin/ldconfig
+	upx --best --ultra-brute ${IMAGE_ROOTFS}/sbin/iwconfig
+	upx --best --ultra-brute ${IMAGE_ROOTFS}/sbin/tune2fs.e2fsprogs
+	upx --best --ultra-brute ${IMAGE_ROOTFS}/usr/bin/blindscan
+	upx --best --ultra-brute ${IMAGE_ROOTFS}/usr/bin/bsdcat
+	upx --best --ultra-brute ${IMAGE_ROOTFS}/usr/bin/ntfs-3g
+	upx --best --ultra-brute ${IMAGE_ROOTFS}/usr/bin/dbus-daemon
+	upx --best --ultra-brute ${IMAGE_ROOTFS}/usr/bin/enigma2
+	upx --best --ultra-brute ${IMAGE_ROOTFS}/usr/bin/mpg123
+	upx --best --ultra-brute ${IMAGE_ROOTFS}/usr/bin/openssl
+	upx --best --ultra-brute ${IMAGE_ROOTFS}/usr/bin/out123
+	upx --best --ultra-brute ${IMAGE_ROOTFS}/usr/bin/sdparm
+	upx --best --ultra-brute ${IMAGE_ROOTFS}/usr/bin/wpa_passphrase
+	upx --best --ultra-brute ${IMAGE_ROOTFS}/usr/sbin/alsactl
+	upx --best --ultra-brute ${IMAGE_ROOTFS}/usr/sbin/avahi-daemon
+	upx --best --ultra-brute ${IMAGE_ROOTFS}/usr/sbin/chgpasswd
+	upx --best --ultra-brute ${IMAGE_ROOTFS}/usr/sbin/dropbearmulti
+	upx --best --ultra-brute ${IMAGE_ROOTFS}/usr/sbin/ethtool
+	upx --best --ultra-brute ${IMAGE_ROOTFS}/usr/sbin/exportfs
+	upx --best --ultra-brute ${IMAGE_ROOTFS}/usr/sbin/groupadd
+	upx --best --ultra-brute ${IMAGE_ROOTFS}/usr/sbin/groupdel
+	upx --best --ultra-brute ${IMAGE_ROOTFS}/usr/sbin/groupmod
+	upx --best --ultra-brute ${IMAGE_ROOTFS}/usr/sbin/grpck
+	upx --best --ultra-brute ${IMAGE_ROOTFS}/usr/sbin/newusers
+	upx --best --ultra-brute ${IMAGE_ROOTFS}/usr/sbin/parted
+	upx --best --ultra-brute ${IMAGE_ROOTFS}/usr/sbin/rpc.mountd
+	upx --best --ultra-brute ${IMAGE_ROOTFS}/usr/sbin/rpc.statd
+	upx --best --ultra-brute ${IMAGE_ROOTFS}/usr/sbin/sm-notify
+	upx --best --ultra-brute ${IMAGE_ROOTFS}/usr/sbin/useradd
+	upx --best --ultra-brute ${IMAGE_ROOTFS}/usr/sbin/userdel
+	upx --best --ultra-brute ${IMAGE_ROOTFS}/usr/sbin/usermod
+	upx --best --ultra-brute ${IMAGE_ROOTFS}/usr/sbin/vsftpd
+	upx --best --ultra-brute ${IMAGE_ROOTFS}/usr/sbin/wpa_cli
+	upx --best --ultra-brute ${IMAGE_ROOTFS}/usr/sbin/wpa_supplicant
 }
 
 rootfs_myworks() {
-	rm -rf ${IMAGE_ROOTFS}/var/lib/opkg/lists || true
-	rm -rf ${IMAGE_ROOTFS}/usr/lib/python2.7/site-packages/*egg-info* || true
-	rmpy ${IMAGE_ROOTFS}/usr/lib/enigma2/python/Plugins || true
-	rmpy ${IMAGE_ROOTFS}/usr/lib/enigma2/python/Components || true
-	rm -rf ${IMAGE_ROOTFS}/usr/share/locale/* || true
-	rm -rf ${IMAGE_ROOTFS}/usr/share/enigma2/countries/* || true
-	rm -rf ${IMAGE_ROOTFS}/usr/lib/locale/* || true
-	rm -rf ${IMAGE_ROOTFS}/usr/share/mime/* || true
-	rm -f ${IMAGE_ROOTFS}/bin/bash.bash || true
-	ln -sf busybox.nosuid ${IMAGE_ROOTFS}/bin/bash || true
-	ln -sf busybox.nosuid ${IMAGE_ROOTFS}/bin/sh || true
-	rm -rf ${IMAGE_ROOTFS}/usr/lib/enigma2/python/Plugins/Extensions/AudioSync/locale || true
-	rmpo ${IMAGE_ROOTFS}/usr/lib/enigma2/python/Plugins/Extensions/AutoBackup/locale || true
-	rm -rf ${IMAGE_ROOTFS}/usr/lib/enigma2/python/Plugins/Extensions/BackupSuite/locale || true
-	rmpo ${IMAGE_ROOTFS}/usr/lib/enigma2/python/Plugins/Extensions/CacheFlush/locale || true
-	rmpo ${IMAGE_ROOTFS}/usr/lib/enigma2/python/Plugins/Extensions/FanControl2/locale || true
-	rmpo ${IMAGE_ROOTFS}/usr/lib/enigma2/python/Plugins/Extensions/OpenWebif/locale || true
-	rmpo ${IMAGE_ROOTFS}/usr/lib/enigma2/python/Plugins/Extensions/OpenMultiboot/locale || true
-	rm -rf ${IMAGE_ROOTFS}/usr/lib/enigma2/python/Plugins/Extensions/OscamStatus/locale || true
-	rm -rf ${IMAGE_ROOTFS}/usr/lib/enigma2/python/Plugins/Extensions/MovieCut/locale || true
-	rm -rf ${IMAGE_ROOTFS}/usr/lib/enigma2/python/Plugins/SystemPlugins/NetworkBrowser/locale || true
-	rm -rf ${IMAGE_ROOTFS}/usr/lib/enigma2/python/Plugins/SystemPlugins/ServiceApp/locale || true
-	rm -rf ${IMAGE_ROOTFS}/usr/lib/enigma2/python/Plugins/SystemPlugins/SystemTime/locale || true
-	rmpo ${IMAGE_ROOTFS}/usr/lib/enigma2/python/Plugins/SystemPlugins/MountManager/locale || true
-	rm -f ${IMAGE_ROOTFS}/usr/share/enigma2/PLi-HD/picon_default.png || true
-	rm -f ${IMAGE_ROOTFS}/usr/share/enigma2/PLi-FullHD/picon_default.png || true
-	rm -f ${IMAGE_ROOTFS}/usr/share/enigma2/PLi-FullNightHD/picon_default.png || true
-	cp -rf ${THISDIR}/files/dm800se-cn/usr ${IMAGE_ROOTFS}/ || true
-	cp -rf ${THISDIR}/files/dm800se-cn/etc ${IMAGE_ROOTFS}/ || true
-	upxall || true
+	rm -rf ${IMAGE_ROOTFS}/var/lib/opkg/lists
+	rm -rf ${IMAGE_ROOTFS}/usr/lib/python2.7/site-packages/*egg-info*
+	rmpy ${IMAGE_ROOTFS}/usr/lib/enigma2/python/Plugins
+	rmpy ${IMAGE_ROOTFS}/usr/lib/enigma2/python/Components
+	rm -rf ${IMAGE_ROOTFS}/usr/share/locale/*
+	rm -rf ${IMAGE_ROOTFS}/usr/share/enigma2/countries/*
+	rm -rf ${IMAGE_ROOTFS}/usr/lib/locale/*
+	rm -rf ${IMAGE_ROOTFS}/usr/share/mime/*
+	rm -rf ${IMAGE_ROOTFS}/usr/share/alsa/*
+	rm -f ${IMAGE_ROOTFS}/bin/bash.bash
+	ln -sf busybox.nosuid ${IMAGE_ROOTFS}/bin/bash
+	ln -sf busybox.nosuid ${IMAGE_ROOTFS}/bin/sh
+	rm -rf ${IMAGE_ROOTFS}/usr/lib/enigma2/python/Plugins/Extensions/AudioSync/locale
+	rmpo ${IMAGE_ROOTFS}/usr/lib/enigma2/python/Plugins/Extensions/AutoBackup/locale
+	rm -rf ${IMAGE_ROOTFS}/usr/lib/enigma2/python/Plugins/Extensions/BackupSuite/locale
+	rmpo ${IMAGE_ROOTFS}/usr/lib/enigma2/python/Plugins/Extensions/CacheFlush/locale
+	rmpo ${IMAGE_ROOTFS}/usr/lib/enigma2/python/Plugins/Extensions/FanControl2/locale
+	rmpo ${IMAGE_ROOTFS}/usr/lib/enigma2/python/Plugins/Extensions/OpenWebif/locale
+	rmpo ${IMAGE_ROOTFS}/usr/lib/enigma2/python/Plugins/Extensions/OpenMultiboot/locale
+	rm -rf ${IMAGE_ROOTFS}/usr/lib/enigma2/python/Plugins/Extensions/OscamStatus/locale
+	rm -rf ${IMAGE_ROOTFS}/usr/lib/enigma2/python/Plugins/Extensions/MovieCut/locale
+	rm -rf ${IMAGE_ROOTFS}/usr/lib/enigma2/python/Plugins/SystemPlugins/NetworkBrowser/locale
+	rm -rf ${IMAGE_ROOTFS}/usr/lib/enigma2/python/Plugins/SystemPlugins/ServiceApp/locale
+	rm -rf ${IMAGE_ROOTFS}/usr/lib/enigma2/python/Plugins/SystemPlugins/SystemTime/locale
+	rmpo ${IMAGE_ROOTFS}/usr/lib/enigma2/python/Plugins/SystemPlugins/MountManager/locale
+	rm -f ${IMAGE_ROOTFS}/usr/share/enigma2/PLi-HD/picon_default.png
+	rm -f ${IMAGE_ROOTFS}/usr/share/enigma2/PLi-FullHD/picon_default.png
+	rm -f ${IMAGE_ROOTFS}/usr/share/enigma2/PLi-FullNightHD/picon_default.png
+	cp -rf ${THISDIR}/files/dm800se-cn/usr ${IMAGE_ROOTFS}/
+	cp -rf ${THISDIR}/files/dm800se-cn/etc ${IMAGE_ROOTFS}/
+	upxall
 }
 
 ROOTFS_POSTPROCESS_COMMAND += "rootfs_myworks;"
