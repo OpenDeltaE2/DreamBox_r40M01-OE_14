@@ -12,20 +12,21 @@ GST_BASE_RDEPS = "\
 	gstreamer1.0-plugins-base-alsa \
 	gstreamer1.0-plugins-base-app \
 	gstreamer1.0-plugins-base-audioconvert \
-	gstreamer1.0-plugins-base-audioresample \
 	gstreamer1.0-plugins-base-audiorate \
-	gstreamer1.0-plugins-base-videoconvertscale \
-	gstreamer1.0-plugins-base-ivorbisdec \
+	gstreamer1.0-plugins-base-audioresample \
+	gstreamer1.0-plugins-base-vorbis \
 	gstreamer1.0-plugins-base-ogg \
 	gstreamer1.0-plugins-base-playback \
+	gstreamer1.0-plugins-base-rawparse \
 	gstreamer1.0-plugins-base-subparse \
 	gstreamer1.0-plugins-base-typefindfunctions \
-	gstreamer1.0-plugins-base-vorbis \
-	gstreamer1.0-plugins-base-rawparse \
-	${@bb.utils.contains_any("TARGET_ARCH", "arm aarch64", "gstreamer1.0-plugins-base-opus", "", d)} \
+	gstreamer1.0-plugins-base-videoconvertscale \
+	${@bb.utils.contains_any("MACHINE", "dm800se dm500hd", "", "gstreamer1.0-plugins-base-opus", d)} \
 	"
 
 GST_GOOD_RDEPS = "\
+	gstreamer1.0-plugins-good-amrnb \
+	gstreamer1.0-plugins-good-amrwbdec \
 	gstreamer1.0-plugins-good-apetag \
 	gstreamer1.0-plugins-good-audioparsers \
 	gstreamer1.0-plugins-good-autodetect \
@@ -44,25 +45,22 @@ GST_GOOD_RDEPS = "\
 	gstreamer1.0-plugins-good-udp \
 	gstreamer1.0-plugins-good-wavparse \
 	gstreamer1.0-plugins-good-wavpack \
-	${@bb.utils.contains_any("TARGET_ARCH", "arm aarch64", "gstreamer1.0-plugins-good-vpx", "", d)} \
 	"
 
 GST_BAD_RDEPS = "\
 	gstreamer1.0-plugins-bad-autoconvert \
 	gstreamer1.0-plugins-bad-dash \
+	gstreamer1.0-plugins-bad-faad \
+	gstreamer1.0-plugins-bad-hls \
 	gstreamer1.0-plugins-bad-mpegpsdemux \
 	gstreamer1.0-plugins-bad-mpegtsdemux \
 	gstreamer1.0-plugins-bad-rtmp \
 	gstreamer1.0-plugins-bad-smoothstreaming \
-	gstreamer1.0-plugins-bad-faad \
-	gstreamer1.0-plugins-bad-hls \
 	gstreamer1.0-plugins-bad-videoparsersbad \
-	${@bb.utils.contains_any("TARGET_ARCH", "arm aarch64", "gstreamer1.0-plugins-bad-opusparse", "", d)} \
+	${@bb.utils.contains_any("MACHINE", "dm800se dm500hd", "", "gstreamer1.0-plugins-bad-opusparse", d)} \
 	"
 
 GST_UGLY_RDEPS = "\
-	gstreamer1.0-plugins-ugly-amrnb \
-	gstreamer1.0-plugins-ugly-amrwbdec \
 	gstreamer1.0-plugins-ugly-asf \
 	gstreamer1.0-plugins-ugly-cdio \
 	gstreamer1.0-plugins-ugly-dvdsub \

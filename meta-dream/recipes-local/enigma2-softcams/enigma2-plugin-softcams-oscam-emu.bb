@@ -21,7 +21,7 @@ SRC_URI = "git://gitee.com/jackgee2021/oscam-emu.git;protocol=https;branch=maste
 
 S = "${WORKDIR}/git"
 B = "${S}"
-PR = "r2"
+PR = "r0"
 
 SRC_URI += " \
     file://oscam.conf \
