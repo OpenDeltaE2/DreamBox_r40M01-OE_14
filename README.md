@@ -51,7 +51,7 @@ echo fs.inotify.max_user_watches=524288 | sudo tee -a /etc/sysctl.conf
 sudo sysctl -n -w fs.inotify.max_user_watches=524288
 ```
 
-5. Install gcc11:
+5. Install gcc11 [Options]:
 ```
 sudo apt-get install software-properties-common
 sudo add-apt-repository -y ppa:ubuntu-toolchain-r/test
