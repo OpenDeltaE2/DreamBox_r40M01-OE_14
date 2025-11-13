@@ -8,13 +8,10 @@ SRC_URI:append = " \
 	file://0004-add-missing-mesa-define.patch \
 "
 
-PACKAGECONFIG:append = " \
-    cdparanoia gio opus tremor \
-"
-
-PACKAGECONFIG[gio] = "-Dgio=enabled,-Dgio=disabled,glib-2.0"
+PACKAGECONFIG:append = " opus"
 
 INSANE_SKIP:libgstgl-1.0 += "file-rdeps"
 
-PV = "1.26.7"
-SRC_URI[sha256sum] = "969e3cbf05dfab92cf37e94840fbe398517d7ba3275331d1c216a2e30a7208d0"
+PV = "1.26.8"
+
+SRC_URI[sha256sum] = "513cace4b02cb183ee47665d64bb2a25088abb6678c4cc57bb100b841add746b"
