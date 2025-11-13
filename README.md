@@ -9,7 +9,7 @@ In comparison to OpenPLi this repository has:<br>
 -Submodules bitbake, openembedded-core and meta-openembedded from kirkstone branch,<br>
 -GCC 11.5.0<br>
 -Glibc 2.35<br>
--GStreamer 1.20.7<br>
+-GStreamer 1.22.12<br>
 -Python 2.7.18<br>
 -OpenSSL 3.0.18<br>
 -Busybox 1.35.0<br>
