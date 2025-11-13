@@ -11,8 +11,10 @@ PACKAGECONFIG = " \
     ${PACKAGECONFIG_GL} \
     ${@bb.utils.filter('DISTRO_FEATURES', 'alsa x11', d)} \
     jpeg ogg pango png theora vorbis \
-    cdparanoia opus tremor \
+    cdparanoia gio opus tremor \
     ${@bb.utils.contains('DISTRO_FEATURES', 'wayland', 'wayland egl', '', d)} \
 "
+
+PACKAGECONFIG[gio] = "-Dgio=enabled,-Dgio=disabled,glib-2.0"
 
 PACKAGE_NO_LOCALE = "1"

@@ -1,6 +1,7 @@
 FILESEXTRAPATHS:prepend := "${THISDIR}/${PN}:"
 
-PR = "r2"
+PACKAGECONFIG_SOUP = "soup2"
+RDEPENDS:${PN}-soup += "libsoup-2.4"
 
 SRC_URI:append = " \
            file://0001-gstrtpmp4gpay-set-dafault-value-for-MPEG4-without-co.patch \
@@ -13,7 +14,7 @@ PACKAGECONFIG = " \
     ${@bb.utils.contains('TUNE_FEATURES', 'm64', 'asm', '', d)} \
     ${@bb.utils.contains('MACHINE_FEATURES', 'novp9', '', 'vpx',d)} \
     bz2 cairo flac gdk-pixbuf gudev jpeg lame libpng \
-    mpg123 soup speex taglib v4l2 wavpack \
+    mpg123 soup2 speex taglib v4l2 wavpack \
 "
 
 PACKAGE_NO_LOCALE = "1"

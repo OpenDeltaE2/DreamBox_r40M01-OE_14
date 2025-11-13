@@ -22,7 +22,7 @@ GST_BASE_RDEPS = "\
 	gstreamer1.0-plugins-base-typefindfunctions \
 	gstreamer1.0-plugins-base-vorbis \
 	gstreamer1.0-plugins-base-rawparse \
-	${@bb.utils.contains_any("TARGET_ARCH", "arm aarch64", "gstreamer1.0-plugins-base-opus", "", d)} \
+	${@bb.utils.contains_any("MACHINE", "dm800se dm500hd", "", "gstreamer1.0-plugins-base-opus", d)} \
 	"
 
 GST_GOOD_RDEPS = "\
@@ -44,7 +44,7 @@ GST_GOOD_RDEPS = "\
 	gstreamer1.0-plugins-good-udp \
 	gstreamer1.0-plugins-good-wavparse \
 	gstreamer1.0-plugins-good-wavpack \
-	${@bb.utils.contains_any("TARGET_ARCH", "arm aarch64", "gstreamer1.0-plugins-good-vpx", "", d)} \
+	${@bb.utils.contains_any("MACHINE", "dm800se dm500hd", "", "gstreamer1.0-plugins-good-vpx", d)} \
 	"
 
 GST_BAD_RDEPS = "\
@@ -57,7 +57,7 @@ GST_BAD_RDEPS = "\
 	gstreamer1.0-plugins-bad-faad \
 	gstreamer1.0-plugins-bad-hls \
 	gstreamer1.0-plugins-bad-videoparsersbad \
-	${@bb.utils.contains_any("TARGET_ARCH", "arm aarch64", "gstreamer1.0-plugins-bad-opusparse", "", d)} \
+	${@bb.utils.contains_any("MACHINE", "dm800se dm500hd", "", "gstreamer1.0-plugins-bad-opusparse", d)} \
 	"
 
 GST_UGLY_RDEPS = "\
