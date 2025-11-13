@@ -1,9 +1,10 @@
 Build environment based on OpenPLi-homebuild(develop branch).
 
 https://github.com/OpenPLi/openpli-oe-core/commits/develop<br>
-https://github.com/Hains
+https://github.com/Hains<br>
+https://github.com/oe-alliance
 
-Thanks to OpenPLi & Hains.
+Thanks to OpenPLi & Hains & oe-alliance.
 
 In comparison to OpenPLi this repository has:<br>
 -Submodules bitbake, openembedded-core and meta-openembedded from kirkstone branch,<br>
