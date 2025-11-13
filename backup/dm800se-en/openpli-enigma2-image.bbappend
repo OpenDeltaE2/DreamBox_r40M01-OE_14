@@ -131,37 +131,37 @@ upxall() {
 }
 
 rootfs_myworks() {
-	rm -rf ${IMAGE_ROOTFS}/var/lib/opkg/lists || true
-	rm -rf ${IMAGE_ROOTFS}/usr/lib/python2.7/site-packages/*egg-info* || true
-	rmpy ${IMAGE_ROOTFS}/usr/lib/enigma2/python/Plugins || true
-	rmpy ${IMAGE_ROOTFS}/usr/lib/enigma2/python/Components || true
-	rm -rf ${IMAGE_ROOTFS}/usr/share/locale/* || true
-	rm -rf ${IMAGE_ROOTFS}/usr/share/mime/* || true
+	rm -rf ${IMAGE_ROOTFS}/var/lib/opkg/lists
+	rm -rf ${IMAGE_ROOTFS}/usr/lib/python2.7/site-packages/*egg-info*
+	rmpy ${IMAGE_ROOTFS}/usr/lib/enigma2/python/Plugins
+	rmpy ${IMAGE_ROOTFS}/usr/lib/enigma2/python/Components
+	rm -rf ${IMAGE_ROOTFS}/usr/share/locale/*
+	rm -rf ${IMAGE_ROOTFS}/usr/share/mime/*
 	rm -rf ${IMAGE_ROOTFS}/usr/share/alsa/*
-	rm -f ${IMAGE_ROOTFS}/bin/bash.bash || true
-	ln -sf busybox.nosuid ${IMAGE_ROOTFS}/bin/bash || true
-	ln -sf busybox.nosuid ${IMAGE_ROOTFS}/bin/sh || true
-	rmpo ${IMAGE_ROOTFS}/usr/lib/enigma2/python/Plugins/Extensions/AudioSync/locale || true
-	rmpo ${IMAGE_ROOTFS}/usr/lib/enigma2/python/Plugins/Extensions/FanControl2/locale || true
-	rmpo ${IMAGE_ROOTFS}/usr/lib/enigma2/python/Plugins/Extensions/AutoBackup/locale || true
-	rmpo ${IMAGE_ROOTFS}/usr/lib/enigma2/python/Plugins/Extensions/BackupSuite/locale || true
-	rmpo ${IMAGE_ROOTFS}/usr/lib/enigma2/python/Plugins/Extensions/CacheFlush/locale || true
-	rmpo ${IMAGE_ROOTFS}/usr/lib/enigma2/python/Plugins/Extensions/OpenWebif/locale || true
-	rmpo ${IMAGE_ROOTFS}/usr/lib/enigma2/python/Plugins/Extensions/OscamStatus/locale || true
-	rmpo ${IMAGE_ROOTFS}/usr/lib/enigma2/python/Plugins/Extensions/MovieCut/locale || true
-	rmpo ${IMAGE_ROOTFS}/usr/lib/enigma2/python/Plugins/Extensions/EPGImport/locale || true
-	rmpo ${IMAGE_ROOTFS}/usr/lib/enigma2/python/Plugins/Extensions/OpenMultiboot/locale || true
-	rmpo ${IMAGE_ROOTFS}/usr/lib/enigma2/python/Plugins/SystemPlugins/NetworkBrowser/locale || true
-	rmpo ${IMAGE_ROOTFS}/usr/lib/enigma2/python/Plugins/SystemPlugins/ServiceApp/locale || true
-	rmpo ${IMAGE_ROOTFS}/usr/lib/enigma2/python/Plugins/SystemPlugins/SystemTime/locale || true
-	rmpo ${IMAGE_ROOTFS}/usr/lib/enigma2/python/Plugins/SystemPlugins/MountManager/locale || true
-	rm -f ${IMAGE_ROOTFS}/usr/share/enigma2/PLi-HD/picon_default.png || true
-	rm -f ${IMAGE_ROOTFS}/usr/share/enigma2/PLi-FullHD/picon_default.png || true
-	rm -f ${IMAGE_ROOTFS}/usr/share/enigma2/PLi-FullNightHD/picon_default.png || true
-	rm -f ${IMAGE_ROOTFS}/usr/lib/locale/locale-archive || true
-	cp -rf ${THISDIR}/files/dm800se-en/usr ${IMAGE_ROOTFS}/ || true
-	cp -rf ${THISDIR}/files/dm800se-en/etc ${IMAGE_ROOTFS}/ || true
-	upxall || true
+	rm -f ${IMAGE_ROOTFS}/bin/bash.bash
+	ln -sf busybox.nosuid ${IMAGE_ROOTFS}/bin/bash
+	ln -sf busybox.nosuid ${IMAGE_ROOTFS}/bin/sh
+	rmpo ${IMAGE_ROOTFS}/usr/lib/enigma2/python/Plugins/Extensions/AudioSync/locale
+	rmpo ${IMAGE_ROOTFS}/usr/lib/enigma2/python/Plugins/Extensions/FanControl2/locale
+	rmpo ${IMAGE_ROOTFS}/usr/lib/enigma2/python/Plugins/Extensions/AutoBackup/locale
+	rmpo ${IMAGE_ROOTFS}/usr/lib/enigma2/python/Plugins/Extensions/BackupSuite/locale
+	rmpo ${IMAGE_ROOTFS}/usr/lib/enigma2/python/Plugins/Extensions/CacheFlush/locale
+	rmpo ${IMAGE_ROOTFS}/usr/lib/enigma2/python/Plugins/Extensions/OpenWebif/locale
+	rmpo ${IMAGE_ROOTFS}/usr/lib/enigma2/python/Plugins/Extensions/OscamStatus/locale
+	rmpo ${IMAGE_ROOTFS}/usr/lib/enigma2/python/Plugins/Extensions/MovieCut/locale
+	rmpo ${IMAGE_ROOTFS}/usr/lib/enigma2/python/Plugins/Extensions/EPGImport/locale
+	rmpo ${IMAGE_ROOTFS}/usr/lib/enigma2/python/Plugins/Extensions/OpenMultiboot/locale
+	rmpo ${IMAGE_ROOTFS}/usr/lib/enigma2/python/Plugins/SystemPlugins/NetworkBrowser/locale
+	rmpo ${IMAGE_ROOTFS}/usr/lib/enigma2/python/Plugins/SystemPlugins/ServiceApp/locale
+	rmpo ${IMAGE_ROOTFS}/usr/lib/enigma2/python/Plugins/SystemPlugins/SystemTime/locale
+	rmpo ${IMAGE_ROOTFS}/usr/lib/enigma2/python/Plugins/SystemPlugins/MountManager/locale
+	rm -f ${IMAGE_ROOTFS}/usr/share/enigma2/PLi-HD/picon_default.png
+	rm -f ${IMAGE_ROOTFS}/usr/share/enigma2/PLi-FullHD/picon_default.png
+	rm -f ${IMAGE_ROOTFS}/usr/share/enigma2/PLi-FullNightHD/picon_default.png
+	rm -f ${IMAGE_ROOTFS}/usr/lib/locale/locale-archive
+	cp -rf ${THISDIR}/files/dm800se-en/usr ${IMAGE_ROOTFS}/
+	cp -rf ${THISDIR}/files/dm800se-en/etc ${IMAGE_ROOTFS}/
+	upxall
 }
 
 ROOTFS_POSTPROCESS_COMMAND += "rootfs_myworks;"
