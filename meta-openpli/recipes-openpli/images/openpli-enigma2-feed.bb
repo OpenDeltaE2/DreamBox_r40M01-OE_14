@@ -13,7 +13,6 @@ OPTIONAL_PACKAGES ?= ""
 OPTIONAL_BSP_PACKAGES ?= ""
 OPTIONAL_PACKAGES += " \
 	astra-sm \
-	autofs \
 	autossh \
 	ccid \
 	ctorrent \
@@ -62,14 +61,6 @@ OPTIONAL_PACKAGES += " \
 	procps \
 	pv \
 	pyload \
-	python-beautifulsoup4 \
-	python-js2py \
-	python-lxml \
-	python-mechanize \
-	python-pycryptodome \
-	python-websocket-client \
-	python-ntplib \
-	python-requests \
 	python-youtube-dl \
 	rsync \
 	rtl-sdr \

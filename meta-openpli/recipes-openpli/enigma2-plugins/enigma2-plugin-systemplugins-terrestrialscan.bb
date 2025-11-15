@@ -21,7 +21,8 @@ EXTRA_OECONF = " \
 
 S = "${WORKDIR}/git"
 
-INSANE_SKIP:${PN} += "already-stripped build-deps ldflags"
+INSANE_SKIP:${PN} += " already-stripped build-deps ldflags"
+INSANE_SKIP:${PN}-src += " build-deps"
 
 python populate_packages:prepend() {
     enigma2_plugindir = bb.data.expand('${libdir}/enigma2/python/Plugins', d)

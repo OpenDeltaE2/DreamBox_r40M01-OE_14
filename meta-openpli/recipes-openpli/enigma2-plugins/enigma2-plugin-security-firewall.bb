@@ -12,6 +12,7 @@ S = "${WORKDIR}"
 
 INITSCRIPT_NAME = "firewall"
 INITSCRIPT_PARAMS = "defaults"
+INSANE_SKIP:${PN}:append = " build-deps"
 
 inherit update-rc.d
 

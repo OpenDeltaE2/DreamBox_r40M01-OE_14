@@ -3,7 +3,7 @@ SUMMARY = "CCcam Softcam for mipsel Ver2.0.9"
 PACKAGE_ARCH = "${MACHINE_ARCH}"
 
 INHIBIT_PACKAGE_STRIP = "1"
-INSANE_SKIP:${PN}:append = "already-stripped"
+INSANE_SKIP:${PN}:append = " already-stripped ldflags"
 DEPENDS += "virtual/crypt"
 RDEPENDS:${PN} += "libxcrypt-compat"
 
