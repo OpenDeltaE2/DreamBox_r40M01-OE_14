@@ -4,7 +4,7 @@ PACKAGE_ARCH = "${MACHINE_ARCH}"
 PACKAGES = "${PN}"
 
 INHIBIT_PACKAGE_STRIP = "1"
-INSANE_SKIP:${PN}:append = " already-stripped"
+INSANE_SKIP:${PN}:append = " already-stripped 32bit-time"
 DEPENDS += "enigma2-plugin-softcams-libcrypto-compat-1.0.2 virtual/crypt zlib"
 RDEPENDS:${PN} += "enigma2-plugin-softcams-libcrypto-compat-1.0.2 libxcrypt-compat zlib"
 
@@ -62,6 +62,8 @@ pkg_postinst:${PN}() {
 		ln -sf "ld-2.33.so" "$D/lib/ld-linux.so.3"
 	elif [ -f "$D/lib/ld-2.34.so" ]; then
 		ln -sf "ld-2.34.so" "$D/lib/ld-linux.so.3"
+	elif [ -f "$D/lib/ld-2.37.so" ]; then
+		ln -sf "ld-2.37.so" "$D/lib/ld-linux.so.3"
 	fi
 
 	if [ ! -e "$D${CAMLINK}" ] || [ "/etc/init.d/softcam.None" = "`readlink -f $D${CAMLINK}`" ] || [ "softcam.None" = "`readlink -f $D${CAMLINK}`" ]
