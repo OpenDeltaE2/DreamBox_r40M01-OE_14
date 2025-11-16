@@ -19,7 +19,6 @@ SRC_URI = "git://gitee.com/jackgee2021/oscam-nx111.git;protocol=https;branch=mas
 
 S = "${WORKDIR}/git"
 B = "${S}"
-PR = "r2"
 
 SRC_URI += " \
     file://oscam.conf \

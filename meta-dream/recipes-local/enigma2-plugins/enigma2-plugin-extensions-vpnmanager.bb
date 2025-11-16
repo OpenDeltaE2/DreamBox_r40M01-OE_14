@@ -11,7 +11,8 @@ PV = "1.1.4+git${SRCPV}"
 PKGV = "1.1.4+git${GITPKGV}"
 
 SRCREV = "${AUTOREV}"
-SRC_URI = "git://gitlab.com/jack2015/vpnmanager.git;protocol=https;branch=master"
+GIT_SITE = "${@ 'git://gitlab.com/jack2015' if d.getVar('CODEWEBSITE') else 'git://gitee.com/jackgee2021'}"
+SRC_URI = "${GIT_SITE}/vpnmanager.git;protocol=https;branch=master"
 
 FILES:${PN} = "/usr/"
 

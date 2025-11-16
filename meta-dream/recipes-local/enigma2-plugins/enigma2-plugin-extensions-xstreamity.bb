@@ -4,19 +4,26 @@ MAINTAINER = "kiddac"
 PRIORITY = "optional"
 require conf/license/license-gplv2.inc
 
-RDEPENDS:${PN} = "python-argparse python-image python-imaging python-lzma python-multiprocessing python-requests"
+RDEPENDS:${PN} = "python-image python-imaging python-multiprocessing python-requests"
 
 inherit gitpkgv allarch
 
 SRCREV = "${AUTOREV}"
-PV = "3.58+git${SRCPV}"
-PKGV = "3.58+git${GITPKGV}"
+PV = "5.19+git${SRCPV}"
+PKGV = "5.19+git${GITPKGV}"
 PR = "r0"
 
-SRC_URI = "git://gitlab.com/jack2015/XStreamity.git;protocol=https;branch=master"
+GIT_SITE = "${@ 'git://gitlab.com/jack2015' if d.getVar('CODEWEBSITE') else 'git://gitee.com/jackgee2021'}"
+SRC_URI = "${GIT_SITE}/XStreamity.git;protocol=https;branch=master"
 
 S = "${WORKDIR}/git"
-FILES:${PN} = "/usr/"
+FILES:${PN} = " ${libdir}/enigma2/python/Components/Converter/* \
+                ${libdir}/enigma2/python/Components/Renderer/* \
+                ${libdir}/enigma2/python/Plugins/Extensions/XStreamity/*"
+
+do_patch[noexec] = "1"
+
+do_configure[noexec] = "1"
 
 do_compile() {
     python2 -O -m compileall ${S}
