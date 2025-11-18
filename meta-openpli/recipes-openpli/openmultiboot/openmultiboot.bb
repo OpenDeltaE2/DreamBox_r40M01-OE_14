@@ -13,7 +13,8 @@ PACKAGE_ARCH = "${MACHINE_ARCH}"
 
 DEPENDS = "freetype"
 
-SRC_URI = "git://gitlab.com/jack2015/openmultiboot.git;protocol=https;branch=master"
+GIT_SITE = "${@ 'git://gitlab.com/jack2015' if d.getVar('CODEWEBSITE') else 'git://gitee.com/jackgee2021'}"
+SRC_URI = "${GIT_SITE}/openmultiboot.git;protocol=https;branch=master"
 
 inherit autotools-brokensep pkgconfig
 
@@ -64,9 +65,9 @@ fi
 
 pkg_postrm:${PN}() {
 #!/bin/sh
-rm -rf /sbin/init
-ln -s /sbin/init.sysvinit /sbin/init
-rm -rf /sbin/open-multiboot-branding-helper.py
+rm -f /sbin/init
+ln -sf /sbin/init.sysvinit /sbin/init
+rm -f /sbin/open-multiboot-branding-helper.py
 exit 0
 }
 
