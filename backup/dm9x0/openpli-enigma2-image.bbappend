@@ -8,6 +8,7 @@ IMAGE_INSTALL:remove = "settings-autorestore"
 IMAGE_INSTALL += " \
 	bitratecalc \
 	ofgwrite \
+	samba \
 	busybox-cron \
 	${@bb.utils.contains("MACHINE_FEATURES", "emmc", "dosfstools mtools e2fsprogs-resize2fs partitions-by-name bzip2 rsync" , "", d)} \
 	"
@@ -16,8 +17,6 @@ KERNEL_WIFI_DRIVERS = ""
 EXTERNAL_WIFI_DRIVERS = ""
 
 ENIGMA2_PLUGINS = " \
-	packagegroup-base-smbfs-client \
-	packagegroup-base-smbfs-server \
 	enigma2-plugin-drivers-ntfs-3g \
 	enigma2-plugin-softcams-libcrypto-compat-1.0.2 \
 	enigma2-plugin-softcams-libcrypto-compat-1.1 \
