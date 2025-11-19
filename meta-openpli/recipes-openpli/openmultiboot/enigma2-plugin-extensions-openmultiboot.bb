@@ -13,7 +13,8 @@ INHIBIT_PACKAGE_STRIP = "1"
 INSANE_SKIP:${PN}:append = " already-stripped"
 PACKAGE_ARCH = "${MACHINE_ARCH}"
 
-SRC_URI = "git://gitlab.com/jack2015/pli-openmultibootmanager.git;protocol=https;branch=master"
+GIT_SITE = "${@ 'git://gitlab.com/jack2015' if d.getVar('CODEWEBSITE') else 'git://gitee.com/jackgee2021'}"
+SRC_URI = "${GIT_SITE}/pli-openmultibootmanager.git;protocol=https;branch=master"
 
 SRC_URI += " \
 	file://nfidump_mipsel_0.4.2 \
@@ -70,9 +71,9 @@ else
     echo "Main image is running - proceeding removing..."
 fi
 
-rm -rf /sbin/init
-ln -s /sbin/init.sysvinit /sbin/init
-rm -rf /sbin/open-multiboot-branding-helper.py
+rm -f /sbin/init
+ln -sf /sbin/init.sysvinit /sbin/init
+rm -f /sbin/open-multiboot-branding-helper.py
 
 chown -Rh root:root ${libdir}/enigma2/python/Plugins/Extensions/OpenMultiboot
 rm -rf ${libdir}/enigma2/python/Plugins/Extensions/OpenMultiboot

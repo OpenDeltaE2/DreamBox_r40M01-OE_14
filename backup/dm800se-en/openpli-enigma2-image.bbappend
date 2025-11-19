@@ -53,6 +53,7 @@ ENIGMA2_PLUGINS = " \
 	enigma2-plugin-systemplugins-videomode \
 	enigma2-plugin-systemplugins-videotune \
 	enigma2-plugin-systemplugins-wirelesslan \
+	enigma2-plugin-drivers-network-usb-r8712u \
 	"
 
 rmpy() {

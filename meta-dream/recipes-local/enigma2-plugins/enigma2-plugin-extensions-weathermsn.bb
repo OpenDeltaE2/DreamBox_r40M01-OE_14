@@ -9,7 +9,9 @@ inherit gitpkgv allarch
 PV = "1.0+git${SRCPV}"
 PKGV = "1.0+git${GITPKGV}"
 
-SRC_URI = "git://gitlab.com/jack2015/enigma2-plugins-weathermsn.git;protocol=https;branch=master"
+GIT_SITE = "${@ 'git://gitlab.com/jack2015' if d.getVar('CODEWEBSITE') else 'git://gitee.com/jackgee2021'}"
+SRC_URI = "${GIT_SITE}/enigma2-plugins-weathermsn.git;protocol=https;branch=master"
+
 SRCREV = "${AUTOREV}"
 FILES:${PN} = "${libdir}/enigma2/"
 
