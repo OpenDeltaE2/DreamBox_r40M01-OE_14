@@ -1,13 +1,14 @@
 SUMMARY = "Linux Driver for RTL8821CU, RTL8811CU USB Wi-Fi NIC"
 HOMEPAGE = "http://www.realtek.com.tw"
 SECTION = "kernel/modules"
-LICENSE = "GPL-2.0-only"
-LIC_FILES_CHKSUM = "file://ifcfg-wlan0;md5=a84acae65af4b2d44d5035aa9f63cd85"
+require conf/license/openpli-gplv2.inc
 
 DEPENDS ="bc-native"
 
 inherit module
+
 SRCREV = "${AUTOREV}"
+
 GIT_SITE = "${@ 'git://gitlab.com/jack2015' if d.getVar('CODEWEBSITE') else 'git://gitee.com/jackgee2021'}"
 SRC_URI = "${GIT_SITE}/rtl8821cu.git;protocol=https;branch=master \
     file://add-5.15-support.patch \
