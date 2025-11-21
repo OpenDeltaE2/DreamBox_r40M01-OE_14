@@ -165,7 +165,7 @@ codes=$(dialog --stdout --clear --colors --menu "Select build code source" 12 60
     codesource2="gitlab"
     ;;
     2)
-    codesource=""
+    codesource="git://gitee.com/jackgee2021"
     codesource2="gitee"
     ;;
     *) clear && exit ;;
