@@ -13,8 +13,8 @@ INSANE_SKIP = "32bit-time"
 PV = "1.1+git${SRCPV}"
 PKGV = "1.1+git${GITPKGV}"
 
-SRC_URI = "git://gitee.com/jackgee2021/aio-grab.git;protocol=https;branch=master"
-SRC_URI:dm800se = "git://gitlab.com/jack2015/openpli-aio-grab.git;protocol=https;branch=master"
+SRC_URI = "${CODEWEBSITE}/aio-grab.git;protocol=https;branch=master"
+SRC_URI:dm800se = "${CODEWEBSITE}/openpli-aio-grab.git;protocol=https;branch=master"
 
 S = "${WORKDIR}/git"
 

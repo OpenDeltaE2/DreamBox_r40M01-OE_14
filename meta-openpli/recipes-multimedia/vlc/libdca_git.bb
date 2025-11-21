@@ -8,7 +8,7 @@ inherit autotools gitpkgv
 PV = "0.0.7+git${SRCPV}"
 PKGV = "0.0.7+git${GITPKGV}"
 
-SRC_URI = "git://gitee.com/jackgee2021/libdca.git;protocol=https;branch=master \
+SRC_URI = "${CODEWEBSITE}/libdca.git;protocol=https;branch=master \
 	file://fix-libdts-link-path.patch \
 	"
 

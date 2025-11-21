@@ -10,12 +10,11 @@ RDEPENDS:${PN}:mipsel += "libdvbcsa"
 DEPENDS:arm = "openssl libusb pcsc-lite ccid openssl-native upx-native libdvbcsa"
 RDEPENDS:${PN}:arm += "libusb1 pcsc-lite pcsc-lite-lib ccid libdvbcsa"
 LDFLAGS:prepend = "-ldvbcsa "
-GLIBC_64BIT_TIME_FLAGS = ""
 
 inherit cmake gitpkgv
 
 SRCREV = "${AUTOREV}"
-SRC_URI = "git://gitee.com/jackgee2021/oscam-nx111.git;protocol=https;branch=master"
+SRC_URI = "${CODEWEBSITE}/oscam-nx111.git;protocol=https;branch=master"
 
 S = "${WORKDIR}/git"
 B = "${S}"

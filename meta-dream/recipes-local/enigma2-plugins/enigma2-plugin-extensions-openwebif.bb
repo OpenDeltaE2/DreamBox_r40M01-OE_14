@@ -25,7 +25,7 @@ inherit gittag distutils-openplugins gettext
 
 DISTUTILS_INSTALL_ARGS = "--root=${D} --install-lib=${libdir}/enigma2/python/Plugins"
 
-GIT_SITE = "${@ 'git://gitlab.com/jack2015' if d.getVar('CODEWEBSITE') else 'git://gitee.com/jackgee2021'}"
+
 
 #ver 1.5.2
 SRCREV = "37b1b24b109ad15dd7c3d3d9f6f72adb0220a888"
@@ -33,7 +33,7 @@ SRCREV = "37b1b24b109ad15dd7c3d3d9f6f72adb0220a888"
 PV = "git${SRCPV}"
 PKGV = "${GITPKGVTAG}"
 PR = "r2"
-SRC_URI = "${GIT_SITE}/e2openplugin-OpenWebif.git;protocol=https;branch=master \
+SRC_URI = "${CODEWEBSITE}/e2openplugin-OpenWebif.git;protocol=https;branch=master \
 	file://dm800sev2.png"
 
 #ver 1.3.9
@@ -42,12 +42,12 @@ SRCREV:dm500hd = "fcf12a42d446022a90b7617a297ba676fc6cfcfe"
 
 PV:dm800se = "1.3.9+git${SRCPV}"
 PKGV:dm800se = "1.3.9+git${GITPKGV}"
-SRC_URI:dm800se = "${GIT_SITE}/e2openplugin-OpenWebif.git;protocol=https;branch=NoSix \
+SRC_URI:dm800se = "${CODEWEBSITE}/e2openplugin-OpenWebif.git;protocol=https;branch=NoSix \
 	file://dm800sev2.png"
 
 PV:dm500hd = "1.3.9+git${SRCPV}"
 PKGV:dm500hd = "1.3.9+git${GITPKGV}"
-SRC_URI:dm500hd = "${GIT_SITE}/e2openplugin-OpenWebif.git;protocol=https;branch=NoSix \
+SRC_URI:dm500hd = "${CODEWEBSITE}/e2openplugin-OpenWebif.git;protocol=https;branch=NoSix \
 	file://dm800sev2.png"
 
 S="${WORKDIR}/git"

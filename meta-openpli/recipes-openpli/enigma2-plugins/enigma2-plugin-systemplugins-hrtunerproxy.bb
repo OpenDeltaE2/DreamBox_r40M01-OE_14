@@ -11,7 +11,7 @@ PV = "git${SRCPV}"
 PKGV = "${GITPKGVTAG}"
 PR = "r1"
 
-SRC_URI = "git://gitlab.com/jack2015/HRTunerProxy.git;protocol=https;branch=master"
+SRC_URI = "${CODEWEBSITE}/HRTunerProxy.git;protocol=https;branch=master"
 
 S = "${WORKDIR}/git"
 

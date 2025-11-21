@@ -3,4 +3,4 @@
 
 
 SRC_URI:remove = "git://git.kernel.org/pub/scm/utils/kernel/kmod/kmod.git;branch=master;protocol=https"
-SRC_URI:append = " git://gitee.com/jackgee2021/kmod.git;branch=master;protocol=https "
+SRC_URI:append = " ${CODEWEBSITE}/kmod.git;branch=master;protocol=https "
