@@ -19,7 +19,8 @@ PR = "r0"
 
 INSANE_SKIP:${PN} += "already-stripped ldflags"
 
-SRC_URI="git://gitlab.com/jack2015/AutoBouquets.git;protocol=https;branch=release"
+GIT_SITE = "${@ 'git://gitlab.com/jack2015' if d.getVar('CODEWEBSITE') else 'git://gitee.com/jackgee2021'}"
+SRC_URI="${GIT_SITE}/AutoBouquets.git;protocol=https;branch=release"
 
 S = "${WORKDIR}/git"
 

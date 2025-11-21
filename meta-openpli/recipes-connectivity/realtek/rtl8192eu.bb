@@ -12,7 +12,8 @@ PKGV = "1.0+git${GITPKGV}"
 SRCREV = "${AUTOREV}"
 S = "${WORKDIR}/git"
 
-SRC_URI = "git://gitlab.com/jack2015/RTL8192EU.git;protocol=https;branch=master"
+GIT_SITE = "${@ 'git://gitlab.com/jack2015' if d.getVar('CODEWEBSITE') else 'git://gitee.com/jackgee2021'}"
+SRC_URI = "${GIT_SITE}/RTL8192EU.git;protocol=https;branch=master"
 
 EXTRA_OEMAKE = "LINUX_SRC=${STAGING_KERNEL_DIR} KDIR=${STAGING_KERNEL_DIR}"
 

@@ -8,7 +8,8 @@ LIC_FILES_CHKSUM = "file://${COMMON_LICENSE_DIR}/GPL-2.0-only;md5=801f80980d171d
 
 RDEPENDS:${PN} = "python-requests python-xmlrpc python-compression python-codecs python-zlib python-difflib unrar"
 
-SRC_URI = "git://gitlab.com/jack2015/subssupport.git;protocol=https;branch=master"
+GIT_SITE = "${@ 'git://gitlab.com/jack2015' if d.getVar('CODEWEBSITE') else 'git://gitee.com/jackgee2021'}"
+SRC_URI = "${GIT_SITE}/subssupport.git;protocol=https;branch=master"
 
 S = "${WORKDIR}/git"
 

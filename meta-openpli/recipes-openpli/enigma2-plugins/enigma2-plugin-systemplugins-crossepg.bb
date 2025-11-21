@@ -8,7 +8,8 @@ RDEPENDS:${PN} += "libcurl enigma2 python-compression python-lzma xz"
 
 inherit gitpkgv
 
-SRC_URI = " git://gitlab.com/jack2015/e2openplugin-CrossEPG.git;protocol=https;branch=master \
+GIT_SITE = "${@ 'git://gitlab.com/jack2015' if d.getVar('CODEWEBSITE') else 'git://gitee.com/jackgee2021'}"
+SRC_URI = "${GIT_SITE}/e2openplugin-CrossEPG.git;protocol=https;branch=master \
 			file://add-dummy-boxbranding.patch \
 			file://make-huffman-root-structure-variable-extern.patch \
 			"

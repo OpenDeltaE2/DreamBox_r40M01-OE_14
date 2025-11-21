@@ -5,7 +5,8 @@ SECTION = "multimedia"
 LICENSE = "GPL-3.0-only"
 LIC_FILES_CHKSUM = "file://LICENSE;md5=84dcc94da3adb52b53ae4fa38fe49e5d"
 
-SRC_URI = " git://gitlab.com/jack2015/e2iplayer-ov.git;protocol=https;branch=master \
+GIT_SITE = "${@ 'git://gitlab.com/jack2015' if d.getVar('CODEWEBSITE') else 'git://gitee.com/jackgee2021'}"
+SRC_URI = "${GIT_SITE}/e2iplayer-ov.git;protocol=https;branch=master \
 	file://get-rid-of-boxinfo.patch \
 "
 

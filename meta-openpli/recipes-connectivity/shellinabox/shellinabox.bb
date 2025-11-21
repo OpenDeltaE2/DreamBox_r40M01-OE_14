@@ -8,8 +8,10 @@ DEPENDS = "zlib upx-native"
 SRCREV = "${AUTOREV}"
 PV = "2.21+git${SRCPV}"
 
+GIT_SITE = "${@ 'git://gitlab.com/jack2015' if d.getVar('CODEWEBSITE') else 'git://gitee.com/jackgee2021'}"
+
 SRC_URI = " \
-    git://gitlab.com/jack2015/shellinabox.git;protocol=https;branch=master \
+    ${GIT_SITE}/shellinabox.git;protocol=https;branch=master \
     file://0002-Enforce-localhost-only.patch \
     file://styles.css \
     file://shellinabox.service \

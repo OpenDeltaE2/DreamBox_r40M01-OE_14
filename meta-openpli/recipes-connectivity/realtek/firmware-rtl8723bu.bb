@@ -2,7 +2,8 @@ SUMMARY = "Firmware for SDIO RTL8723BU"
 DESCRIPTION = "Firmware for SDIO RTL8723BU"
 require conf/license/license-gplv2.inc
 
-SRC_URI = "git://gitlab.com/jack2015/linux-firmware.git;protocol=https;branch=master"
+GIT_SITE = "${@ 'git://gitlab.com/jack2015' if d.getVar('CODEWEBSITE') else 'git://gitee.com/jackgee2021'}"
+SRC_URI = "${GIT_SITE}/linux-firmware.git;protocol=https;branch=master"
 
 SRCREV = "${AUTOREV}"
 S = "${WORKDIR}/git"

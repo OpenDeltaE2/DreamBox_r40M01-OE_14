@@ -8,7 +8,8 @@ PV = "1.0+git${SRCPV}"
 PKGV = "1.0+git${GITPKGV}"
 SRCREV = "${AUTOREV}"
 
-SRC_URI = "git://gitlab.com/jack2015/skin-MetropolisHD.git;protocol=https;branch=master"
+GIT_SITE = "${@ 'git://gitlab.com/jack2015' if d.getVar('CODEWEBSITE') else 'git://gitee.com/jackgee2021'}"
+SRC_URI = "${GIT_SITE}/skin-MetropolisHD.git;protocol=https;branch=master"
 
 FILES:${PN} = "/usr/"
 

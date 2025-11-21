@@ -10,7 +10,8 @@ inherit gitpkgv
 PV = "1.4.55"
 PKGV = "git${GITPKGV}"
 
-SRC_URI = "git://gitlab.com/jack2015/dvbsnoop.git;protocol=https;branch=master"
+GIT_SITE = "${@ 'git://gitlab.com/jack2015' if d.getVar('CODEWEBSITE') else 'git://gitee.com/jackgee2021'}"
+SRC_URI = "${GIT_SITE}/dvbsnoop.git;protocol=https;branch=master"
 
 S = "${WORKDIR}/git"
 

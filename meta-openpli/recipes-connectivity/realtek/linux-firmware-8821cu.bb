@@ -3,7 +3,8 @@ HOMEPAGE = "https://www.realtek.com/"
 require conf/license/openpli-gplv2.inc
 
 SRCREV = "${AUTOREV}"
-SRC_URI = "git://gitlab.com/jack2015/8821cu.git;protocol=https;branch=main"
+GIT_SITE = "${@ 'git://gitlab.com/jack2015' if d.getVar('CODEWEBSITE') else 'git://gitee.com/jackgee2021'}"
+SRC_URI = "${GIT_SITE}/8821cu.git;protocol=https;branch=main"
 
 S = "${WORKDIR}/git"
 
