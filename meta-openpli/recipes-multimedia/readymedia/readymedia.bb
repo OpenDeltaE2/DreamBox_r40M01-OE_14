@@ -13,8 +13,7 @@ PKGV = "1.1.0+git${GITPKGV}"
 PR = "r0"
 DEPENDS = "libexif libav libjpeg-turbo libid3tag libvorbis sqlite3 flac"
 
-GIT_SITE = "${@ 'git://gitlab.com/jack2015' if d.getVar('CODEWEBSITE') else 'git://gitee.com/jackgee2021'}"
-SRC_URI = "${GIT_SITE}/minidlna.git;protocol=https;branch=master \
+SRC_URI = "${CODEWEBSITE}/minidlna.git;protocol=https;branch=master \
 			file://readymedia.sh \
 			file://minidlna.conf \
 "

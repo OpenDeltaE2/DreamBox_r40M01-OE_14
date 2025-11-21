@@ -16,8 +16,7 @@ PR = "r0"
 
 INHIBIT_PACKAGE_STRIP = "1"
 
-GIT_SITE = "${@ 'git://gitlab.com/jack2015' if d.getVar('CODEWEBSITE') else 'git://gitee.com/jackgee2021'}"
-SRC_URI = "${GIT_SITE}/grautec;protocol=https;branch=master"
+SRC_URI = "${CODEWEBSITE}/grautec;protocol=https;branch=master"
 
 S = "${WORKDIR}/git"
 

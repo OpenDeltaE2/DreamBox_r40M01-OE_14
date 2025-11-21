@@ -8,8 +8,7 @@ PV = "2+git${SRCPV}"
 PKGV = "2+git${GITPKGV}"
 PR = "3"
 
-GIT_SITE = "${@ 'git://gitlab.com/jack2015' if d.getVar('CODEWEBSITE') else 'git://gitee.com/jackgee2021'}"
-SRC_URI = "${GIT_SITE}/tuxbox-xml.git;protocol=https;branch=master"
+SRC_URI = "${CODEWEBSITE}/tuxbox-xml.git;protocol=https;branch=master"
 S = "${WORKDIR}/git/xml"
 FILES:${PN} = "${sysconfdir}/tuxbox/* ${prefix}/* ${localstatedir}/*"
 

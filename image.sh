@@ -161,7 +161,7 @@ list=($list)
 codes=$(dialog --stdout --clear --colors --menu "Select build code source" 12 60 10 ${list[@]})
     case $codes in
     1)
-    codesource="gitlab"
+    codesource="git://gitlab.com/jack2015"
     codesource2="gitlab"
     ;;
     2)

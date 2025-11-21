@@ -26,8 +26,7 @@ inherit update-rc.d
 
 SRCREV = "1f29cd14d4c3d90d3249d20165a21c2b04ffed26"
 
-GIT_SITE = "${@ 'git://gitlab.com/jack2015' if d.getVar('CODEWEBSITE') else 'git://gitee.com/jackgee2021'}"
-SRC_URI = "${GIT_SITE}/pyload.git;protocol=https;branch=stable \
+SRC_URI = "${CODEWEBSITE}/pyload.git;protocol=https;branch=stable \
 	file://pyload.init \
 	file://pyload.tar.gz.defaults"
 

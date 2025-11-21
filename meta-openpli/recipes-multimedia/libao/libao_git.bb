@@ -14,7 +14,7 @@ PV = "1.2.2+git${SRCPV}"
 PKGV = "1.2.2+git${GITPKGV}"
 PR = "r0"
 
-SRC_URI = "git://gitee.com/jackgee2021/libao.git;protocol=https;branch=master"
+SRC_URI = "${CODEWEBSITE}/libao.git;protocol=https;branch=master"
 
 S = "${WORKDIR}/git"
 

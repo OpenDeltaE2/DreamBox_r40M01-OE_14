@@ -3,8 +3,7 @@ HOMEPAGE = "https://github.com/Dima73/enigma2-plugin-systemplugins-extrafancontr
 LICENSE = "PD"
 LIC_FILES_CHKSUM = "file://README;md5=8e3a3f140c512edb33d2e027096fd1cc"
 
-GIT_SITE = "${@ 'git://gitlab.com/jack2015' if d.getVar('CODEWEBSITE') else 'git://gitee.com/jackgee2021'}"
-SRC_URI = "${GIT_SITE}/enigma2-plugin-systemplugins-extrafancontrol.git;protocol=https;branch=master"
+SRC_URI = "${CODEWEBSITE}/enigma2-plugin-systemplugins-extrafancontrol.git;protocol=https;branch=master"
 S = "${WORKDIR}/git"
 
 inherit gitpkgv

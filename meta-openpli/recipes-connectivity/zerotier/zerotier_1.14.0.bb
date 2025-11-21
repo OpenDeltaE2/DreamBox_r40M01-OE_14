@@ -16,8 +16,7 @@ SRCREV = "${AUTOREV}"
 PV = "1.14.0+git${SRCPV}"
 PKGV = "1.14.0+git${GITPKGV}"
 
-GIT_SITE = "${@ 'git://gitlab.com/jack2015' if d.getVar('CODEWEBSITE') else 'git://gitee.com/jackgee2021'}"
-SRC_URI = "${GIT_SITE}/ZeroTierOne.git;protocol=https;branch=main \
+SRC_URI = "${CODEWEBSITE}/ZeroTierOne.git;protocol=https;branch=main \
         file://zerotier \
         file://0001-accept-external-ldflags.patch \
         file://0003-dont-enable-AES-hwcaps-for-arm.patch \

@@ -12,7 +12,7 @@ PKGV = "3.4+git${GITPKGV}"
 
 DEPENDS = "bitstream libev"
 
-SRC_URI = "git://gitee.com/jackgee2021/dvblast.git;protocol=https;branch=master"
+SRC_URI = "${CODEWEBSITE}/dvblast.git;protocol=https;branch=master"
 
 S = "${WORKDIR}/git"
 

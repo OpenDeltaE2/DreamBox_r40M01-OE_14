@@ -36,9 +36,9 @@ SRCREV = "aaab3ccd2b3b0ff63c1ea821eadc92c1c81ad37f"
 PV = "git${SRCPV}"
 PKGV = "${GITPKGVTAG}"
 
-GIT_SITE = "${@ 'git://gitlab.com/jack2015' if d.getVar('CODEWEBSITE') else 'git://gitee.com/jackgee2021'}"
 
-SRC_URI = "${GIT_SITE}/streamlink-27.git;protocol=https;branch=master"
+
+SRC_URI = "${CODEWEBSITE}/streamlink-27.git;protocol=https;branch=master"
 
 S = "${WORKDIR}/git"
 

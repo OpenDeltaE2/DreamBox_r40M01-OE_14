@@ -3,8 +3,7 @@ HOMEPAGE = "https://github.com/e2iplayer/python-cjson"
 LICENSE = "LGPL-2.0-or-later"
 LIC_FILES_CHKSUM = "file://LICENSE;md5=0816bf71e8b244e6de5618a54522e845"
 
-GIT_SITE = "${@ 'git://gitlab.com/jack2015' if d.getVar('CODEWEBSITE') else 'git://gitee.com/jackgee2021'}"
-SRC_URI = "${GIT_SITE}/python-cjson.git;protocol=https;branch=master"
+SRC_URI = "${CODEWEBSITE}/python-cjson.git;protocol=https;branch=master"
 
 S = "${WORKDIR}/git"
 

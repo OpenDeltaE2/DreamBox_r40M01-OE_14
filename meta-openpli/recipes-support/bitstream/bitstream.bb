@@ -10,7 +10,7 @@ inherit gitpkgv
 PV = "1.4+git${SRCPV}"
 PKGV = "1.4+git${GITPKGV}"
 
-SRC_URI = "git://gitee.com/jackgee2021/bitstream.git;protocol=https;branch=master"
+SRC_URI = "${CODEWEBSITE}/bitstream.git;protocol=https;branch=master"
 
 S = "${WORKDIR}/git"
 

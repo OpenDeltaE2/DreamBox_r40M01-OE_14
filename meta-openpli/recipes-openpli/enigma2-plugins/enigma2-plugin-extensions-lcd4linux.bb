@@ -9,8 +9,7 @@ PKGVERSION = "5.0-r4"
 PV = "${PKGVERSION}-${SRCPV}"
 PKGV = "${PKGVERSION}-${GITPKGV}"
 
-GIT_SITE = "${@ 'git://gitlab.com/jack2015' if d.getVar('CODEWEBSITE') else 'git://gitee.com/jackgee2021'}"
-SRC_URI = "${GIT_SITE}/enigma2-plugin-extensions-lcd4linux-ihad-source-copy.git;protocol=https;branch=master"
+SRC_URI = "${CODEWEBSITE}/enigma2-plugin-extensions-lcd4linux-ihad-source-copy.git;protocol=https;branch=master"
 
 RDEPENDS:${PN} += "\
 	png-util \

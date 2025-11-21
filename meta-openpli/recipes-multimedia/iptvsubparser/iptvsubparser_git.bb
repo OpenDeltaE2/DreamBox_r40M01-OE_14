@@ -10,8 +10,7 @@ PV = "1.1+git${SRCPV}"
 PKGV = "1.1+git${GITPKGV}"
 PR = "r0"
 
-GIT_SITE = "${@ 'git://gitlab.com/jack2015' if d.getVar('CODEWEBSITE') else 'git://gitee.com/jackgee2021'}"
-SRC_URI = "${GIT_SITE}/e2isubparser.git;protocol=https;branch=master"
+SRC_URI = "${CODEWEBSITE}/e2isubparser.git;protocol=https;branch=master"
 
 S = "${WORKDIR}/git"
 

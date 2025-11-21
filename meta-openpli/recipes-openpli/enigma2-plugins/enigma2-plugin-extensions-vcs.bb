@@ -3,8 +3,7 @@ HOMEPAGE = "https://github.com/Dima73/vcs"
 LICENSE = "PD"
 LIC_FILES_CHKSUM = "file://README;md5=8eddbaffb25ee762a200b712d7242dbe"
 
-GIT_SITE = "${@ 'git://gitlab.com/jack2015' if d.getVar('CODEWEBSITE') else 'git://gitee.com/jackgee2021'}"
-SRC_URI = "${GIT_SITE}/vcs.git;protocol=https;branch=master"
+SRC_URI = "${CODEWEBSITE}/vcs.git;protocol=https;branch=master"
 S = "${WORKDIR}/git"
 
 inherit gitpkgv

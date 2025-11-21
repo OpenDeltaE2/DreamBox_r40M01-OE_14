@@ -10,8 +10,7 @@ PV = "${VERSION}+git${SRCPV}"
 PKGV = "${VERSION}+git${GITPKGV}"
 SRCREV = "95d4dd192e659f297e782fd71edbee038f9dc443"
 
-GIT_SITE = "${@ 'git://gitlab.com/jack2015' if d.getVar('CODEWEBSITE') else 'git://gitee.com/jackgee2021'}"
-SRC_URI = "${GIT_SITE}/buildimage.git;protocol=https;branch=master \
+SRC_URI = "${CODEWEBSITE}/buildimage.git;protocol=https;branch=master \
     file://0001-add-e-option-for-warn-only.patch \
 "
 

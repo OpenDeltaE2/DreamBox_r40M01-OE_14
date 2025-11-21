@@ -10,6 +10,5 @@ PR = "r0"
 require conf/license/license-gplv2.inc
 require openplugins-distutils.inc
 
-GIT_SITE = "${@ 'git://gitlab.com/jack2015' if d.getVar('CODEWEBSITE') else 'git://gitee.com/jackgee2021'}"
-SRC_URI = "${GIT_SITE}/e2openplugin-SimpleUmount.git;protocol=https;branch=master"
+SRC_URI = "${CODEWEBSITE}/e2openplugin-SimpleUmount.git;protocol=https;branch=master"
 

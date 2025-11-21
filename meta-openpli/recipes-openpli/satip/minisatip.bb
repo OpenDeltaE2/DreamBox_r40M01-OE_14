@@ -7,8 +7,7 @@ inherit gitpkgv
 PV = "1+git${SRCPV}"
 PKGV = "1+git${GITPKGV}"
 
-GIT_SITE = "${@ 'git://gitlab.com/jack2015' if d.getVar('CODEWEBSITE') else 'git://gitee.com/jackgee2021'}"
-SRC_URI = "${GIT_SITE}/minisatip.git;protocol=https;branch=master"
+SRC_URI = "${CODEWEBSITE}/minisatip.git;protocol=https;branch=master"
 
 FILES:${PN} = "${sbindir}/minisatip"
 

@@ -8,6 +8,6 @@ inherit gitpkgv meson pkgconfig
 PV = "1.0+git${SRCPV}"
 PKGV = "1.0+git${GITPKGV}"
 
-SRC_URI = "git://gitee.com/jackgee2021/edid-decode.git;protocol=https;branch=master"
+SRC_URI = "${CODEWEBSITE}/edid-decode.git;protocol=https;branch=master"
 
 S = "${WORKDIR}/git"

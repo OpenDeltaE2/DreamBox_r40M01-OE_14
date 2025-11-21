@@ -12,8 +12,7 @@ PV = "1.0+git${SRCPV}"
 PKGV = "1.0+git${GITPKGV}"
 PR = "r1"
 
-GIT_SITE = "${@ 'git://gitlab.com/jack2015' if d.getVar('CODEWEBSITE') else 'git://gitee.com/jackgee2021'}"
-SRC_URI = "${GIT_SITE}/rtl-sdr.git;protocol=https;branch=master"
+SRC_URI = "${CODEWEBSITE}/rtl-sdr.git;protocol=https;branch=master"
 S = "${WORKDIR}/git"
 
 EXTRA_OECMAKE += " -DLIB_INSTALL_DIR=${libdir}"
