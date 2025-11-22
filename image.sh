@@ -150,8 +150,8 @@ box=$(dialog --stdout --clear --colors --menu "Build Dreambox Image" 22 70 10 ${
 
 clear
 ## Menu Select build code source ##
-TYPE_1="gitlab"
-TYPE_2="gitee"
+TYPE_1="GitCode(AtomGit)"
+TYPE_2="Gitee"
 list=
 for i in $(seq 1 2); do
     p="TYPE_$i"
@@ -161,8 +161,8 @@ list=($list)
 codes=$(dialog --stdout --clear --colors --menu "Select build code source" 12 60 10 ${list[@]})
     case $codes in
     1)
-    codesource="git://gitlab.com/jack2015"
-    codesource2="gitlab"
+    codesource="git://gitcode.com/jack2015"
+    codesource2="gitcode"
     ;;
     2)
     codesource="git://gitee.com/jackgee2021"
