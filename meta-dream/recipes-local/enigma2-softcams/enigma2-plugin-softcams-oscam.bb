@@ -22,6 +22,7 @@ B = "${S}"
 SRC_URI += " \
     file://oscam.conf \
     file://softcam.${CAMNAME} \
+    file://fix-some-warning.patch \
     "
 
 EXTRA_OECMAKE:mipsel += " \

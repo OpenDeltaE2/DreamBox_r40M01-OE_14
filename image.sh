@@ -151,7 +151,7 @@ box=$(dialog --stdout --clear --colors --menu "Build Dreambox Image" 22 70 10 ${
 clear
 ## Menu Select build code source ##
 TYPE_1="GitCode(AtomGit)"
-TYPE_2="gitee"
+TYPE_2="Gitee"
 list=
 for i in $(seq 1 2); do
     p="TYPE_$i"

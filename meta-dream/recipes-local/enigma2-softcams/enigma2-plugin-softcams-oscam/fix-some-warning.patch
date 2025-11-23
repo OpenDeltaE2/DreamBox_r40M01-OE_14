@@ -1,0 +1,286 @@
+From d0e1b61d098829a495574923eaca003d535080ae Mon Sep 17 00:00:00 2001
+From: jack2015 <344784320@qq.com>
+Date: Mon, 27 Oct 2025 23:11:55 +0800
+Subject: [PATCH] fix some warning
+
+---
+ .gitignore                |  3 +++
+ Makefile                  |  2 +-
+ cscrypt/jet_dh.c          |  2 +-
+ cscrypt/jet_twofish.c     | 41 +++++++++++++++++++++------------------
+ history.txt               |  8 ++++----
+ module-emulator-powervu.c |  2 +-
+ module-newcamd-des.h      |  1 -
+ oscam.c                   |  5 -----
+ reader-jet.c              |  8 ++++----
+ reader-streamguard.c      |  7 ++++---
+ 10 files changed, 40 insertions(+), 39 deletions(-)
+
+diff --git a/.gitignore b/.gitignore
+index 0384ebbf..14beda25 100644
+--- a/.gitignore
++++ b/.gitignore
+@@ -11,6 +11,9 @@ Distribution/list_smargo-*
+ 
+ # build directories
+ /build/.tmp
++/build/dm800se.sh
++/build/dm900.sh
++/Distribution/upx-64-3.94
+ oscam*.tar.gz
+ oscam*.ipk
+ oscam
+diff --git a/Makefile b/Makefile
+index d514d64a..09604b2f 100644
+--- a/Makefile
++++ b/Makefile
+@@ -57,7 +57,7 @@ override STD_DEFS := -D'CS_SVN_VERSION="$(SVN_REV)"'
+ override STD_DEFS += -D'CS_CONFDIR="$(CONF_DIR)"'
+ 
+ # Compiler warnings
+-CC_WARN = -W -Wall -Wshadow -Wredundant-decls -Wstrict-prototypes -Wold-style-definition
++CC_WARN = -W -Wall -Wredundant-decls -Wstrict-prototypes -Wold-style-definition -Wno-shadow
+ 
+ # Compiler optimizations
+ CC_OPTS = -O2 -ggdb -pipe -ffunction-sections -fdata-sections
+diff --git a/cscrypt/jet_dh.c b/cscrypt/jet_dh.c
+index 16fbd209..a5392d43 100644
+--- a/cscrypt/jet_dh.c
++++ b/cscrypt/jet_dh.c
+@@ -336,7 +336,7 @@ static void nm_mult( DH_NUMBERS *m1, DH_NUMBERS *m2, DH_NUMBERS *d )
+ 	ld = 0;
+ 	for (lc = 0, vp = id, p1 = d->values; lc++ < l;)
+ 	{
+-		if ( *p1++ = *vp++ )
++		if ((*p1++ = *vp++))
+ 		    ld = lc;
+ 	}
+ 
+diff --git a/cscrypt/jet_twofish.c b/cscrypt/jet_twofish.c
+index 3f32ec16..d9d1c666 100644
+--- a/cscrypt/jet_twofish.c
++++ b/cscrypt/jet_twofish.c
+@@ -337,7 +337,7 @@ static uint32_t RS_rem( uint32_t x ) {
+ static uint32_t RS_MDS_Encode( uint32_t k0, uint32_t k1) {
+ 	uint32_t r = k1;
+ 	int i;
+-	for (i = 0; i < 4; i++) // shift 1 byte at a time
++	for (i = 0; i < 4; i++)
+ 		r = RS_rem( r );
+ 	r ^= k0;
+ 	for (i = 0; i < 4; i++)
+@@ -357,7 +357,7 @@ static uint32_t F32( int k64Cnt, uint32_t x, uint32_t * k32 ) {
+ 
+ 	uint32_t result = 0;
+ 	switch (k64Cnt & 3) {
+-	case 0:  // same as 4
++	case 0:
+ 		b0 = (P[P_04][b0] & 0xFF) ^ b0(k3);
+ 		b1 = (P[P_14][b1] & 0xFF) ^ b1(k3);
+ 		b2 = (P[P_24][b2] & 0xFF) ^ b2(k3);
+@@ -365,7 +365,7 @@ static uint32_t F32( int k64Cnt, uint32_t x, uint32_t * k32 ) {
+ 		break;
+ 	case 1:
+ 		break;
+-	case 2:                             // 128-bit keys (optimize for this case)
++	case 2:
+ 		b0 = (P[P_01][(P[P_02][b0] & 0xFF) ^ b0(k1)] & 0xFF) ^ b0(k0);
+ 		b1 = (P[P_11][(P[P_12][b1] & 0xFF) ^ b1(k1)] & 0xFF) ^ b1(k0);
+ 		b2 = (P[P_21][(P[P_22][b2] & 0xFF) ^ b2(k1)] & 0xFF) ^ b2(k0);
+@@ -415,8 +415,8 @@ int twofish_setkey(struct twofish_ctx* ctx, uint8_t * key, int length) {
+ 	int k64Cnt = length / 8;
+ 	int subkeyCnt = ROUND_SUBKEYS + 2*ROUNDS;
+ 	uint32_t *sBoxKey = ctx->sBoxKey;
+-	uint32_t k32e[4] = {0}; // even 32-bit entities
+-	uint32_t k32o[4] = {0}; // odd 32-bit entities
++	uint32_t k32e[4] = {0};
++	uint32_t k32o[4] = {0};
+ 
+ 	//
+ 	// split user key material into even and odd 32-bit entities and
+@@ -429,7 +429,7 @@ int twofish_setkey(struct twofish_ctx* ctx, uint8_t * key, int length) {
+ 		offset += 4;
+ 		k32o[i] = getIntLSBO(key, offset);
+ 		offset += 4;
+-		sBoxKey[j] = RS_MDS_Encode( k32e[i], k32o[i] ); // reverse order
++		sBoxKey[j] = RS_MDS_Encode( k32e[i], k32o[i] );
+ 	}
+ 
+ 	// compute the round decryption subkeys for PHT. these same subkeys
+@@ -437,11 +437,11 @@ int twofish_setkey(struct twofish_ctx* ctx, uint8_t * key, int length) {
+ 	uint32_t q, A, B;
+ 	uint32_t *subKeys = ctx->subKeys;
+ 	for (i = q = 0; i < subkeyCnt/2; i++, q += SK_STEP) {
+-		A = F32( k64Cnt, q        , k32e ); // A uses even key entities
+-		B = F32( k64Cnt, q+SK_BUMP, k32o ); // B uses odd  key entities
++		A = F32( k64Cnt, q        , k32e );
++		B = F32( k64Cnt, q+SK_BUMP, k32o );
+ 		B = B << 8 | B >> 24;
+ 		A += B;
+-		subKeys[2*i    ] = A;               // combine with a PHT
++		subKeys[2*i    ] = A;
+ 		A += B;
+ 		subKeys[2*i + 1] = A << SK_ROTL | A >> (32-SK_ROTL);
+ 	}
+@@ -458,27 +458,30 @@ int twofish_setkey(struct twofish_ctx* ctx, uint8_t * key, int length) {
+ 	for (i = 0; i < 256; i++) {
+ 		b0 = b1 = b2 = b3 = i;
+ 		switch (k64Cnt & 3) {
++		case 0:
++		    b0 = (P[P_04][b0] & 0xFF) ^ b0(k3);
++		    b1 = (P[P_14][b1] & 0xFF) ^ b1(k3);
++		    b2 = (P[P_24][b2] & 0xFF) ^ b2(k3);
++		    b3 = (P[P_34][b3] & 0xFF) ^ b3(k3);
++		    break;
+ 		case 1:
+ 		    sBox[      2*i  ] = MDS[0][(P[P_01][b0] & 0xFF) ^ b0(k0)];
+ 		    sBox[      2*i+1] = MDS[1][(P[P_11][b1] & 0xFF) ^ b1(k0)];
+ 		    sBox[0x200+2*i  ] = MDS[2][(P[P_21][b2] & 0xFF) ^ b2(k0)];
+ 		    sBox[0x200+2*i+1] = MDS[3][(P[P_31][b3] & 0xFF) ^ b3(k0)];
+ 		    break;
+-		case 0: // same as 4
+-		    b0 = (P[P_04][b0] & 0xFF) ^ b0(k3);
+-		    b1 = (P[P_14][b1] & 0xFF) ^ b1(k3);
+-		    b2 = (P[P_24][b2] & 0xFF) ^ b2(k3);
+-		    b3 = (P[P_34][b3] & 0xFF) ^ b3(k3);
++		case 2:
++		    sBox[      2*i  ] = MDS[0][(P[P_01][(P[P_02][b0] & 0xFF) ^ b0(k1)] & 0xFF) ^ b0(k0)];
++		    sBox[      2*i+1] = MDS[1][(P[P_11][(P[P_12][b1] & 0xFF) ^ b1(k1)] & 0xFF) ^ b1(k0)];
++		    sBox[0x200+2*i  ] = MDS[2][(P[P_21][(P[P_22][b2] & 0xFF) ^ b2(k1)] & 0xFF) ^ b2(k0)];
++		    sBox[0x200+2*i+1] = MDS[3][(P[P_31][(P[P_32][b3] & 0xFF) ^ b3(k1)] & 0xFF) ^ b3(k0)];
++		    break;
+ 		case 3:
+ 		    b0 = (P[P_03][b0] & 0xFF) ^ b0(k2);
+ 		    b1 = (P[P_13][b1] & 0xFF) ^ b1(k2);
+ 		    b2 = (P[P_23][b2] & 0xFF) ^ b2(k2);
+ 		    b3 = (P[P_33][b3] & 0xFF) ^ b3(k2);
+-		case 2: // 128-bit keys
+-		    sBox[      2*i  ] = MDS[0][(P[P_01][(P[P_02][b0] & 0xFF) ^ b0(k1)] & 0xFF) ^ b0(k0)];
+-		    sBox[      2*i+1] = MDS[1][(P[P_11][(P[P_12][b1] & 0xFF) ^ b1(k1)] & 0xFF) ^ b1(k0)];
+-		    sBox[0x200+2*i  ] = MDS[2][(P[P_21][(P[P_22][b2] & 0xFF) ^ b2(k1)] & 0xFF) ^ b2(k0)];
+-		    sBox[0x200+2*i+1] = MDS[3][(P[P_31][(P[P_32][b3] & 0xFF) ^ b3(k1)] & 0xFF) ^ b3(k0)];
++		    break;
+ 		}
+ 	}
+ 	return 0;
+diff --git a/history.txt b/history.txt
+index 02018c1e..f90ded95 100644
+--- a/history.txt
++++ b/history.txt
+@@ -1,4 +1,7 @@
+-668b0 Merge to r11704 from streamboard.tv
++2840c update file .gitignore
++f8e00 fix some warning
++c5b2e build: clean option clean-first.
++e2adb Merge to r11704 from streamboard.tv
+ 7ec5b [dvbapi] Use the PCR pid when video pid is missing from PMT
+ 29a5f Whitespace cleanup
+ bc23e Merge to r11702 from streamboard.tv
+@@ -95,6 +98,3 @@ b0baa cacheex config page fix
+ d3005 fix for aio cacheex table
+ 25b23 patch for common bugs reported by scan-build
+ 17d69 #4815 AIO is now completely moved to definition CS_CACHEEX_AIO and can be enabled with config.sh
+-3bc89 add missing file
+-8814e delete files
+-df9d7 revert #11623
+diff --git a/module-emulator-powervu.c b/module-emulator-powervu.c
+index 3a82e2b5..c8329d4d 100644
+--- a/module-emulator-powervu.c
++++ b/module-emulator-powervu.c
+@@ -2335,7 +2335,7 @@ static uint8_t get_mode_unmask_emm(uint8_t *extraData)
+ static void unmask_emm(uint8_t *emm)
+ {
+ 	uint32_t crc, i, l;
+-	uint8_t hashModeEmm, modeUnmask, data[30], mask[16];
++	uint8_t hashModeEmm, modeUnmask, data[64], mask[16];
+ 
+ 	uint8_t sourcePos[] =
+ 	{
+diff --git a/module-newcamd-des.h b/module-newcamd-des.h
+index aef00517..25701ac8 100644
+--- a/module-newcamd-des.h
++++ b/module-newcamd-des.h
+@@ -13,6 +13,5 @@ void nc_des(uint8_t key[], uint8_t mode, uint8_t data[]);
+ int nc_des_encrypt(uint8_t *buffer, int len, uint8_t *deskey);
+ int nc_des_decrypt(uint8_t *buffer, int len, uint8_t *deskey);
+ uint8_t *nc_des_login_key_get(uint8_t *key1, uint8_t *key2, int len, uint8_t *des16);
+-void nc_des(uint8_t key[], uint8_t mode, uint8_t data[]);
+ 
+ #endif
+diff --git a/oscam.c b/oscam.c
+index 469aa05a..101df14e 100644
+--- a/oscam.c
++++ b/oscam.c
+@@ -47,11 +47,6 @@
+ 	void stop_stream_server(void);
+ #endif
+ 
+-#ifdef WITH_EMU
+-	void add_emu_reader(void);
+-	void stop_stream_server(void);
+-#endif
+-
+ #ifdef WITH_SSL
+ #include <openssl/crypto.h>
+ #include <openssl/ssl.h>
+diff --git a/reader-jet.c b/reader-jet.c
+index 56ca4c52..0ba78878 100644
+--- a/reader-jet.c
++++ b/reader-jet.c
+@@ -268,7 +268,7 @@ static int32_t jet_card_init(struct s_reader *reader, ATR *newatr)
+ 	int i,len;
+ 	struct twofish_ctx ctx;
+ 
+-	if((hist_size < 14) || (memcmp(hist,"FLASH ATR DVB TESTING", 21) && memcmp(hist, "DVN TECH", 8) != 0)) { return ERROR; }
++	if((hist_size < 14) || (memcmp(hist,"FLASH ATR DVB T", 15) && memcmp(hist, "DVN TECH", 8) != 0)) { return ERROR; }
+ 	if(!(reader->cas_version & 0x010000)) {
+ 		reader->cas_version = (hist[12] - 0x30) * 10 + hist[13] - 0x30;
+ 	}
+@@ -475,9 +475,9 @@ static int32_t jet_card_init(struct s_reader *reader, ATR *newatr)
+ 	}
+ 
+ 
+-	rdr_log_sensitive(reader, "type: jet, caid: %04X, serial: %llu, hex serial: %08llX, boxkey: %s",
+-			reader->caid, (unsigned long long)b2ll(8, reader->hexserial), (unsigned long long)b2ll(8, reader->hexserial),
+-			cs_hexdump(0, reader->boxkey, 32, (char*)buf, sizeof(buf)));
++	rdr_log_sensitive(reader, "Type: Jet, Caid: %04X, Serial: %llu, Hex Serial: %08llX",
++			reader->caid, (unsigned long long)b2ll(8, reader->hexserial), (unsigned long long)b2ll(8, reader->hexserial));
++	rdr_log_sensitive(reader, "DVN Jet Boxkey: %s",cs_hexdump(0, reader->boxkey, 32, (char*)buf, sizeof(buf)));
+ 
+ 	return OK;
+ }
+diff --git a/reader-streamguard.c b/reader-streamguard.c
+index 6e759191..f2d860a5 100644
+--- a/reader-streamguard.c
++++ b/reader-streamguard.c
+@@ -110,7 +110,7 @@ static int32_t streamguard_card_init(struct s_reader *reader, ATR* newatr)
+ 
+ 	uint8_t seed[20] = {0x00, 0x00, 0x00, 0x00, 0x24, 0x30, 0x28, 0x73, 0x40, 0x33,
+ 	                    0x46, 0x2C, 0x6D, 0x2E, 0x7E, 0x3B, 0x3D, 0x6E, 0x3C, 0x37};
+-	uint8_t randkey[16] = {0};
++	uint8_t randkey[128] = {0};
+ 	uint8_t key1[8], key2[8];
+ 	uint8_t data[257];
+ 	uint8_t boxID[4] = {0xFF, 0xFF, 0xFF, 0xFF};
+@@ -431,7 +431,7 @@ static int32_t streamguard_do_ecm(struct s_reader *reader, const ECM_REQUEST *er
+ 		des_ecb_decrypt(ea->cw, key1, sizeof(ea->cw));  //decrypt
+ 	}
+ 
+-	rdr_log(reader, "do_ecm: tag=%x", tag);
++	//rdr_log(reader, "do_ecm: tag=%x", tag);
+ 	if (tag != 0x120 && tag != 0x100 && tag != 0x10A && tag != 0x101 && tag != 0x47 && tag != 0x92 && tag != 0xDE \
+ 	    && tag != 0x116 && tag != 0x1D6 && tag != 0xCD && tag != 0x3D && tag != 0x1D3 && tag != 0x16E && tag != 0x07) {
+ 		int32_t a=b2i(2, data);
+@@ -593,7 +593,8 @@ static int32_t streamguard_card_info(struct s_reader *reader)
+ 		int j=0;
+ 		get_subscription_cmd[10] = reader->prid[i][2];
+ 		get_subscription_cmd[11] = reader->prid[i][3];
+-                for(;;){
++		int n;
++		for(n = 0; n < 10; n++){
+ 			get_subscription_cmd[5] = bankid;
+ 			write_cmd(get_subscription_cmd, get_subscription_cmd + 5);
+ 			if((cta_res[cta_lr - 2] & 0xF0) != 0x60) {
+-- 
+Gitee
+
