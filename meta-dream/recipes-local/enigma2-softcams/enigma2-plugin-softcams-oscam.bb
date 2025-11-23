@@ -14,7 +14,7 @@ LDFLAGS:prepend = "-ldvbcsa "
 inherit cmake gitpkgv
 
 SRCREV = "${AUTOREV}"
-SRC_URI = "git://gitee.com/jackgee2021/oscam-nx111.git;protocol=https;branch=master"
+SRC_URI = "${CODEWEBSITE}/oscam-nx111.git;protocol=https;branch=master"
 
 S = "${WORKDIR}/git"
 B = "${S}"
@@ -22,6 +22,7 @@ B = "${S}"
 SRC_URI += " \
     file://oscam.conf \
     file://softcam.${CAMNAME} \
+    file://fix-some-warning.patch \
     "
 
 EXTRA_OECMAKE:mipsel += " \

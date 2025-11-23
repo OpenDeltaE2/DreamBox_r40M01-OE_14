@@ -11,8 +11,8 @@ DEPENDS = "openssl"
 PKGV = "4.x+git${GITPKGV}"
 PV = "4.x+git${SRCPV}"
 
-GIT_SITE = "${@ 'git://gitlab.com/jack2015' if d.getVar('CODEWEBSITE') else 'git://gitee.com/jackgee2021'}"
-SRC_URI = "${GIT_SITE}/ofgwrite.git;protocol=https;branch=master"
+
+SRC_URI = "${CODEWEBSITE}/ofgwrite.git;protocol=https;branch=master"
 
 S = "${WORKDIR}/git"
 

@@ -29,9 +29,9 @@ inherit gitpkgv pythonnative pkgconfig
 PV = "y-git${SRCPV}"
 PKGV = "y-git${GITPKGV}"
 
-GIT_SITE = "${@ 'git://gitlab.com/jack2015' if d.getVar('CODEWEBSITE') else 'git://gitee.com/jackgee2021'}"
 
-SRC_URI = "${GIT_SITE}/enigma2-plugins.git;protocol=https;branch=master"
+
+SRC_URI = "${CODEWEBSITE}/enigma2-plugins.git;protocol=https;branch=master"
 
 EXTRA_OECONF = " \
 	BUILD_SYS=${BUILD_SYS} \

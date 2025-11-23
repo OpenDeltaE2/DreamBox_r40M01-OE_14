@@ -6,9 +6,9 @@ LICENSE = "GPL-3.0-only"
 LIC_FILES_CHKSUM = "file://COPYING;md5=d32239bcb673463ab874e80d47fae504"
 DEPENDS = "openssl libdvbcsa libaio"
 
-GIT_SITE = "${@ 'git://gitlab.com/jack2015' if d.getVar('CODEWEBSITE') else 'git://gitee.com/jackgee2021'}"
 
-SRC_URI = "${GIT_SITE}/astra-sm.git;protocol=https;branch=staging \
+
+SRC_URI = "${CODEWEBSITE}/astra-sm.git;protocol=https;branch=staging \
            file://replace-sys-siglist.patch \
            "
 

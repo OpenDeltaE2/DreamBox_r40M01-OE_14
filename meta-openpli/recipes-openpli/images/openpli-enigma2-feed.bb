@@ -94,7 +94,6 @@ OPTIONAL_PACKAGES += " \
 	usb-modeswitch-data \
 	ushare \
 	v4l-utils \
-	vim \
 	wscan \
 	xfsprogs \
 	yafc \

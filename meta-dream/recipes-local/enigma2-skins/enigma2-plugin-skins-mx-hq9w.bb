@@ -10,8 +10,8 @@ PV = "1.0+git${SRCPV}"
 PKGV = "1.0+git${GITPKGV}"
 SRCREV = "${AUTOREV}"
 
-GIT_SITE = "${@ 'git://gitlab.com/jack2015' if d.getVar('CODEWEBSITE') else 'git://gitee.com/jackgee2021'}"
-SRC_URI= "${GIT_SITE}/skin-BH-PLI.git;protocol=https;branch=master"
+
+SRC_URI= "${CODEWEBSITE}/skin-BH-PLI.git;protocol=https;branch=master"
 
 S = "${WORKDIR}/git"
 
