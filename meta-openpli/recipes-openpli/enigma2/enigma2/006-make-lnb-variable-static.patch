@@ -1,8 +1,17 @@
+From 2e872eba1387ffa552fdaa2f1569f82b73b99bbd Mon Sep 17 00:00:00 2001
+From: jack2015 <344784320@qq.com>
+Date: Sun, 23 Nov 2025 13:44:24 +0800
+Subject: [PATCH] update
+
+---
+ lib/dvb/sec.cpp | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
 diff --git a/lib/dvb/sec.cpp b/lib/dvb/sec.cpp
-index 6234d83a9..6f0456c75 100644
+index 6234d83a9..bf85f4537 100644
 --- a/lib/dvb/sec.cpp
 +++ b/lib/dvb/sec.cpp
-@@ -1276,7 +1276,7 @@ RESULT eDVBSatelliteEquipmentControl::clear()
+@@ -1276,14 +1276,14 @@ RESULT eDVBSatelliteEquipmentControl::clear()
  /* LNB Specific Parameters */
  RESULT eDVBSatelliteEquipmentControl::addLNB()
  {
@@ -11,3 +20,15 @@ index 6234d83a9..6f0456c75 100644
  	lnb.m_slot_mask = 0;
  	lnb.m_prio = -1; // auto
  	lnb.m_advanced_satposdepends = -1;
+ 	m_lnbidx++;
+ 	m_lnbs.push_back(lnb);
+-	m_curSat = lnb.m_satellites.end();
+-	eSecDebug("[eDVBSatelliteEquipmentControl::addLNB] lnb=%d)", m_lnbidx);
++	m_curSat = (m_lnbs.end() - 1)->m_satellites.end();
++	eSecDebug("[eDVBSatelliteEquipmentControl::addLNB] lnb=%d", m_lnbidx);
+ 	return 0;
+ }
+ 
+-- 
+Gitee
+
