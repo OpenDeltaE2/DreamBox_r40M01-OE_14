@@ -1,5 +1,5 @@
 MODULE = "AutoShutDown"
-DESCRIPTION = "automated power off for STB"
+SUMMARY = "automated power off for STB"
 PACKAGE_ARCH = "${MACHINE_ARCH}"
 
 inherit autotools gettext gitpkgv

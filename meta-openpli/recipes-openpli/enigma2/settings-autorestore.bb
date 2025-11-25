@@ -1,4 +1,4 @@
-DESCRIPTION = "Autorecover settings and install packages at first boot from /media/*/backup"
+SUMMARY = "Autorecover settings and install packages at first boot from /media/*/backup"
 PACKAGES = "${PN}"
 MAINTAINER = "OpenPLi team"
 

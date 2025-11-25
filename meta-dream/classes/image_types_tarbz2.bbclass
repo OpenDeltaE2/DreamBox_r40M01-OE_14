@@ -22,7 +22,6 @@ CONVERSION_CMD:bz2 = " \
     cp ${IMAGE_NAME}.tar.bz2 ${IMAGEDIR}/rootfs.tar.bz2; \
     zip ${IMAGEVERSION}.zip ${IMAGEDIR}/*; \
     rm -f *.manifest; \
-    rm -f *.tar.zst; \
     rm -rf ${IMAGEDIR}; \
     "
 

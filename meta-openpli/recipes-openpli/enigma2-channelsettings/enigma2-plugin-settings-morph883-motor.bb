@@ -1,4 +1,4 @@
-DESCRIPTION = "Morph883 Motor channel settings"
+SUMMARY = "Morph883 Motor channel settings"
 
 SETTINGS_FILENAME = "morph883_motor"
 

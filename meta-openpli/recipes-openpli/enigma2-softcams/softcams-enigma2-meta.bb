@@ -1,4 +1,4 @@
-DESCRIPTION = "meta file for enigma2 softcam packages"
+SUMMARY = "meta file for enigma2 softcam packages"
 
 require conf/license/openpli-gplv2.inc
 

@@ -1,4 +1,4 @@
-DESCRIPTION = "Plugin for managing autofs files, mount and umount"
+SUMMARY = "Plugin for managing autofs files, mount and umount"
 MAINTAINER = "ims"
 LICENSE = "GPL-2.0-only"
 LIC_FILES_CHKSUM = "file://LICENSE;md5=9432c1f3d564948269193fd19a0ad0fd"

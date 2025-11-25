@@ -1,4 +1,4 @@
-DESCRIPTION = "E2OpenPlugins Task"
+SUMMARY = "E2OpenPlugins Task"
 PR = "r0"
 
 inherit packagegroup

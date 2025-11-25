@@ -1,4 +1,4 @@
-DESCRIPTION = "serviceapp service for enigma2"
+SUMMARY = "serviceapp service for enigma2"
 AUTHOR = "Maroš Ondrášek <mx3ldev@gmail.com>"
 LICENSE = "GPL-2.0-only"
 LIC_FILES_CHKSUM = "file://COPYING;md5=b234ee4d69f5fce4486a80fdaf4a4263"
@@ -8,8 +8,6 @@ PACKAGE_ARCH = "${MACHINE_ARCH}"
 DEPENDS = "enigma2 uchardet openssl"
 RDEPENDS:${PN} = "enigma2 uchardet openssl python-json"
 RRECOMMENDS:${PN} = "exteplayer3 gstplayer"
-
-
 
 SRC_URI = "${CODEWEBSITE}/serviceapp.git;protocol=https;branch=develop"
 

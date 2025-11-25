@@ -1,4 +1,4 @@
-DESCRIPTION = "Firewall"
+SUMMARY = "Firewall"
 
 require conf/license/openpli-gplv2.inc
 

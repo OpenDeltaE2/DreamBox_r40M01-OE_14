@@ -1,5 +1,4 @@
 SUMMARY = "Setup Enigma2 to act as HR-Tuner Proxy"
-DESCRIPTION = "Setup Enigma2 to act as HR-Tuner Proxy"
 MAINTAINER = "OpenViX"
 LICENSE = "Proprietary"
 LIC_FILES_CHKSUM = "file://LICENSE;md5=a23a74b3f4caf9616230789d94217acb"

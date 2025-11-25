@@ -1,5 +1,5 @@
 PV = "20110114"
-DESCRIPTION = "Tune kernel parameters in /etc/sysconf"
+SUMMARY = "Tune kernel parameters in /etc/sysconf"
 
 require conf/license/openpli-gplv2.inc
 

@@ -1,5 +1,5 @@
 MODULE = "WakeOnLan"
-DESCRIPTION = "Send a WOL packet to devices"
+SUMMARY = "Send a WOL packet to devices"
 
 require conf/license/license-gplv2.inc
 require openplugins-distutils.inc

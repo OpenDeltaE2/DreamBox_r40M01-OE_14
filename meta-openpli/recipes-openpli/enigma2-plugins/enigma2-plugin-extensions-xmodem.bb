@@ -1,4 +1,4 @@
-DESCRIPTION = "plugin to connect to internet via any modems"
+SUMMARY = "plugin to connect to internet via any modems"
 HOMEPAGE = "https://github.com/Dima73/enigma2-plugin-extensions-xmodem"
 LICENSE = "PD"
 LIC_FILES_CHKSUM = "file://README;md5=00f286ed22b8ad579d0715884c7639a9"

@@ -1,5 +1,5 @@
 MODULE = "PPanel"
-DESCRIPTION = "PPanel"
+SUMMARY = "PPanel"
 
 require conf/license/license-gplv2.inc
 require openplugins-replace-pli.inc

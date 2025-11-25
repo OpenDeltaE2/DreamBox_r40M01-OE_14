@@ -1,5 +1,5 @@
 MODULE = "NfsServer"
-DESCRIPTION = "NFS server configuration"
+SUMMARY = "NFS server configuration"
 
 RDEPENDS:${PN} = "nfs-utils"
 

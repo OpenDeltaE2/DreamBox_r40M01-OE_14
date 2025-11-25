@@ -1,4 +1,4 @@
-DESCRIPTION = "Configuration files for 3rd-party feeds"
+SUMMARY = "Configuration files for 3rd-party feeds"
 
 PV="1.1"
 

@@ -1,4 +1,4 @@
-DESCRIPTION = "Hans Cable-settings"
+SUMMARY = "Hans Cable-settings"
 
 SETTINGS_FILENAME = "e2_hanssettings_kabelNL"
 

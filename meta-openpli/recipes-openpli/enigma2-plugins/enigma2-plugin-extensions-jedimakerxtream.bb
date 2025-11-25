@@ -1,4 +1,4 @@
-DESCRIPTION = "Jedi Maker Xtream (Enigma2 IPTV Bouquet Creator)"
+SUMMARY = "Jedi Maker Xtream (Enigma2 IPTV Bouquet Creator)"
 MAINTAINER = "kiddac"
 require conf/license/license-gplv2.inc
 HOMEPAGE = "https://github.com/kiddac/Jedi_Maker_Xtream"

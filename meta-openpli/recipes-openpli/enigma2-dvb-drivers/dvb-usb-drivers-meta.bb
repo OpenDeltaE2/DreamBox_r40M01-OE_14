@@ -1,4 +1,4 @@
-DESCRIPTION = "meta file for USB DVB drivers"
+SUMMARY = "meta file for USB DVB drivers"
 
 require dvb-usb-drivers-meta.inc
 

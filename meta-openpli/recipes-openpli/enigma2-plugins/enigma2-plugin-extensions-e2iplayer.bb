@@ -1,5 +1,4 @@
 SUMMARY = "E2i Player for E2"
-DESCRIPTION = "E2i Player for E2"
 HOMEPAGE = "http://www.iptvplayer.gitlab.io/"
 SECTION = "multimedia"
 LICENSE = "GPL-3.0-only"

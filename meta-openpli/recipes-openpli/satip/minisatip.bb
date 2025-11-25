@@ -1,4 +1,4 @@
-DESCRIPTION = "SAT>IP server"
+SUMMARY = "SAT>IP server"
 MAINTAINER = "PLi team"
 require conf/license/openpli-gplv2.inc
 

@@ -1,5 +1,5 @@
 MODULE = "Bitrate"
-DESCRIPTION = "Bitrate viewer"
+SUMMARY = "Bitrate viewer"
 
 require conf/license/license-gplv2.inc
 

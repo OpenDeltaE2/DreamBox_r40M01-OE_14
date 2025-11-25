@@ -1,6 +1,6 @@
 require conf/license/openpli-gplv2.inc
 
-DESCRIPTION = "meta file for settings"
+SUMMARY = "meta file for settings"
 
 inherit allarch
 

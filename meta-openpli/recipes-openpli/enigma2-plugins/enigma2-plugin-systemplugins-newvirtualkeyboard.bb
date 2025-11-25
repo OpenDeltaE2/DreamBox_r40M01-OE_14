@@ -1,9 +1,7 @@
-DESCRIPTION = "NewVirtualKeyBoard plugin by mfaraj57"
+SUMMARY = "NewVirtualKeyBoard plugin by mfaraj57"
 MAINTAINER = "Open Vision Developers"
 LICENSE = "GPL-3.0-only"
 LIC_FILES_CHKSUM = "file://LICENSE;md5=1ebbd3e34237af26da5dc08a4e440464"
-
-
 
 SRC_URI = "${CODEWEBSITE}/NewVirtualKeyBoard.git;protocol=https;branch=master"
 

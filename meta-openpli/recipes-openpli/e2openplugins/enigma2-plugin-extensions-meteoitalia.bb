@@ -1,5 +1,5 @@
 MODULE = "MeteoItalia"
-DESCRIPTION = "Forecast Italy"
+SUMMARY = "Forecast Italy"
 
 inherit gitpkgv
 PV = "1.0+git${SRCPV}"
