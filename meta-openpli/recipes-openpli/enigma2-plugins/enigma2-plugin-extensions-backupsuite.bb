@@ -1,4 +1,4 @@
-DESCRIPTION = "Backup Suite"
+SUMMARY = "Backup Suite"
 LICENSE = "GPL-3.0-only"
 MAINTAINER = "Open Vision Developers"
 AUTHOR = "Pedro Newbie <pedro.newbie@gmail.com>"

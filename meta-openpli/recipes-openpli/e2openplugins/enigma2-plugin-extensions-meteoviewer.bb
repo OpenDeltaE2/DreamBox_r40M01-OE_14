@@ -1,5 +1,5 @@
 MODULE = "MeteoViewer"
-DESCRIPTION = "meteo pictures viewer"
+SUMMARY = "meteo pictures viewer"
 
 require conf/license/license-gplv2.inc
 require openplugins-replace-pli.inc

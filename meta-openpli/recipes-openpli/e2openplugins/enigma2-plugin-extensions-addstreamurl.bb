@@ -1,5 +1,5 @@
 MODULE = "AddStreamUrl"
-DESCRIPTION = "Add a stream url to your channellist"
+SUMMARY = "Add a stream url to your channellist"
 
 require conf/license/license-gplv2.inc
 

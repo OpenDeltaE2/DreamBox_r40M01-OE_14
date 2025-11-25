@@ -1,4 +1,4 @@
-DESCRIPTION = "Autorecover settings and install packages at first boot from /media/*/backup"
+SUMMARY = "Autorecover settings and install packages at first boot from /media/*/backup"
 PACKAGES = "${PN}"
 MAINTAINER = "OpenPLi team"
 
@@ -6,14 +6,15 @@ require conf/license/openpli-gplv2.inc
 
 PV = "2021081701"
 
-SRC_URI = " file://convert-smbconf.py \
-			file://settings-restore.sh \
+SRC_URI = " \
+	file://convert-smbconf.py \
+	file://settings-restore.sh \
 "
 
 # Need to tell bitbake that we have extra files installed
 FILES:${PN} = " \
-			${sysconfdir} \
-			${base_bindir} \
+	${sysconfdir} \
+	${base_bindir} \
 "
 
 S = "${WORKDIR}"

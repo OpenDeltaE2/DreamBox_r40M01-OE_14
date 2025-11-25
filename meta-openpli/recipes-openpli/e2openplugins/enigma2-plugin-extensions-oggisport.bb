@@ -1,5 +1,5 @@
 MODULE = "OggiSport"
-DESCRIPTION = "Italian daily Sport Tv guide"
+SUMMARY = "Italian daily Sport Tv guide"
 
 inherit gitpkgv
 PV = "1.0+git${SRCPV}"

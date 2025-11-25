@@ -1,5 +1,5 @@
 MODULE = "AntiLogo"
-DESCRIPTION = "Prevent logo retention"
+SUMMARY = "Prevent logo retention"
 
 require conf/license/license-gplv2.inc
 

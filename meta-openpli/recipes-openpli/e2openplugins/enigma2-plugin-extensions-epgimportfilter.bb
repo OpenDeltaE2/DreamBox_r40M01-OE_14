@@ -1,5 +1,5 @@
 MODULE = "EPGImportFilter"
-DESCRIPTION = "EPGImport Filter"
+SUMMARY = "EPGImport Filter"
 
 RDEPENDS:${PN} = "\
 	python-difflib \

@@ -1,4 +1,4 @@
-DESCRIPTION = "Frequency lists"
+SUMMARY = "Frequency lists"
 MAINTAINER = "PLi team"
 
 require conf/license/openpli-gplv2.inc

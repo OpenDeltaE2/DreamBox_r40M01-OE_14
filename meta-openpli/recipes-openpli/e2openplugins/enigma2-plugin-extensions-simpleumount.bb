@@ -1,5 +1,5 @@
 MODULE = "SimpleUmount"
-DESCRIPTION = "Unmounter for mass storage devices"
+SUMMARY = "Unmounter for mass storage devices"
 MAINTAINTER = "ambrosa"
 
 inherit gitpkgv

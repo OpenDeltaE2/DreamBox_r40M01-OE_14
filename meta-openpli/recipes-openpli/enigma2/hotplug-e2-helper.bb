@@ -1,4 +1,4 @@
-DESCIPTION = "helper tool to deliver hotplug events to e2"
+SUMMARY = "helper tool to deliver hotplug events to e2"
 MAINTAINER = "PLi team"
 LICENSE = "GPL-2.0-only"
 LIC_FILES_CHKSUM = "file://bdpoll.c;startline=9;endline=20;md5=d903287e43d72c0f608fd5b718e88450"

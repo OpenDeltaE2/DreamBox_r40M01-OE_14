@@ -1,4 +1,4 @@
-DESCRIPTION = "Multi boot loader manager for enigma2 box"
+SUMMARY = "Multi boot loader manager for enigma2 box"
 HOMEPAGE = "https://github.com/Dima73/pli-openmultibootmanager"
 LICENSE = "PD"
 LIC_FILES_CHKSUM = "file://COPYING;md5=b234ee4d69f5fce4486a80fdaf4a4263"

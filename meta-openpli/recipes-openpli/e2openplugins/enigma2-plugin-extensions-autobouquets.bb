@@ -1,4 +1,3 @@
-DESCRIPTION = "28.2E stream bouquet downloader"
 SUMMARY = "scan dvb data for automatic bouquets creation on Enigma2 STB"
 MAINTAINER = "LraiZer"
 HOMEPAGE = "https://github.com/LraiZer/AutoBouquets"

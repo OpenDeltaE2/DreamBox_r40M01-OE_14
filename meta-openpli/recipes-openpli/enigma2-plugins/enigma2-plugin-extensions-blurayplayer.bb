@@ -1,5 +1,4 @@
 SUMMARY = "Enigma2 plugin to play Blu-ray discs"
-DESCRIPTION = "Small plugin to to play Blu-ray discs"
 HOMEPAGE = "https://github.com/Taapat/enigma2-plugin-blurayplayer"
 SECTION = "multimedia"
 LICENSE = "GPL-2.0-only"

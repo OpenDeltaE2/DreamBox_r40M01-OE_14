@@ -1,4 +1,4 @@
-DESCRIPTION = "OpenPLi bootlogo"
+SUMMARY = "OpenPLi bootlogo"
 SECTION = "base"
 PRIORITY = "required"
 MAINTAINER = "PLi team"

@@ -1,6 +1,5 @@
-DESCRIPTION = "Imports XMLTV and epg.dat files into the EPG cache of enigma2"
+SUMMARY = "Imports XMLTV and epg.dat files into the EPG cache of enigma2"
 MAINTAINER = "OpenPLi team"
-
 LICENSE = "GPL-2.0-only"
 LIC_FILES_CHKSUM = "file://../etc/epgimport/readme.txt;startline=1;endline=4;md5=c162054328d930d453543efef81be1d8"
 
@@ -8,8 +7,6 @@ inherit gitpkgv
 
 PV = "1.0+git${SRCPV}"
 PKGV = "1.0+git${GITPKGV}"
-
-
 
 SRC_URI = "${CODEWEBSITE}/enigma2-plugin-extensions-epgimport.git;protocol=https;branch=master"
 

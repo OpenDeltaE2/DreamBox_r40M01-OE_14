@@ -1,6 +1,6 @@
 inherit kernel machine_kernel_pr
 
-MACHINE_KERNEL_PR:append = ".26"
+MACHINE_KERNEL_PR = "r26"
 
 COMPATIBLE_MACHINE = "^(dm900|dm920)$"
 

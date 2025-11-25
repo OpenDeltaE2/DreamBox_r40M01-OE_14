@@ -1,4 +1,4 @@
-DESCRIPTION = "gstreamer subsink plugin"
+SUMMARY = "gstreamer subsink plugin"
 SECTION = "multimedia"
 PRIORITY = "optional"
 DEPENDS = "gstreamer1.0 gstreamer1.0-plugins-base glib-2.0 glib-2.0-native"
