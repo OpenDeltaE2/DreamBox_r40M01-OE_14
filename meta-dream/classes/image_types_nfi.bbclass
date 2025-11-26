@@ -1,5 +1,3 @@
-inherit image_types
-
 UBI_VOLNAME = "rootfs"
 UBINIZE_VOLSIZE ?= "0"
 UBINIZE_DATAVOLSIZE ?= "0"
@@ -8,10 +6,7 @@ EXTRA_BUILDCMD ?= ""
 PDATE = "${DATE}"
 PDATE[vardepsexclude] += "DATE"
 
-IMAGE_CMD:jffs2 = " \
-	rm -f ${DEPLOY_DIR_IMAGE}/*.jffs2; \
-	rm -f ${DEPLOY_DIR_IMAGE}/*.json; \
-	rm -f ${DEPLOY_DIR_IMAGE}/*.manifest; \
+IMAGE_CMD:jffs2nfi = " \
 	mkfs.jffs2 \
 		--root=${IMAGE_ROOTFS}/boot \
 		--disable-compressor=lzo \
@@ -35,12 +30,7 @@ IMAGE_CMD:jffs2 = " \
 	rm -f ${DEPLOY_DIR_IMAGE}/*.nfi; \
 "
 
-IMAGE_CMD:ubifs = " \
-	rm -f ${DEPLOY_DIR_IMAGE}/*.jffs2; \
-	rm -f ${DEPLOY_DIR_IMAGE}/*.json; \
-	rm -f ${DEPLOY_DIR_IMAGE}/*.manifest; \
-	rm -f ${DEPLOY_DIR_IMAGE}/*.ubi; \
-	rm -f ${DEPLOY_DIR_IMAGE}/*.ubifs; \
+IMAGE_CMD:ubinfi = " \
 	mkfs.jffs2 \
 		--root=${IMAGE_ROOTFS}/boot \
 		--disable-compressor=lzo \
@@ -66,7 +56,7 @@ IMAGE_CMD:ubifs = " \
 			echo vol_name=data >> ubinize.cfg; \
 			echo vol_size=${UBINIZE_DATAVOLSIZE} >> ubinize.cfg; \
 			echo vol_flags=autoresize >> ubinize.cfg; \
-			printf '/dev/ubi0_1\t/data\t\tubifs\trw,nofail\t\t\t\t0 0\n' >> ${IMAGE_ROOTFS}/etc/fstab; \
+			printf '/dev/ubi0_1\t/data\t\tubifs\trw\t\t\t\t0 0\n' >> ${IMAGE_ROOTFS}/etc/fstab; \
 			install -d ${IMAGE_ROOTFS}/data; \
 		fi; \
 	fi; \
@@ -85,10 +75,12 @@ IMAGE_CMD:ubifs = " \
 	rm -f ${DEPLOY_DIR_IMAGE}/*.nfi; \
 "
 
-EXTRA_IMAGECMD:jffs2 = "-e ${DREAMBOX_ERASE_BLOCK_SIZE} -n -l"
-EXTRA_IMAGECMD:ubifs = "-e ${DREAMBOX_ERASE_BLOCK_SIZE} -n -l"
+EXTRA_IMAGECMD:jffs2nfi ?= "-e ${DREAMBOX_ERASE_BLOCK_SIZE} -n -l"
+EXTRA_IMAGECMD:ubinfi ?= "-e ${DREAMBOX_ERASE_BLOCK_SIZE} -n -l"
 
-do_image_jffs2[depends] += "mtd-utils-native:do_populate_sysroot dreambox-buildimage-native:do_populate_sysroot"
-do_image_ubifs[depends] += "mtd-utils-native:do_populate_sysroot dreambox-buildimage-native:do_populate_sysroot"
+do_image_jffs2nfi[depends] += "mtd-utils-native:do_populate_sysroot dreambox-buildimage-native:do_populate_sysroot"
+do_image_ubinfi[depends] += "mtd-utils-native:do_populate_sysroot dreambox-buildimage-native:do_populate_sysroot"
+
+IMAGE_TYPES += "jffs2nfi ubinfi"
 
 REPRODUCIBLE_TIMESTAMP_ROOTFS = "${@time.strftime('%s')}"
