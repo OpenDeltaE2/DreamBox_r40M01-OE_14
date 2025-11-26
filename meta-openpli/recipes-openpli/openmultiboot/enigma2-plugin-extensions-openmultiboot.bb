@@ -6,8 +6,8 @@ LIC_FILES_CHKSUM = "file://COPYING;md5=b234ee4d69f5fce4486a80fdaf4a4263"
 RDEPENDS:${PN} = "python-subprocess mtd-utils mtd-utils-ubifs openmultiboot"
 RRECOMMENDS:${PN} = "kernel-module-nandsim kernel-module-block2mtd"
 inherit gitpkgv distutils-openplugins
-PV = "4.0+git${SRCPV}"
-PKGV = "4.0+git${GITPKGV}"
+PV = "1.0+git${SRCPV}"
+PKGV = "1.0+git${GITPKGV}"
 
 INHIBIT_PACKAGE_STRIP = "1"
 INSANE_SKIP:${PN}:append = " already-stripped"

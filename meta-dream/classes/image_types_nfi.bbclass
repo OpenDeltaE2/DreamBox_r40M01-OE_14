@@ -9,15 +9,20 @@ PDATE = "${DATE}"
 PDATE[vardepsexclude] += "DATE"
 
 IMAGE_CMD:jffs2 = " \
+	rm -f ${DEPLOY_DIR_IMAGE}/*.jffs2; \
+	rm -f ${DEPLOY_DIR_IMAGE}/*.json; \
+	rm -f ${DEPLOY_DIR_IMAGE}/*.manifest; \
 	mkfs.jffs2 \
 		--root=${IMAGE_ROOTFS}/boot \
-		--compression-mode=none \
+		--disable-compressor=lzo \
+		--compression-mode=size \
 		--output=${DEPLOY_DIR_IMAGE}/${IMAGE_NAME}.boot.jffs2 \
 		${EXTRA_IMAGECMD}; \
 	rm -rf ${IMAGE_ROOTFS}/boot/*; \
 	mkfs.jffs2 \
 		--root=${IMAGE_ROOTFS} \
-		--compression-mode=none \
+		--disable-compressor=lzo \
+		--compression-mode=size \
 		--output=${IMGDEPLOYDIR}/${IMAGE_NAME}${IMAGE_NAME_SUFFIX}.jffs2 \
 		${EXTRA_IMAGECMD}; \
 	${DREAMBOX_BUILDIMAGE} \
@@ -31,9 +36,15 @@ IMAGE_CMD:jffs2 = " \
 "
 
 IMAGE_CMD:ubifs = " \
+	rm -f ${DEPLOY_DIR_IMAGE}/*.jffs2; \
+	rm -f ${DEPLOY_DIR_IMAGE}/*.json; \
+	rm -f ${DEPLOY_DIR_IMAGE}/*.manifest; \
+	rm -f ${DEPLOY_DIR_IMAGE}/*.ubi; \
+	rm -f ${DEPLOY_DIR_IMAGE}/*.ubifs; \
 	mkfs.jffs2 \
 		--root=${IMAGE_ROOTFS}/boot \
-		--compression-mode=none \
+		--disable-compressor=lzo \
+		--compression-mode=size \
 		--output=${DEPLOY_DIR_IMAGE}/${IMAGE_NAME}.boot.jffs2 \
 		${EXTRA_IMAGECMD}; \
 	rm -rf ${IMAGE_ROOTFS}/boot/*; \
@@ -55,7 +66,7 @@ IMAGE_CMD:ubifs = " \
 			echo vol_name=data >> ubinize.cfg; \
 			echo vol_size=${UBINIZE_DATAVOLSIZE} >> ubinize.cfg; \
 			echo vol_flags=autoresize >> ubinize.cfg; \
-			printf '/dev/ubi0_1\t/data\t\tubifs\trw\t\t\t\t0 0\n' >> ${IMAGE_ROOTFS}/etc/fstab; \
+			printf '/dev/ubi0_1\t/data\t\tubifs\trw,nofail\t\t\t\t0 0\n' >> ${IMAGE_ROOTFS}/etc/fstab; \
 			install -d ${IMAGE_ROOTFS}/data; \
 		fi; \
 	fi; \
