@@ -7,9 +7,6 @@ IMAGE_INSTALL:remove = "settings-autorestore"
 
 IMAGE_INSTALL:append = " \
 	bitratecalc \
-	ffmpeg \
-	exteplayer3 \
-	gstplayer \
 	busybox-cron \
 	"
 
@@ -35,9 +32,7 @@ ENIGMA2_PLUGINS = " \
 	enigma2-plugin-extensions-audiosync \
 	enigma2-plugin-extensions-autobackup \
 	enigma2-plugin-extensions-cutlisteditor \
-	enigma2-plugin-extensions-cacheflush \
 	enigma2-plugin-extensions-epgimport \
-	enigma2-plugin-extensions-e2iplayer \
 	enigma2-plugin-extensions-filecommander \
 	enigma2-plugin-extensions-graphmultiepg \
 	enigma2-plugin-extensions-mediaplayer \
@@ -46,6 +41,7 @@ ENIGMA2_PLUGINS = " \
 	enigma2-plugin-extensions-openwebif \
 	enigma2-plugin-extensions-oscamstatus \
 	enigma2-plugin-extensions-pictureplayer \
+	enigma2-plugin-softcams-oscam \
 	enigma2-plugin-softcams-oscam-emu \
 	enigma2-plugin-extensions-openmultiboot \
 	openmultiboot \
@@ -54,7 +50,6 @@ ENIGMA2_PLUGINS = " \
 	enigma2-plugin-systemplugins-mphelp \
 	enigma2-plugin-systemplugins-hdmicec \
 	enigma2-plugin-systemplugins-hotplug \
-	enigma2-plugin-systemplugins-mountmanager \
 	enigma2-plugin-systemplugins-networkbrowser \
 	enigma2-plugin-systemplugins-osd3dsetup \
 	enigma2-plugin-systemplugins-osdpositionsetup \
@@ -64,7 +59,6 @@ ENIGMA2_PLUGINS = " \
 	enigma2-plugin-systemplugins-videomode \
 	enigma2-plugin-systemplugins-videotune \
 	enigma2-plugin-systemplugins-wirelesslan \
-	enigma2-plugin-systemplugins-serviceapp \
 	"
 
 rmpy() {
