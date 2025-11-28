@@ -76,9 +76,9 @@ else
     echo "Main image is running - proceeding removing..."
 fi
 
-rm -rf /sbin/init
-ln -s /sbin/init.sysvinit /sbin/init
-rm -rf /sbin/open-multiboot-branding-helper.py
+rm -f /sbin/init
+ln -sf /sbin/init.sysvinit /sbin/init
+rm -f /sbin/open-multiboot-branding-helper.py
 
 chown -Rh root:root ${libdir}/enigma2/python/Plugins/Extensions/OpenMultiboot
 rm -rf ${libdir}/enigma2/python/Plugins/Extensions/OpenMultiboot
