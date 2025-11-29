@@ -1,4 +1,4 @@
-DESCRIPTION = "Multi boot loader manager for enigma2 box"
+SUMMARY = "Multi boot loader manager for enigma2 box"
 HOMEPAGE = "https://github.com/Dima73/pli-openmultibootmanager"
 LICENSE = "PD"
 LIC_FILES_CHKSUM = "file://COPYING;md5=b234ee4d69f5fce4486a80fdaf4a4263"
@@ -6,15 +6,14 @@ LIC_FILES_CHKSUM = "file://COPYING;md5=b234ee4d69f5fce4486a80fdaf4a4263"
 RDEPENDS:${PN} = "python-subprocess mtd-utils mtd-utils-ubifs openmultiboot"
 RRECOMMENDS:${PN} = "kernel-module-nandsim kernel-module-block2mtd"
 inherit gitpkgv distutils-openplugins
-PV = "1.0+git${SRCPV}"
-PKGV = "1.0+git${GITPKGV}"
+PV = "4.0+git${SRCPV}"
+PKGV = "4.0+git${GITPKGV}"
 
 INHIBIT_PACKAGE_STRIP = "1"
 INSANE_SKIP:${PN}:append = " already-stripped"
 PACKAGE_ARCH = "${MACHINE_ARCH}"
 
-
-SRC_URI = "${CODEWEBSITE}/pli-openmultibootmanager.git;protocol=https;branch=master"
+SRC_URI = "${CODEWEBSITE}/pli-openmultibootmanager.git;protocol=https;branch=master-next"
 
 SRC_URI += " \
 	file://nfidump_mipsel_0.4.2 \
@@ -37,10 +36,16 @@ NFINAME:dm7080 = "nfidump_mipsel_2.0.0"
 
 S = "${WORKDIR}/git"
 
+do_compile() {
+    python2 -O -m compileall ${S}
+}
+
 do_install:append() {
-    find ${D}/ -name '*.sh' -exec chmod a+x {} \;
     install -d ${D}/sbin
     cp ${S}/src/open-multiboot-branding-helper.py ${D}/sbin
+    find ${D}/ -name '*.sh' -exec chmod a+x {} \;
+    find ${D}/ -name '*.py' -exec rm {} \;
+    cp ${S}/src/open-multiboot-branding-helper.py ${D}/usr/lib/enigma2/python/Plugins/Extensions/OpenMultiboot
     install -d ${D}/usr/sbin
 }
 
