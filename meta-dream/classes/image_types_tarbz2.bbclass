@@ -23,6 +23,7 @@ CONVERSION_CMD:bz2 = " \
     zip ${IMAGEVERSION}.zip ${IMAGEDIR}/*; \
     rm -f *.manifest; \
     rm -rf ${IMAGEDIR}; \
+    rm -f *.spdx.tar.zst; \
     "
 
 REPRODUCIBLE_TIMESTAMP_ROOTFS = "${@time.strftime('%s')}"

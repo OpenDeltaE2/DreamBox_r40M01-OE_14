@@ -5,6 +5,7 @@ PACKAGES = "${PN}"
 
 INHIBIT_PACKAGE_STRIP = "1"
 INSANE_SKIP:${PN} += "already-stripped"
+# INSANE_SKIP = "32bit-time"
 DEPENDS += "enigma2-plugin-softcams-libcrypto-compat-1.0.2 virtual/crypt zlib"
 RDEPENDS:${PN} += "enigma2-plugin-softcams-libcrypto-compat-1.0.2 libxcrypt-compat zlib"
 

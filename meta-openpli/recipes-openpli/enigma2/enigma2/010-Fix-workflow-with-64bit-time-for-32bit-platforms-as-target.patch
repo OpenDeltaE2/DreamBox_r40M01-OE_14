@@ -18,7 +18,7 @@ index ac7ef84d1..d74726ede 100644
  	-Wstringop-overflow=3 -Woverlength-strings \
  	-Wunsafe-loop-optimizations -Wpointer-arith \
  	-Wfloat-equal -Wlogical-op \
-+	-Wno-error=format -Wno-error=maybe-uninitialized \
++	-Wno-error=maybe-uninitialized \
  	-Wno-error=cast-align=strict -Wno-error=ignored-qualifiers \
  	-Wno-error=cast-function-type \
  	-Wno-error=stringop-truncation -Wno-error=shadow -Wno-error=cast-qual \
