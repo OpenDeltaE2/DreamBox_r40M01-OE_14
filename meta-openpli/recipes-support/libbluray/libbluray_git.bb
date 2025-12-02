@@ -8,7 +8,7 @@ DEPENDS = "freetype libaacs libdca libdvdcss libxml2"
 RDEPENDS:${PN} = "libaacs libdca libdvdcss"
 
 inherit gitpkgv
-SRCREV = "${AUTOREV}"
+
 PV = "v1.4.0+git"
 PKGV = "v1.4.0+git${GITPKGV}"
 
