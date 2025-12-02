@@ -1,0 +1,13 @@
+diff --git a/src/omb_lcd.c b/src/omb_lcd.c
+index 3f9535d..9df1855 100644
+--- a/src/omb_lcd.c
++++ b/src/omb_lcd.c
+@@ -87,7 +87,7 @@ int omb_lcd_open()
+ 	int tmp = LCD_MODE_BIN;
+ 	if (ioctl(omb_lcd_fd, LCD_IOCTL_ASC_MODE, &tmp)) {
+ 		omb_log(LOG_ERROR, "%-33s: failed to set lcd bin mode", __FUNCTION__);
+-#ifndef OMB_DREAMBOX
++#if !defined(OMB_DREAMBOX) && !defined(OMB_MMCBLK)
+ 		return OMB_ERROR;
+ #endif
+ 	}
