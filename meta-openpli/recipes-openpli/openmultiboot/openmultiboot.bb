@@ -8,13 +8,14 @@ inherit gitpkgv
 
 PV = "1.3+git${SRCPV}"
 PKGV = "1.3+git${GITPKGV}"
+PR = "r1"
 
 PACKAGE_ARCH = "${MACHINE_ARCH}"
 
 DEPENDS = "freetype"
 
-
-SRC_URI = "${CODEWEBSITE}/openmultiboot.git;protocol=https;branch=master"
+SRC_URI = "${CODEWEBSITE}/openmultiboot.git;protocol=https;branch=master \
+	file://Update-dreambox-returns-error-on-LCD-IOCTL-ASC-MODE.patch"
 
 inherit autotools-brokensep pkgconfig
 
