@@ -15,7 +15,11 @@ PACKAGE_ARCH = "${MACHINE_ARCH}"
 DEPENDS = "freetype"
 
 SRC_URI = "${CODEWEBSITE}/openmultiboot.git;protocol=https;branch=master \
-	file://Update-dreambox-returns-error-on-LCD-IOCTL-ASC-MODE.patch"
+	file://Update-dreambox-returns-error-on-LCD-IOCTL-ASC-MODE.patch \
+"
+
+SRC_URI:dm900 = "${CODEWEBSITE}/openmultiboot.git;protocol=https;branch=dm900"
+SRC_URI:dm920 = "${CODEWEBSITE}/openmultiboot.git;protocol=https;branch=dm900"
 
 inherit autotools-brokensep pkgconfig
 
