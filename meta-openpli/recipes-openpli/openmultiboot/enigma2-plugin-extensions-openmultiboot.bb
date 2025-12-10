@@ -14,6 +14,8 @@ INSANE_SKIP:${PN}:append = " already-stripped"
 PACKAGE_ARCH = "${MACHINE_ARCH}"
 
 SRC_URI = "${CODEWEBSITE}/pli-openmultibootmanager.git;protocol=https;branch=master-next"
+SRC_URI:dm900 = "${CODEWEBSITE}/pli-openmultibootmanager.git;protocol=https;branch=dm900"
+SRC_URI:dm920 = "${CODEWEBSITE}/pli-openmultibootmanager.git;protocol=https;branch=dm900"
 
 SRC_URI += " \
 	file://nfidump_mipsel_0.4.2 \
