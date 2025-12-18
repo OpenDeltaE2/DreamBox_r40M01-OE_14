@@ -8,6 +8,7 @@ DEPENDS += " upx-native"
 IMAGE_INSTALL += " \
 	bitratecalc \
 	busybox-cron \
+	bash \
 	"
 
 KERNEL_WIFI_DRIVERS = ""
@@ -138,9 +139,8 @@ rootfs_myworks() {
 	rm -rf ${IMAGE_ROOTFS}/usr/share/locale/*
 	rm -rf ${IMAGE_ROOTFS}/usr/share/mime/*
 	rm -rf ${IMAGE_ROOTFS}/usr/share/alsa/*
-	rm -f ${IMAGE_ROOTFS}/bin/bash.bash
-	ln -sf busybox.nosuid ${IMAGE_ROOTFS}/bin/bash
-	ln -sf busybox.nosuid ${IMAGE_ROOTFS}/bin/sh
+	ln -sf /bin/bash.bash ${IMAGE_ROOTFS}/bin/bash
+	ln -sf /bin/busybox.nosuid ${IMAGE_ROOTFS}/bin/sh
 	rmpo ${IMAGE_ROOTFS}/usr/lib/enigma2/python/Plugins/Extensions/AudioSync/locale
 	rmpo ${IMAGE_ROOTFS}/usr/lib/enigma2/python/Plugins/Extensions/FanControl2/locale
 	rmpo ${IMAGE_ROOTFS}/usr/lib/enigma2/python/Plugins/Extensions/AutoBackup/locale
