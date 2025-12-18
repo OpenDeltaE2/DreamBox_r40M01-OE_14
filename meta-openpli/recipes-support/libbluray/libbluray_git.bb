@@ -12,9 +12,7 @@ inherit gitpkgv
 PV = "v1.4.0+git"
 PKGV = "v1.4.0+git${GITPKGV}"
 
-# make the origin overridable from OE config, for local mirroring
-SRC_ORIGIN ?= "gitsm://code.videolan.org/videolan/libbluray.git;protocol=https;branch=master"
-SRC_URI := "${SRC_ORIGIN} "
+SRC_URI = "gitsm://gitcode.com/jack2015/libbluray.git;protocol=https;branch=master"
 
 S="${WORKDIR}/git"
 

@@ -9,6 +9,7 @@ IMAGE_INSTALL += " \
 	bitratecalc \
 	ofgwrite \
 	samba \
+	bash \
 	busybox-cron \
 	${@bb.utils.contains("MACHINE_FEATURES", "emmc", "dosfstools mtools e2fsprogs-resize2fs partitions-by-name bzip2 rsync" , "", d)} \
 	"
@@ -122,9 +123,8 @@ export PATH_ETC = "${@bb.utils.contains("MACHINE", "dm900", "${THISDIR}/files/dm
 
 rootfs_myworks() {
 	rm -rf ${IMAGE_ROOTFS}/usr/lib/python2.7/site-packages/*egg-info*
-	rm -f ${IMAGE_ROOTFS}/bin/bash.bash
-	ln -sf busybox.nosuid ${IMAGE_ROOTFS}/bin/bash
-	ln -sf busybox.nosuid ${IMAGE_ROOTFS}/bin/sh
+	ln -sf /bin/bash.bash ${IMAGE_ROOTFS}/bin/bash
+	ln -sf /bin/busybox.nosuid ${IMAGE_ROOTFS}/bin/sh
 	rmpy ${IMAGE_ROOTFS}/usr/lib/enigma2/python/Plugins
 	rmpy ${IMAGE_ROOTFS}/usr/lib/enigma2/python/Components
 	rm -f ${IMAGE_ROOTFS}/usr/share/enigma2/PLi-HD/picon_default.png
