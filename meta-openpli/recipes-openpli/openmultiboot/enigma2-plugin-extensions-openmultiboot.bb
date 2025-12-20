@@ -21,12 +21,14 @@ SRC_URI += " \
 	file://nfidump_mipsel_0.4.2 \
 	file://nfidump_mipsel_1.0.0 \
 	file://nfidump_mipsel_2.0.0 \
+	file://mount-boot.sh \
 	"
 
 SRC_URI:dm800se += " \
 	file://nfidump_mipsel_0.4.2 \
 	file://nfidump_mipsel_1.0.0 \
 	file://nfidump_mipsel_2.0.0 \
+	file://mount-boot.sh \
 	"
 
 FILES:${PN} = "/usr /sbin"
@@ -49,10 +51,15 @@ do_install:append() {
     cp ${S}/src/open-multiboot-branding-helper.py ${D}/sbin
     find ${D}/ -name '*.sh' -exec chmod a+x {} \;
     install -d ${D}/usr/sbin
+    install -d ${D}/usr/bin
 }
 
 do_install:append:mipsel() {
     install -m 0755 ${WORKDIR}/${NFINAME} ${D}/usr/sbin/nfidump
+}
+
+do_install:append:dm800se() {
+    install -m 0755 ${WORKDIR}/mount-boot.sh ${D}/usr/bin/mount-boot.sh
 }
 
 pkg_preinst:${PN}() {

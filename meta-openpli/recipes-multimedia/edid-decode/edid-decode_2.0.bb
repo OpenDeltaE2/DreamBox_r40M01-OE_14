@@ -5,8 +5,8 @@ LIC_FILES_CHKSUM = "file://edid-decode.cpp;beginline=1;endline=8;md5=2193df34747
 
 inherit gitpkgv meson pkgconfig
 
-PV = "1.0+git${SRCPV}"
-PKGV = "1.0+git${GITPKGV}"
+PV = "2.0+git${SRCPV}"
+PKGV = "2.0+git${GITPKGV}"
 
 SRC_URI = "${CODEWEBSITE}/edid-decode.git;protocol=https;branch=master"
 
