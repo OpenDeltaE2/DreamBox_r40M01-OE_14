@@ -12,6 +12,6 @@ RDEPENDS:${PN}-soup += "libsoup-2.4"
 
 PACKAGECONFIG:append = " amrnb amrwb vpx wavpack"
 
-PV = "1.26.8"
+PV = "1.26.9"
 
-SRC_URI[sha256sum] = "061e84efae31dfb4d96e4517659aca82bad9d5625b8f64d3290604385edd1d14"
+SRC_URI[sha256sum] = "f38566fb53ae56b7019a039475311756a28eb978a781154d67813dcb551ff5fe"

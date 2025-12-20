@@ -15,6 +15,6 @@ SRC_URI:append = " \
 PACKAGECONFIG:append = " faac faad opusparse rtmp"
 PACKAGECONFIG:remove = "rsvg"
 
-PV = "1.26.8"
+PV = "1.26.9"
 
-SRC_URI[sha256sum] = "25c05be5eb0694bde3ecd3317516f5d0d6e4ad21125a5ebcf6fb644a4c92439f"
+SRC_URI[sha256sum] = "a96bfb68c53a7c9ab1ae279eac7c101f4204fb5c0e4729683b2be64261707446"
