@@ -5,12 +5,6 @@ RDEPENDS:{PN}-src = "${PN}"
 SSTATE_ALLOW_OVERLAP_FILES += "${STAGING_LIBDIR}/python2.7/site-packages/tests/__init__.py ${STAGING_LIBDIR}/python2.7/site-packages/tests/__init__.pyo"
 
 FILES:${PN}-src = " \
-    ${PYTHON_SITEPACKAGES_DIR}/*.py \
-    ${PYTHON_SITEPACKAGES_DIR}/*/*.py \
-    ${PYTHON_SITEPACKAGES_DIR}/*/*/*.py \
-    ${PYTHON_SITEPACKAGES_DIR}/*/*/*/*.py \
-    ${PYTHON_SITEPACKAGES_DIR}/*/*/*/*/*.py \
-    ${PYTHON_SITEPACKAGES_DIR}/*/*/*/*/*/*.py \
     ${PYTHON_SITEPACKAGES_DIR}/*.c \
     ${PYTHON_SITEPACKAGES_DIR}/*/*.c \
     ${PYTHON_SITEPACKAGES_DIR}/*/*/*.c \
@@ -26,6 +20,12 @@ FILES:${PN}-src = " \
     ${PYTHON_SITEPACKAGES_DIR}/*/*/*.exe \
     ${PYTHON_SITEPACKAGES_DIR}/*/*/*/*.exe \
     ${PYTHON_SITEPACKAGES_DIR}/*/*/*/*/*.exe \
+    ${PYTHON_SITEPACKAGES_DIR}/*.py \
+    ${PYTHON_SITEPACKAGES_DIR}/*/*.py \
+    ${PYTHON_SITEPACKAGES_DIR}/*/*/*.py \
+    ${PYTHON_SITEPACKAGES_DIR}/*/*/*/*.py \
+    ${PYTHON_SITEPACKAGES_DIR}/*/*/*/*/*.py \
+    ${PYTHON_SITEPACKAGES_DIR}/*/*/*/*/*/*.py \
     "
 
 # some txt files which should go into -doc
@@ -39,18 +39,42 @@ FILES:${PN}-doc += " \
     ${PYTHON_SITEPACKAGES_DIR}/*.txt \
     ${PYTHON_SITEPACKAGES_DIR}/*/*.txt \
     ${PYTHON_SITEPACKAGES_DIR}/*/*/*.txt \
+    ${PYTHON_SITEPACKAGES_DIR}/*/*/*/*.txt \
+    ${PYTHON_SITEPACKAGES_DIR}/*/*/*/*/*.txt \
+    ${PYTHON_SITEPACKAGES_DIR}/*/*/*/*/*/*.txt \
+    ${PYTHON_SITEPACKAGES_DIR}/*/*/*/*/*/*/*.txt \
+    ${PYTHON_SITEPACKAGES_DIR}/*/*/*/*/*/*/*/*.txt \
+    ${PYTHON_SITEPACKAGES_DIR}/*/*/*/*/*/*/*/*/*.txt \
+    ${PYTHON_SITEPACKAGES_DIR}/*/*/*/*/*/*/*/*/*/*.txt \
     ${PYTHON_SITEPACKAGES_DIR}/doc \
     ${PYTHON_SITEPACKAGES_DIR}/*/doc \
     ${PYTHON_SITEPACKAGES_DIR}/LICENSE \
     ${PYTHON_SITEPACKAGES_DIR}/README \
+    ${PYTHON_SITEPACKAGES_DIR}/*/*.misc \
+    ${PYTHON_SITEPACKAGES_DIR}/*/*/.gitignore \
     "
 
 FILES:${PN}-dbg += " \
-    ${PYTHON_SITEPACKAGES_DIR}/*/.debug \
-    ${PYTHON_SITEPACKAGES_DIR}/*/*/.debug \
-    ${PYTHON_SITEPACKAGES_DIR}/*/*/*/.debug \
-    ${PYTHON_SITEPACKAGES_DIR}/*/*/*/*/.debug \
+    ${PYTHON_SITEPACKAGES_DIR}/*.debug \
+    ${PYTHON_SITEPACKAGES_DIR}/*/*.debug \
+    ${PYTHON_SITEPACKAGES_DIR}/*/*/*.debug \
+    ${PYTHON_SITEPACKAGES_DIR}/*/*/*/*.debug \
+    ${PYTHON_SITEPACKAGES_DIR}/*/*/*/*/*.debug \
+    ${PYTHON_SITEPACKAGES_DIR}/*/*/*/*/*/*.debug \
+    ${PYTHON_SITEPACKAGES_DIR}/*/*/*/*/*/*/*.debug \
+    ${PYTHON_SITEPACKAGES_DIR}/*/*/*/*/*/*/*/*.debug \
+    ${PYTHON_SITEPACKAGES_DIR}/*/*/*/*/*/*/*/*/*.debug \
+    ${PYTHON_SITEPACKAGES_DIR}/*/*/*/*/*/*/*/*/*/*.debug \
     ${PYTHON_SITEPACKAGES_DIR}/*.egg-info \
+    ${PYTHON_SITEPACKAGES_DIR}/*/*.egg-info \
+    ${PYTHON_SITEPACKAGES_DIR}/*/*/*.egg-info \
+    ${PYTHON_SITEPACKAGES_DIR}/*/*/*/*.egg-info \
+    ${PYTHON_SITEPACKAGES_DIR}/*/*/*/*/*.egg-info \
+    ${PYTHON_SITEPACKAGES_DIR}/*/*/*/*/*/*.egg-info \
+    ${PYTHON_SITEPACKAGES_DIR}/*/*/*/*/*/*/*.egg-info \
+    ${PYTHON_SITEPACKAGES_DIR}/*/*/*/*/*/*/*/*.egg-info \
+    ${PYTHON_SITEPACKAGES_DIR}/*/*/*/*/*/*/*/*/*.egg-info \
+    ${PYTHON_SITEPACKAGES_DIR}/*/*/*/*/*/*/*/*/*/*.egg-info \
     ${PYTHON_SITEPACKAGES_DIR}/test \
     ${PYTHON_SITEPACKAGES_DIR}/tests \
     ${PYTHON_SITEPACKAGES_DIR}/Test \
@@ -60,8 +84,15 @@ FILES:${PN}-dbg += " \
     ${PYTHON_SITEPACKAGES_DIR}/*/tests \
     ${PYTHON_SITEPACKAGES_DIR}/*/Test \
     ${PYTHON_SITEPACKAGES_DIR}/*/Tests \
+    ${PYTHON_SITEPACKAGES_DIR}/*/_test \
     ${PYTHON_SITEPACKAGES_DIR}/*/*/test \
+    ${PYTHON_SITEPACKAGES_DIR}/*/*/_test \
     ${PYTHON_SITEPACKAGES_DIR}/*/*/tests \
     ${PYTHON_SITEPACKAGES_DIR}/*/*/Test \
     ${PYTHON_SITEPACKAGES_DIR}/*/*/Tests \
+    ${PYTHON_SITEPACKAGES_DIR}/*/*/*/test \
+    ${PYTHON_SITEPACKAGES_DIR}/*/*/*/_test \
+    ${PYTHON_SITEPACKAGES_DIR}/*/*/*/tests \
+    ${PYTHON_SITEPACKAGES_DIR}/*/*/*/Test \
+    ${PYTHON_SITEPACKAGES_DIR}/*/*/*/Tests \
     "

@@ -7,7 +7,6 @@ IMAGE_INSTALL:remove = "astra-sm"
 IMAGE_INSTALL += " \
 	bitratecalc \
 	busybox-cron \
-	bash \
 	"
 
 DEPENDS += " upx-native"
@@ -34,6 +33,8 @@ ENIGMA2_PLUGINS = " \
 	enigma2-plugin-extensions-oscamstatus \
 	enigma2-plugin-extensions-pictureplayer \
 	enigma2-plugin-softcams-oscam \
+	enigma2-plugin-extensions-openmultiboot \
+	openmultiboot \
 	enigma2-plugin-systemplugins-cablescan \
 	enigma2-plugin-systemplugins-fastscan \
 	enigma2-plugin-systemplugins-mphelp \
@@ -115,6 +116,9 @@ upxall() {
 }
 
 rootfs_myworks() {
+	echo $(stat -c %s "${IMAGE_ROOTFS}/boot/vmlinux-3.2-dm800se.gz") >> ${IMAGE_ROOTFS}/etc/.kernel_size
+	ln -sf /bin/busybox.nosuid ${IMAGE_ROOTFS}/bin/bash
+	ln -sf /bin/busybox.nosuid ${IMAGE_ROOTFS}/bin/sh
 	rm -rf ${IMAGE_ROOTFS}/var/lib/opkg/lists
 	rm -rf ${IMAGE_ROOTFS}/usr/lib/python2.7/site-packages/*egg-info*
 	rmpy ${IMAGE_ROOTFS}/usr/lib/enigma2/python/Plugins
@@ -124,8 +128,6 @@ rootfs_myworks() {
 	rm -rf ${IMAGE_ROOTFS}/usr/lib/locale/*
 	rm -rf ${IMAGE_ROOTFS}/usr/share/mime/*
 	rm -rf ${IMAGE_ROOTFS}/usr/share/alsa/*
-	ln -sf /bin/bash.bash ${IMAGE_ROOTFS}/bin/bash
-	ln -sf /bin/busybox.nosuid ${IMAGE_ROOTFS}/bin/sh
 	rm -rf ${IMAGE_ROOTFS}/usr/lib/enigma2/python/Plugins/Extensions/AudioSync/locale
 	rmpo ${IMAGE_ROOTFS}/usr/lib/enigma2/python/Plugins/Extensions/AutoBackup/locale
 	rm -rf ${IMAGE_ROOTFS}/usr/lib/enigma2/python/Plugins/Extensions/BackupSuite/locale
