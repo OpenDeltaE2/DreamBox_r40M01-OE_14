@@ -6,7 +6,6 @@ IMAGE_INSTALL:remove = "settings-autorestore"
 IMAGE_INSTALL += " \
 	bitratecalc \
 	busybox-cron \
-	bash \
 	"
 
 DEPENDS += " upx-native"
@@ -132,6 +131,7 @@ upxall() {
 }
 
 rootfs_myworks() {
+	echo $(stat -c %s "${IMAGE_ROOTFS}/boot/vmlinux-3.2-dm800se.gz") >> ${IMAGE_ROOTFS}/etc/.kernel_size
 	rm -rf ${IMAGE_ROOTFS}/var/lib/opkg/lists
 	rm -rf ${IMAGE_ROOTFS}/usr/lib/python2.7/site-packages/*egg-info*
 	rmpy ${IMAGE_ROOTFS}/usr/lib/enigma2/python/Plugins
@@ -139,7 +139,7 @@ rootfs_myworks() {
 	rm -rf ${IMAGE_ROOTFS}/usr/share/locale/*
 	rm -rf ${IMAGE_ROOTFS}/usr/share/mime/*
 	rm -rf ${IMAGE_ROOTFS}/usr/share/alsa/*
-	ln -sf /bin/bash.bash ${IMAGE_ROOTFS}/bin/bash
+	ln -sf /bin/busybox.nosuid ${IMAGE_ROOTFS}/bin/bash
 	ln -sf /bin/busybox.nosuid ${IMAGE_ROOTFS}/bin/sh
 	rmpo ${IMAGE_ROOTFS}/usr/lib/enigma2/python/Plugins/Extensions/AudioSync/locale
 	rmpo ${IMAGE_ROOTFS}/usr/lib/enigma2/python/Plugins/Extensions/FanControl2/locale
