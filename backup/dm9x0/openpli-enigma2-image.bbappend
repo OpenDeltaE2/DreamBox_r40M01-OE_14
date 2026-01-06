@@ -19,6 +19,12 @@ EXTERNAL_WIFI_DRIVERS = ""
 
 ENIGMA2_PLUGINS = " \
 	enigma2-plugin-drivers-ntfs-3g \
+	enigma2-plugin-drivers-exfat \
+	enigma2-plugin-drivers-usbserial \
+	enigma2-plugin-drivers-network-usb-rtl8192eu \
+	enigma2-plugin-drivers-network-usb-rt8812au \
+	enigma2-plugin-drivers-network-usb-rt8812bu \
+	enigma2-plugin-drivers-network-usb-rtl8187 \
 	enigma2-plugin-softcams-libcrypto-compat-1.0.2 \
 	enigma2-plugin-softcams-libcrypto-compat-1.1 \
 	enigma2-plugin-language-en \
@@ -89,7 +95,6 @@ ENIGMA2_PLUGINS = " \
 	enigma2-plugin-softcams-oscam-emu \
 	enigma2-plugin-extensions-openmultiboot \
 	openmultiboot \
-	enigma2-plugin-systemplugins-autobouquetsmaker \
 	enigma2-plugin-systemplugins-cablescan \
 	enigma2-plugin-systemplugins-fastscan \
 	enigma2-plugin-systemplugins-mphelp \
