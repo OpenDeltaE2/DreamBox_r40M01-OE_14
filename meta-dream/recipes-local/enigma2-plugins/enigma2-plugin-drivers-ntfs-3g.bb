@@ -1,7 +1,7 @@
 SUMMARY = "Allow writes to NTFS file systems"
 require conf/license/license-gplv2.inc
 
-RRECOMMENDS:${PN} = "ntfs-3g kernel-module-ntfs"
+RRECOMMENDS:${PN} = "ntfs-3g kernel-module-ntfs ntfsprogs"
 
 PV = "1.0"
 PR = "r0"
