@@ -6,6 +6,8 @@ IMAGE_INSTALL:remove = "settings-autorestore"
 #dm9x0
 
 IMAGE_INSTALL += " \
+	exteplayer3\
+	gstplayer\
 	bitratecalc \
 	ofgwrite \
 	samba \
@@ -106,6 +108,7 @@ ENIGMA2_PLUGINS = " \
 	enigma2-plugin-systemplugins-positionersetup \
 	enigma2-plugin-systemplugins-satfinder \
 	enigma2-plugin-systemplugins-softwaremanager \
+	enigma2-plugin-systemplugins-serviceapp \
 	enigma2-plugin-systemplugins-videomode \
 	enigma2-plugin-systemplugins-videotune \
 	enigma2-plugin-systemplugins-wirelesslan \
