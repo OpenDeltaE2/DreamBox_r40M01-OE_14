@@ -8,7 +8,6 @@ IMAGE_INSTALL:remove = "settings-autorestore"
 IMAGE_INSTALL:append = " \
 	bitratecalc \
 	busybox-cron \
-	bash \
 	"
 
 KERNEL_WIFI_DRIVERS = ""
@@ -78,7 +77,7 @@ rmpy() {
 rootfs_myworks() {
 	rm -rf ${IMAGE_ROOTFS}/var/lib/opkg/lists
 	rm -rf ${IMAGE_ROOTFS}/usr/lib/python2.7/site-packages/*egg-info*
-	ln -sf /bin/bash.bash ${IMAGE_ROOTFS}/bin/bash
+	ln -sf /bin/busybox.nosuid ${IMAGE_ROOTFS}/bin/bash
 	ln -sf /bin/busybox.nosuid ${IMAGE_ROOTFS}/bin/sh
 	rmpy ${IMAGE_ROOTFS}/usr/lib/enigma2/python/Plugins
 	rmpy ${IMAGE_ROOTFS}/usr/lib/enigma2/python/Components
