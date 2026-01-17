@@ -8,13 +8,16 @@ inherit gitpkgv
 
 PV = "1.3+git${SRCPV}"
 PKGV = "1.3+git${GITPKGV}"
+PR = "r1"
 
 PACKAGE_ARCH = "${MACHINE_ARCH}"
 
 DEPENDS = "freetype"
 
-
 SRC_URI = "${CODEWEBSITE}/openmultiboot.git;protocol=https;branch=master"
+SRC_URI:dm800se = "${CODEWEBSITE}/openmultiboot.git;protocol=https;branch=dm800se"
+SRC_URI:dm900 = "${CODEWEBSITE}/openmultiboot.git;protocol=https;branch=dm900"
+SRC_URI:dm920 = "${CODEWEBSITE}/openmultiboot.git;protocol=https;branch=dm900"
 
 inherit autotools-brokensep pkgconfig
 
@@ -65,9 +68,9 @@ fi
 
 pkg_postrm:${PN}() {
 #!/bin/sh
-rm -rf /sbin/init
-ln -s /sbin/init.sysvinit /sbin/init
-rm -rf /sbin/open-multiboot-branding-helper.py
+rm -f /sbin/init
+ln -sf /sbin/init.sysvinit /sbin/init
+rm -f /sbin/open-multiboot-branding-helper.py
 exit 0
 }
 

@@ -3,8 +3,7 @@ HOMEPAGE = "https://github.com/Dima73/pli-openmultibootmanager"
 LICENSE = "PD"
 LIC_FILES_CHKSUM = "file://COPYING;md5=b234ee4d69f5fce4486a80fdaf4a4263"
 
-RDEPENDS:${PN} = "python-subprocess mtd-utils mtd-utils-ubifs openmultiboot"
-RRECOMMENDS:${PN} = "kernel-module-nandsim kernel-module-block2mtd"
+RDEPENDS:${PN} = "python-subprocess mtd-utils openmultiboot"
 inherit gitpkgv distutils-openplugins
 PV = "4.0+git${SRCPV}"
 PKGV = "4.0+git${GITPKGV}"
@@ -14,14 +13,25 @@ INSANE_SKIP:${PN}:append = " already-stripped"
 PACKAGE_ARCH = "${MACHINE_ARCH}"
 
 SRC_URI = "${CODEWEBSITE}/pli-openmultibootmanager.git;protocol=https;branch=master-next"
+SRC_URI:dm800se = "${CODEWEBSITE}/pli-openmultibootmanager.git;protocol=https;branch=dm800se"
+SRC_URI:dm900 = "${CODEWEBSITE}/pli-openmultibootmanager.git;protocol=https;branch=dm900"
+SRC_URI:dm920 = "${CODEWEBSITE}/pli-openmultibootmanager.git;protocol=https;branch=dm900"
 
 SRC_URI += " \
 	file://nfidump_mipsel_0.4.2 \
 	file://nfidump_mipsel_1.0.0 \
 	file://nfidump_mipsel_2.0.0 \
+	file://mount-boot.sh \
 	"
 
-FILES:${PN}:append = " /usr/sbin /sbin"
+SRC_URI:dm800se += " \
+	file://nfidump_mipsel_0.4.2 \
+	file://nfidump_mipsel_1.0.0 \
+	file://nfidump_mipsel_2.0.0 \
+	file://mount-boot.sh \
+	"
+
+FILES:${PN} = "/usr /sbin"
 NFINAME:dm7020hd = "nfidump_mipsel_1.0.0"
 NFINAME:dm7020hdv2 = "nfidump_mipsel_1.0.0"
 NFINAME:dm8000 = "nfidump_mipsel_1.0.0"
@@ -36,21 +46,20 @@ NFINAME:dm7080 = "nfidump_mipsel_2.0.0"
 
 S = "${WORKDIR}/git"
 
-do_compile() {
-    python2 -O -m compileall ${S}
-}
-
 do_install:append() {
     install -d ${D}/sbin
     cp ${S}/src/open-multiboot-branding-helper.py ${D}/sbin
     find ${D}/ -name '*.sh' -exec chmod a+x {} \;
-    find ${D}/ -name '*.py' -exec rm {} \;
-    cp ${S}/src/open-multiboot-branding-helper.py ${D}/usr/lib/enigma2/python/Plugins/Extensions/OpenMultiboot
     install -d ${D}/usr/sbin
+    install -d ${D}/usr/bin
 }
 
 do_install:append:mipsel() {
     install -m 0755 ${WORKDIR}/${NFINAME} ${D}/usr/sbin/nfidump
+}
+
+do_install:append:dm800se() {
+    install -m 0755 ${WORKDIR}/mount-boot.sh ${D}/usr/bin/mount-boot.sh
 }
 
 pkg_preinst:${PN}() {

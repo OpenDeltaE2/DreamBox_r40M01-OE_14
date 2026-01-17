@@ -1,14 +1,27 @@
 SUMMARY  = "UDF reader"
-SECTION = "misc"
+SECTION = "libs"
 HOMEPAGE = "http://videolan.org"
-LICENSE = "GPL-2.0-only"
+LICENSE = "LGPL-2.1-only"
 LIC_FILES_CHKSUM="file://COPYING;md5=4fbd65380cdd255951079008b364516c"
 
-SRC_URI = "git://code.videolan.org/videolan/libudfread.git;branch=master;protocol=https"
+inherit gitpkgv
 
-inherit gitpkgv autotools-brokensep pkgconfig
+PV = "1.2.0+git"
+PKGV = "1.2.0+git${GITPKGV}"
 
-PV = "1.1.2+git${SRCPV}"
-PKGV = "1.1.2+git${GITPKGV}"
+SRC_URI = "${CODEWEBSITE}/libudfread.git;protocol=https;branch=master"
+
+inherit meson pkgconfig
 
 S="${WORKDIR}/git"
+
+pkg_postinst:${PN}:append () {
+if [ -z "$D" ]; then
+	if [ ! -e "${libdir}/libudfread.so.0" ] && [ ! -L "${libdir}/libudfread.so.0" ]; then
+		sofile="$(basename "$(readlink -f ${libdir}/libudfread.so.*.*.* || true)")"
+		if [ -n "$sofile" ]; then
+			ln -s "$sofile" "${libdir}/libudfread.so.0"
+		fi
+	fi
+fi
+}
