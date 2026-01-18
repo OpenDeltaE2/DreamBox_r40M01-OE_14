@@ -60,8 +60,15 @@ FILES:${PN}-dbg += " \
     ${PYTHON_SITEPACKAGES_DIR}/*/tests \
     ${PYTHON_SITEPACKAGES_DIR}/*/Test \
     ${PYTHON_SITEPACKAGES_DIR}/*/Tests \
+    ${PYTHON_SITEPACKAGES_DIR}/*/_test \
     ${PYTHON_SITEPACKAGES_DIR}/*/*/test \
+    ${PYTHON_SITEPACKAGES_DIR}/*/*/_test \
     ${PYTHON_SITEPACKAGES_DIR}/*/*/tests \
     ${PYTHON_SITEPACKAGES_DIR}/*/*/Test \
     ${PYTHON_SITEPACKAGES_DIR}/*/*/Tests \
+    ${PYTHON_SITEPACKAGES_DIR}/*/*/*/test \
+    ${PYTHON_SITEPACKAGES_DIR}/*/*/*/_test \
+    ${PYTHON_SITEPACKAGES_DIR}/*/*/*/tests \
+    ${PYTHON_SITEPACKAGES_DIR}/*/*/*/Test \
+    ${PYTHON_SITEPACKAGES_DIR}/*/*/*/Tests \
     "

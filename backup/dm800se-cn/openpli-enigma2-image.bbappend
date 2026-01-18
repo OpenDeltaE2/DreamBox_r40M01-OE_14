@@ -77,8 +77,10 @@ rmpo() {
 }
 
 upxall() {
+	upx --best --ultra-brute ${IMAGE_ROOTFS}/sbin/e2label
 	upx --best --ultra-brute ${IMAGE_ROOTFS}/sbin/ldconfig
 	upx --best --ultra-brute ${IMAGE_ROOTFS}/sbin/iwconfig
+	upx --best --ultra-brute ${IMAGE_ROOTFS}/sbin/open_multiboot
 	upx --best --ultra-brute ${IMAGE_ROOTFS}/sbin/tune2fs.e2fsprogs
 	upx --best --ultra-brute ${IMAGE_ROOTFS}/usr/bin/blindscan
 	upx --best --ultra-brute ${IMAGE_ROOTFS}/usr/bin/bsdcat
@@ -101,6 +103,7 @@ upxall() {
 	upx --best --ultra-brute ${IMAGE_ROOTFS}/usr/sbin/groupmod
 	upx --best --ultra-brute ${IMAGE_ROOTFS}/usr/sbin/grpck
 	upx --best --ultra-brute ${IMAGE_ROOTFS}/usr/sbin/newusers
+	upx --best --ultra-brute ${IMAGE_ROOTFS}/usr/sbin/nfidump
 	upx --best --ultra-brute ${IMAGE_ROOTFS}/usr/sbin/parted
 	upx --best --ultra-brute ${IMAGE_ROOTFS}/usr/sbin/rpc.mountd
 	upx --best --ultra-brute ${IMAGE_ROOTFS}/usr/sbin/rpc.statd
@@ -114,6 +117,7 @@ upxall() {
 }
 
 rootfs_myworks() {
+	echo $(stat -c %s "${IMAGE_ROOTFS}/boot/vmlinux-3.2-dm800se.gz") >> ${IMAGE_ROOTFS}/etc/.kernel_size
 	rm -rf ${IMAGE_ROOTFS}/var/lib/opkg/lists
 	rm -rf ${IMAGE_ROOTFS}/usr/lib/python2.7/site-packages/*egg-info*
 	rmpy ${IMAGE_ROOTFS}/usr/lib/enigma2/python/Plugins

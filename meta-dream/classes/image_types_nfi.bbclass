@@ -13,6 +13,7 @@ IMAGE_CMD:jffs2nfi = " \
 		--compression-mode=size \
 		--output=${DEPLOY_DIR_IMAGE}/${IMAGE_NAME}.boot.jffs2 \
 		${EXTRA_IMAGECMD}; \
+	cp -f ${IMAGE_ROOTFS}/boot/vmlinux-3.2-dm800se.gz ${DEPLOY_DIR_IMAGE}/kernel.bin; \
 	rm -rf ${IMAGE_ROOTFS}/boot/*; \
 	mkfs.jffs2 \
 		--root=${IMAGE_ROOTFS} \
@@ -26,7 +27,7 @@ IMAGE_CMD:jffs2nfi = " \
 		--data-partition ${DREAMBOX_PART2_SIZE}:${IMGDEPLOYDIR}/${IMAGE_NAME}.rootfs.jffs2 \
 		> ${DEPLOY_DIR_IMAGE}/${IMAGE_NAME}.nfi; \
 	rm -f ${DEPLOY_DIR_IMAGE}/*.zip; \
-	zip -j ${DEPLOY_DIR_IMAGE}/openpli-${DISTRO_VERSION}-${MACHINE}-${MACHINESIMS}-${PDATE}.zip ${DEPLOY_DIR_IMAGE}/${IMAGE_NAME}.nfi; \
+	zip -j ${DEPLOY_DIR_IMAGE}/openpli-${DISTRO_VERSION}-${MACHINE}-${MACHINESIMS}-${PDATE}.zip ${DEPLOY_DIR_IMAGE}/${IMAGE_NAME}.nfi ${DEPLOY_DIR_IMAGE}/kernel.bin; \
 	rm -f ${DEPLOY_DIR_IMAGE}/*.nfi; \
 "
 
